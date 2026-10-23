@@ -1,4 +1,4 @@
-# Espresso Study: landing page (bozza)
+# Espresso Study: landing page (bozza v2)
 
 Landing page statica, mobile first, per gli studenti arabofoni che vogliono studiare in Italia.
 Mercati prioritari: Algeria, Kuwait, studenti arabi in Israele.
@@ -6,35 +6,50 @@ Mercati prioritari: Algeria, Kuwait, studenti arabi in Israele.
 ## Struttura
 
 - `index.html`: tutta la pagina in un unico file (HTML, CSS e JS inline, nessun build).
-- `assets/`: logo, mascotte e illustrazioni estratti dalla presentazione del brand.
+- `assets/peeps/`: personaggi illustrati (Open Peeps, licenza CC0), a figura intera e a mezzo busto. I mezzi busti hanno due versioni, preoccupata (`-worry`) e sorridente (`-happy`).
+- `assets/italy/`: monumenti italiani disegnati in SVG e `skyline.svg`, il panorama animato dell'hero.
+- `tools/`: script per rigenerare personaggi e monumenti (istruzioni in testa a ogni file).
 
-Per vederla basta aprire `index.html` nel browser o pubblicarla su un qualsiasi hosting statico (Netlify, Vercel, GitHub Pages).
+Per vederla basta aprire `index.html` nel browser o pubblicarla su un hosting statico.
+
+## Sezioni, in ordine
+
+1. **Hero animato**: panorama italiano che scorre, studenti che camminano, notifiche ("Visto approvato ✅").
+2. **"Ne parlano"**: nastro che scorre con i nomi delle testate.
+3. **Quiz "Posso studiare in Italia?"**: 3 domande e un risultato personalizzato che apre WhatsApp con le risposte.
+4. **Le paure** di studenti e genitori, con la risposta di Espresso Study. Il personaggio passa da preoccupato a sorridente.
+5. **Cosa ti aspetta in Italia**: cartoline illustrate, dati chiave e confronto delle rette.
+6. **Confronto** tra fare da soli, solo con l'università e con Espresso Study.
+7. **Percorso** in 4 tappe.
+8. **Rassegna stampa**: Gaza → Ancona e premio eCapital 2025, con i link agli articoli.
+9. **Partner**: UNIVPM, Inlingua, eCapital, partner locali.
+10. **Prezzi e add-on**, testimonianze, domande frequenti, modulo di contatto.
 
 ## Lingue
 
-Arabo (layout da destra a sinistra), inglese, francese. I testi sono nell'oggetto `T` e nei dati in fondo alla pagina (`STAMPS`, `CMP`, `ROAD`, `WHY`, `PLANS`, `FEATS`, `ADDONS`, `FAQ`).
-La lingua iniziale segue questo ordine: `?lang=`, poi la scelta salvata dal visitatore, poi il paese, poi la lingua del browser.
+Arabo (layout da destra a sinistra), inglese, francese. I testi sono nell'oggetto `T` e negli array di dati dentro lo `<script>`.
+Lingua iniziale: `?lang=`, poi la scelta salvata dal visitatore, poi il paese, poi la lingua del browser.
 
 ## Link per le campagne
 
-Un link diverso per ogni paese cambia la lingua iniziale e la carta d'imbarco nell'hero (aeroporto di partenza e durata del volo):
+| Paese | Link | Effetto |
+|---|---|---|
+| Algeria | `?c=dz` | arabo, partner locale algerino |
+| Kuwait | `?c=kw` | arabo, assistenza 100% online |
+| Israele | `?c=il` | arabo, partner locali in Israele |
 
-| Paese | Link |
-|---|---|
-| Algeria | `?c=dz` (oppure `?c=dz&lang=fr`) |
-| Kuwait | `?c=kw` |
-| Israele | `?c=il` |
+Senza parametro compaiono tutti i partner locali, ma senza indicare il paese di ciascuno.
 
-Sulla pagina non compaiono bandiere né il nome "Israele" accanto a quello degli altri paesi: il pubblico algerino e kuwaitiano potrebbe reagire male.
+## Loghi
 
-## Contatti
-
-Tutti i pulsanti aprono WhatsApp (+39 327 599 0381) con un messaggio già scritto nella lingua del visitatore. Il modulo non ha un backend: compone il messaggio e apre WhatsApp.
+Testate e partner sono resi come scritte stilizzate in un solo colore (classi `.wm-*`), non con i loghi ufficiali.
+Per usare quelli ufficiali, mettete i file in `assets/logos/` e sostituite l'HTML negli oggetti `OUTLET` e `PARTNERS`.
 
 ## Da completare prima di pubblicare
 
+- Loghi ufficiali di testate, UNIVPM, Inlingua, eCapital.
 - Testimonianze reali: ora ci sono dei segnaposto, marcati in rosso.
 - Prezzi degli add-on: ora c'è scritto "prezzo su richiesta".
-- Il banner giallo "BOZZA" in cima va tolto prima di andare online.
+- Il banner giallo "BOZZA" in cima va tolto.
+- Verificare che ogni articolo linkato citi Espresso Study.
 - Link Instagram e TikTok, privacy policy e cookie policy.
-- Ricontrollare i dati su rette universitarie e borse di studio per l'anno accademico in corso.

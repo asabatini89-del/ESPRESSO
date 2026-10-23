@@ -9,73 +9,65 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800;900&family=Readex+Pro:wght@300;400;500;600;700&family=Bungee&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800;900&family=Readex+Pro:wght@300;400;500;600;700&family=Bungee&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
 <style>
-/* Layout: mobile-first single column; one navy "departure" hero with a boarding pass, then light journey sections; sticky WhatsApp bar on phones */
+/* Layout: mobile-first. A sunlit animated Italian postcard opens the page (people + panning skyline),
+   then the student's own story: worries → answers → the life waiting in Italy → proof (press, partners) → plans. */
 :root{
-  --navy:#0F1F5C;      /* brand navy (logo) */
-  --navy-deep:#0A1645;
-  --green:#13934A;     /* tricolore green */
-  --red:#E1262D;       /* tricolore red */
-  --wa:#1FAF55;        /* WhatsApp CTA */
-  --bg:#F5F6FB;        /* cool paper, navy-biased */
-  --card:#FFFFFF;
-  --ink:#101A3E;
-  --muted:#59627F;
-  --line:#DCE0EE;
-  --soft:#EAEDF8;
-  --green-soft:#E3F4EA;
-  --red-soft:#FCE6E7;
-  --on-navy:#FFFFFF;
-  --on-navy-muted:#B9C2E6;
-  --ticket:#FFFFFF;
-  --ticket-ink:#0F1F5C;
+  --navy:#0F1F5C; --navy-deep:#0A1645;
+  --green:#13934A; --red:#E1262D; --wa:#1FAF55;
+  --ochre:#F2B33D; --terracotta:#D2693C;
+  --bg:#F7F5F0; --card:#FFFFFF; --ink:#101A3E; --muted:#59627F; --line:#E2DED3; --soft:#EFEBE1;
+  --green-soft:#E3F4EA; --red-soft:#FCE6E7;
+  --on-navy:#FFFFFF; --on-navy-muted:#B9C2E6;
   --shadow:0 18px 40px -22px rgba(15,31,92,.45);
+  /* the hero postcard keeps its own daylight palette in both themes */
+  --sky-top:#BFE3F5; --sky-mid:#FCEFD9; --sky-low:#FFE2BD; --street:#E9D8B8; --hero-ink:#0F1F5C; --hero-muted:#3D4A78;
 
   --f-display:"Alexandria","Readex Pro",system-ui,sans-serif;
   --f-body:"Readex Pro",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
   --f-stamp:"Bungee","Alexandria",system-ui,sans-serif;
+  --f-press:"Playfair Display",Georgia,"Times New Roman",serif;
 
-  --s-1:.25rem;--s-2:.5rem;--s-3:.75rem;--s-4:1rem;--s-5:1.5rem;--s-6:2rem;--s-7:3rem;--s-8:4.5rem;
-  --r-sm:10px;--r-md:16px;--r-lg:24px;
-  --wrap:1120px;
+  --s-2:.5rem;--s-3:.75rem;--s-4:1rem;--s-5:1.5rem;--s-6:2rem;--s-7:3rem;--s-8:4.5rem;
+  --r-md:16px;--r-lg:24px;--wrap:1120px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#080E2B;--card:#111A45;--ink:#EEF1FB;--muted:#A6AFD0;--line:#26306A;--soft:#18225A;
-  --green-soft:#0F3326;--red-soft:#3A1520;--navy-deep:#060C26;--ticket:#F3F5FC;
-  --green:#2BB566;--red:#F0474D;--shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}}
+  --bg:#0A0F2A;--card:#121A44;--ink:#EEF1FB;--muted:#A6AFD0;--line:#26306A;--soft:#18225A;
+  --green-soft:#0F3326;--red-soft:#3A1520;--navy-deep:#060C26;--green:#2BB566;--red:#F0474D;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#080E2B;--card:#111A45;--ink:#EEF1FB;--muted:#A6AFD0;--line:#26306A;--soft:#18225A;
-  --green-soft:#0F3326;--red-soft:#3A1520;--navy-deep:#060C26;--ticket:#F3F5FC;
-  --green:#2BB566;--red:#F0474D;--shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}
+  --bg:#0A0F2A;--card:#121A44;--ink:#EEF1FB;--muted:#A6AFD0;--line:#26306A;--soft:#18225A;
+  --green-soft:#0F3326;--red-soft:#3A1520;--navy-deep:#060C26;--green:#2BB566;--red:#F0474D;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 @media (min-width:900px){body{padding-bottom:0}}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--card)}
-[dir="rtl"] body,[dir="rtl"]{font-family:var(--f-body)}
-h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
 p{margin:0}
 a{color:inherit}
+img{max-width:100%}
 :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .section{padding-block:var(--s-8)}
 .eyebrow{font:400 .72rem/1.3 var(--f-stamp);letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
 [lang="ar"] .eyebrow{font-family:var(--f-display);font-weight:700;letter-spacing:0;font-size:.9rem}
-.h2{font-size:clamp(1.7rem,5.6vw,2.6rem);font-weight:800;color:var(--ink)}
+.h2{font-size:clamp(1.7rem,5.6vw,2.6rem);font-weight:800}
 .lead{color:var(--muted);font-size:1.05rem;max-width:62ch}
 .head{display:grid;gap:var(--s-3);margin-bottom:var(--s-6)}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:52px;padding:.8em 1.4em;border-radius:999px;font:700 1rem/1 var(--f-display);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:52px;padding:.8em 1.4em;border-radius:999px;font:700 1rem/1.15 var(--f-display);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;text-align:center}
 .btn:hover{transform:translateY(-2px)}
 .btn svg{width:1.25em;height:1.25em;flex:none}
 .btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px -12px var(--wa)}
-.btn-ghost{background:transparent;color:var(--on-navy);border-color:rgba(255,255,255,.35)}
 .btn-line{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-navy{background:var(--navy);color:#fff}
+[dir="rtl"] .arrow{transform:scaleX(-1)}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -84,7 +76,7 @@ a{color:inherit}
 .brand-cup{width:40px;height:40px;border-radius:12px;background:#fff;display:grid;place-items:center;flex:none;border:1px solid var(--line)}
 .brand-cup img{width:30px;height:30px;object-fit:contain}
 .brand-name{font:400 .95rem/1 var(--f-stamp);color:var(--ink);white-space:nowrap}
-.brand-name small{display:block;font:500 .62rem/1.2 var(--f-body);color:var(--muted);letter-spacing:.02em;margin-top:3px}
+.brand-name small{display:block;font:500 .62rem/1.2 var(--f-body);color:var(--muted);margin-top:3px}
 .top-actions{display:flex;align-items:center;gap:var(--s-2)}
 .langs{display:flex;background:var(--soft);border-radius:999px;padding:3px}
 .langs button{border:0;background:transparent;color:var(--muted);font:600 .8rem/1 var(--f-body);padding:.55em .7em;border-radius:999px;cursor:pointer;min-width:36px}
@@ -94,127 +86,198 @@ a{color:inherit}
 .nav{display:none;gap:var(--s-5);font-weight:500;font-size:.93rem}
 .nav a{text-decoration:none;color:var(--muted)}
 .nav a:hover{color:var(--ink)}
-@media (min-width:1040px){.nav{display:flex}}
+@media (min-width:1080px){.nav{display:flex}}
 
-/* hero */
-.hero{background:radial-gradient(120% 90% at 85% 10%,#1B3296 0%,var(--navy) 45%,var(--navy-deep) 100%);color:var(--on-navy);overflow:hidden;position:relative}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:6px;background:linear-gradient(90deg,var(--green) 0 33.3%,#fff 33.3% 66.6%,var(--red) 66.6%)}
-.hero .wrap{display:grid;gap:var(--s-6);padding-block:var(--s-6) var(--s-8)}
-@media (min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;padding-block:var(--s-8)}}
-.hero-copy{display:grid;gap:var(--s-4);min-width:0}
-.pos{display:inline-flex;align-items:center;gap:.5em;align-self:start;justify-self:start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:.45em .9em;border-radius:999px;font-size:.82rem;color:var(--on-navy)}
-.pos i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(43,181,102,.25);flex:none}
-.hero h1{font-size:clamp(2.3rem,9.5vw,4.1rem);font-weight:900;letter-spacing:-.01em}
+/* ---------- HERO: animated Italian postcard ---------- */
+.hero{display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--hero-ink);background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 58%,var(--sky-low) 100%)}
+.hero-copy{position:relative;z-index:3;display:grid;gap:var(--s-4);max-width:760px}
+.hero-a .hero-copy{padding-block:var(--s-5) 0}
+.hero-b .hero-copy{padding-block:var(--s-4) var(--s-6)}
+.hero-b{order:3}
+.hero-b .hero-ctas{order:-1;margin-top:0}
+.hero>.wrap{width:100%}
+@media (min-width:900px){
+  .hero{display:grid;grid-template-columns:1fr minmax(0,600px) minmax(0,520px) 1fr;column-gap:var(--s-6)}
+  .hero>.wrap{max-width:none;margin:0;padding-inline:0}
+  .hero-a{grid-column:2;grid-row:1}
+  .hero-b{grid-column:3;grid-row:1;align-self:end}
+  .hero-a .hero-copy{padding-block:var(--s-7) var(--s-5)}
+  .hero-b .hero-copy{padding-block:0 var(--s-5)}
+  .hero-b .hero-ctas{order:0}
+  .scene{grid-column:1/-1;grid-row:2}
+  .toasts{top:22%}
+}
+@media (min-width:900px) and (max-width:1199px){.hero{grid-template-columns:24px 1fr 1fr 24px}}
+.pos{display:inline-flex;align-items:center;gap:.5em;justify-self:start;background:rgba(255,255,255,.7);border:1px solid rgba(15,31,92,.12);padding:.45em .9em;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--hero-ink)}
+.pos i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(19,147,74,.2);flex:none;animation:ping 2s ease-in-out infinite}
+@keyframes ping{50%{box-shadow:0 0 0 7px rgba(19,147,74,.05)}}
+.hero h1{font-size:clamp(2.2rem,8.5vw,3.9rem);font-weight:900;letter-spacing:-.01em;color:var(--hero-ink)}
 [lang="ar"] .hero h1{letter-spacing:0;line-height:1.3}
-.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,#3DDC84,#fff 55%,#FF6B70);-webkit-background-clip:text;background-clip:text}
-.hero-sub{color:var(--on-navy-muted);font-size:1.08rem;max-width:52ch}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-2)}
-.hero-ctas .btn{flex:1 1 220px}
-@media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
-.proof{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-5);margin-top:var(--s-3);font-size:.85rem;color:var(--on-navy-muted)}
-.proof b{color:#fff;font:800 1.05rem/1 var(--f-display);margin-inline-end:.3em}
+.hero h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;inset-inline:0;bottom:.04em;height:.16em;border-radius:99px;background:linear-gradient(90deg,var(--green) 0 33%,#fff 33% 66%,var(--red) 66%);opacity:.85;z-index:-1}
+.hero-sub{color:var(--hero-muted);font-size:1.08rem;max-width:56ch}
+.hero-ctas{display:grid;gap:.6rem;justify-items:start;margin-top:var(--s-2)}
+.btn-quiz{position:relative;overflow:hidden;background:linear-gradient(135deg,#17A653,#0E7E3E);color:#fff;font-size:1.05rem;min-height:60px;padding:.85em 1.5em;box-shadow:0 14px 30px -14px rgba(14,126,62,.9);width:100%;max-width:460px}
+.btn-quiz .t{display:grid;text-align:start;gap:.15rem}
+.btn-quiz small{font:500 .78rem/1.2 var(--f-body);opacity:.9}
+.btn-quiz .arrow{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none;margin-inline-start:auto}
+.btn-quiz::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.wa-link{display:inline-flex;align-items:center;gap:.45em;font-weight:600;color:var(--hero-ink);text-decoration:none;font-size:.95rem;padding:.3rem 0}
+.wa-link svg{width:20px;height:20px;color:var(--wa)}
+.wa-link span{border-bottom:2px solid rgba(31,175,85,.5)}
+.hero-note{font-size:.8rem;color:var(--hero-muted)}
 
-/* boarding pass */
-.pass-zone{position:relative;min-width:0;padding-top:108px}
-.mascot{height:auto;position:absolute;top:0;inset-inline-end:-4px;width:min(58%,230px);z-index:2;animation:fly 5s ease-in-out infinite;pointer-events:none}
-[dir="rtl"] .mascot{transform:scaleX(-1);animation-name:flyr}
-@media (min-width:900px){.pass-zone{padding-top:130px}.mascot{width:min(70%,290px)}}
-@keyframes fly{50%{translate:0 -8px}}
-@keyframes flyr{50%{translate:0 -8px}}
-.pass{position:relative;background:var(--ticket);color:var(--ticket-ink);border-radius:var(--r-lg);box-shadow:0 30px 60px -25px rgba(0,0,0,.6);display:grid;grid-template-columns:1fr;overflow:hidden;max-width:440px;margin-inline:auto}
-.pass-head{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;font:400 .72rem/1 var(--f-stamp);letter-spacing:.05em}
-.pass-head span:last-child{color:#7FE3A8}
-.pass-body{padding:1.2rem 1.2rem .9rem;display:grid;gap:1rem}
-.route{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.8rem;direction:ltr}
-.iata{font:400 2.4rem/1 var(--f-stamp);color:var(--ticket-ink)}
-.iata small{display:block;font:500 .7rem/1.2 var(--f-body);color:#5D6687;margin-top:.35rem;letter-spacing:.02em}
-.route .to{text-align:right}
-.flightline{position:relative;height:2px;background:repeating-linear-gradient(90deg,#9AA3C7 0 6px,transparent 6px 11px)}
-.flightline svg{position:absolute;left:50%;top:50%;width:24px;height:24px;transform:translate(-50%,-50%);color:var(--red);background:var(--ticket);padding:2px}
-.dur{position:absolute;left:50%;top:14px;transform:translateX(-50%);font:600 .72rem/1 var(--f-body);color:#5D6687;white-space:nowrap}
-.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem .8rem;border-top:2px dashed #CBD1E6;padding-top:.9rem}
-.fields div{min-width:0}
-.fields dt{font:600 .62rem/1.2 var(--f-body);color:#5D6687;text-transform:uppercase;letter-spacing:.06em}
-[lang="ar"] .fields dt{letter-spacing:0;font-size:.7rem}
-.fields dd{margin:.15rem 0 0;font:700 .9rem/1.25 var(--f-display);color:var(--ticket-ink);overflow-wrap:anywhere}
-.pass-stub{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem 1.1rem;border-top:2px dashed #CBD1E6;position:relative}
-.pass-stub::before,.pass-stub::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--navy-deep)}
-.pass-stub::before{left:-11px}.pass-stub::after{right:-11px}
-.barcode{flex:1;height:44px;background:repeating-linear-gradient(90deg,#0F1F5C 0 2px,transparent 2px 4px,#0F1F5C 4px 7px,transparent 7px 9px,#0F1F5C 9px 10px,transparent 10px 13px);border-radius:3px;opacity:.9}
-.stamp{font:400 .7rem/1.1 var(--f-stamp);color:var(--green);border:2px solid var(--green);border-radius:8px;padding:.4rem .5rem;transform:rotate(-6deg);text-align:center;flex:none}
+.scene{position:relative;height:250px;direction:ltr;z-index:1;flex:none;order:2}
+@media (min-width:700px){.scene{height:340px}}
+@media (min-width:900px){.scene{order:4}}
+@media (min-width:1100px){.scene{height:400px;margin-top:-30px}}
+.sun{position:absolute;top:8%;right:10%;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#FFE08A 0 55%,rgba(255,214,120,.0) 70%);animation:sun 6s ease-in-out infinite}
+@keyframes sun{50%{transform:scale(1.08)}}
+.cloud{position:absolute;height:22px;border-radius:99px;background:#fff;opacity:.85;animation:drift linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:30px;height:30px;top:-14px;left:14px}
+.cloud::after{width:22px;height:22px;top:-10px;left:38px}
+.c1{width:80px;top:14%;left:-10%;animation-duration:38s}
+.c2{width:60px;top:26%;left:-20%;animation-duration:52s;animation-delay:-20s}
+.c3{width:96px;top:6%;left:-30%;animation-duration:64s;animation-delay:-40s}
+@keyframes drift{to{transform:translateX(140vw)}}
+.strip{position:absolute;left:0;bottom:26px;height:62%;display:flex;width:max-content;animation:pan 70s linear infinite}
+.strip img{height:100%;width:auto;display:block}
+@keyframes pan{to{transform:translateX(-50%)}}
+.street{position:absolute;inset:auto 0 0;height:28px;background:var(--street)}
+.street::before{content:"";position:absolute;inset:12px 0 auto;height:3px;background:repeating-linear-gradient(90deg,#fff 0 22px,transparent 22px 44px);opacity:.7;animation:road 1.6s linear infinite}
+@keyframes road{to{background-position:-44px 0}}
+.p{position:absolute;bottom:8px;height:56%;width:auto;z-index:2;transform-origin:bottom center}
+.p-amira{left:6%;animation:walk .7s ease-in-out infinite alternate}
+.p-giulia{left:30%;animation:sway 2.4s ease-in-out infinite}
+.p-omar{left:54%;height:50%;animation:bob 3s ease-in-out infinite}
+.p-karim{left:76%;height:51%;animation:bob 3.4s ease-in-out infinite -1s}
+@media (max-width:699px){.p-karim{display:none}.p-omar{left:62%}}
+.p-bike{height:40%;bottom:6px;left:0;z-index:3;animation:ride 16s linear infinite}
+@keyframes walk{to{transform:translateY(-4px) rotate(1deg)}}
+@keyframes sway{50%{transform:rotate(-2.5deg)}}
+@keyframes bob{50%{transform:translateY(-3px)}}
+@keyframes ride{0%{transform:translateX(110vw)}100%{transform:translateX(-40vw)}}
+.toasts{position:absolute;top:4%;right:max(16px,env(safe-area-inset-right,0px));width:min(250px,64vw);height:64px;z-index:4}
+[dir="rtl"] .toasts{right:auto;left:max(16px,env(safe-area-inset-left,0px))}
+.toast{position:absolute;inset:0;display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.95);border-radius:16px;padding:.55rem .75rem;box-shadow:0 12px 30px -14px rgba(15,31,92,.55);opacity:0;animation:toast 16s ease-in-out infinite;animation-delay:calc(var(--i) * 4s);color:#0F1F5C}
+.toast:first-child{opacity:1}
+.toast img{width:34px;height:34px;border-radius:9px;background:#fff;border:1px solid #E2DED3;padding:3px;flex:none}
+.toast small{display:block;font-size:.66rem;color:#59627F;line-height:1.2}
+.toast b{display:block;font:700 .86rem/1.25 var(--f-display)}
+@keyframes toast{0%{opacity:0;transform:translateY(-10px) scale(.96)}3%,22%{opacity:1;transform:none}25%,100%{opacity:0;transform:translateY(-6px)}}
 
-/* trust strip */
-.trust{background:var(--card);border-bottom:1px solid var(--line)}
-.trust .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-4) var(--s-5);padding-block:var(--s-5)}
-@media (min-width:800px){.trust .wrap{grid-template-columns:repeat(4,1fr)}}
-.t-item{display:grid;gap:.15rem;min-width:0}
-.t-item b{font:800 1.5rem/1.1 var(--f-display);color:var(--navy)}
-:root[data-theme="dark"] .t-item b{color:var(--ink)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .t-item b{color:var(--ink)}}
-.t-item span{font-size:.85rem;color:var(--muted);line-height:1.4}
+/* as seen on */
+.asseen{background:var(--card);border-block:1px solid var(--line);overflow:hidden}
+.asseen .wrap{display:flex;align-items:center;gap:var(--s-4);padding-block:.9rem}
+.asseen-label{font:600 .75rem/1.2 var(--f-body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;flex:none;max-width:9ch}
+[lang="ar"] .asseen-label{letter-spacing:0;font-size:.85rem}
+.marquee{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);direction:ltr}
+.marquee-track{display:flex;gap:2.4rem;width:max-content;animation:pan 30s linear infinite;align-items:center}
+.marquee:hover .marquee-track{animation-play-state:paused}
 
-/* pain: bureaucracy stamps */
-.stamps{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:var(--s-3)}
-.doc{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1rem 1.1rem;display:grid;grid-template-columns:auto 1fr;gap:.2rem .85rem;align-items:start}
-.doc .n{grid-row:span 2;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--red-soft);color:var(--red);font:400 .8rem/1 var(--f-stamp)}
-.doc b{font:700 1rem/1.3 var(--f-display);direction:ltr;unicode-bidi:isolate}
-[dir="rtl"] .doc b{text-align:right}
-.doc span{color:var(--muted);font-size:.9rem;line-height:1.45}
-.pain-foot{margin-top:var(--s-5);display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;font:700 1.1rem/1.4 var(--f-display)}
-.pain-foot span{color:var(--green)}
+/* press wordmarks (monochrome; swap for official logo files) */
+.wm{color:var(--ink);opacity:.82;white-space:nowrap;line-height:1;display:inline-flex;align-items:baseline;gap:.25em;text-decoration:none}
+.wm-ansa{font:900 1.15rem/1 var(--f-display);letter-spacing:.06em;border:2.5px solid currentColor;padding:.18em .4em .14em;border-radius:4px}
+.wm-carlino{font:italic 700 1.15rem/1 var(--f-press)}
+.wm-carlino b{font-style:normal;font-weight:900}
+.wm-corriere{font:900 1.1rem/1 var(--f-press);letter-spacing:.01em}
+.wm-today{font:800 1.08rem/1 var(--f-display)}
+.wm-today span{font-weight:500;opacity:.7}
+.wm-centro{font:700 1.05rem/1 var(--f-body);letter-spacing:-.01em}
+.wm-centro span{font-weight:400}
+.wm-tvcm{font:800 1rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.wm-univpm{font:900 1.05rem/1 var(--f-display);letter-spacing:.05em}
 
-/* comparison */
-.compare{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
-.c-head,.c-row{display:grid;grid-template-columns:repeat(3,1fr)}
-.c-head{position:sticky;top:calc(62px + env(safe-area-inset-top,0px));z-index:3;background:var(--card);border-bottom:1px solid var(--line)}
-.c-head div{padding:.85rem .5rem;text-align:center;font:700 .82rem/1.25 var(--f-display);color:var(--muted)}
-.c-head div.us{color:#fff;background:var(--navy)}
-.c-row{border-bottom:1px solid var(--line)}
-.c-row:last-child{border-bottom:0}
-.c-label{grid-column:1/-1;padding:.9rem 1rem .2rem;font:600 .95rem/1.35 var(--f-body)}
-.c-cell{padding:.35rem .5rem .9rem;text-align:center;font-size:.78rem;line-height:1.3;color:var(--muted);display:grid;justify-items:center;gap:.25rem}
-.c-cell.us{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--ink);font-weight:600}
-.ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.85rem;line-height:1}
+/* quiz */
+.quiz-sec{position:relative;z-index:5;margin-top:-6px;padding-block:var(--s-6) 0}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:1.3rem;display:grid;gap:1rem;max-width:760px;margin-inline:auto;scroll-margin-top:90px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.dots{display:flex;gap:6px}
+.dots i{width:26px;height:6px;border-radius:99px;background:var(--soft);transition:background .3s}
+.dots i.on{background:var(--green)}
+.quiz h3{font-size:clamp(1.25rem,4.5vw,1.6rem);font-weight:800}
+.qstep{display:grid;gap:.9rem;animation:qin .35s ease}
+@keyframes qin{from{transform:translateX(14px);opacity:.4}}
+[dir="rtl"] .qstep{animation-name:qinr}
+@keyframes qinr{from{transform:translateX(-14px);opacity:.4}}
+.opts{display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
+.opt{display:flex;align-items:center;gap:.7rem;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:.85rem 1rem;font:600 .98rem/1.3 var(--f-body);cursor:pointer;text-align:start;min-height:56px;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--green);transform:translateY(-1px)}
+.opt .em{font-size:1.4rem;flex:none}
+.qback{background:none;border:0;color:var(--muted);font:600 .85rem/1 var(--f-body);cursor:pointer;padding:.4rem 0}
+.qres{display:grid;gap:.9rem;animation:qin .35s ease}
+.qres ul{margin:0;padding:0;list-style:none;display:grid;gap:.6rem}
+.qres li{display:grid;grid-template-columns:24px 1fr;gap:.6rem;font-size:.97rem;line-height:1.5}
+.qres .acts{display:flex;flex-wrap:wrap;gap:.6rem}
+.qres .acts .btn{flex:1 1 240px}
+
+/* worries */
+.worries{display:grid;gap:var(--s-3);grid-auto-flow:column;grid-auto-columns:minmax(270px,84%);overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1rem;margin-inline:-.2rem}
+@media (min-width:760px){.worries{grid-auto-flow:row;grid-template-columns:repeat(2,1fr);overflow:visible}}
+@media (min-width:1040px){.worries{grid-template-columns:repeat(3,1fr)}}
+.worry{scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.2rem;display:grid;grid-template-columns:72px 1fr;gap:.8rem 1rem;align-content:start;cursor:pointer}
+.w-face{position:relative;width:72px;height:84px;border-radius:18px;background:var(--soft);overflow:hidden}
+.w-face img{position:absolute;inset:auto 0 -6px;width:100%;height:auto;transition:opacity .5s ease,transform .5s ease}
+.w-face .f-happy{opacity:0;transform:translateY(4px)}
+.worry.solved .f-worry{opacity:0}
+.worry.solved .f-happy{opacity:1;transform:none}
+.w-who{justify-self:start;align-self:center;font:600 .7rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--soft);padding:.35rem .55rem;border-radius:99px}
+[lang="ar"] .w-who{letter-spacing:0;font-size:.78rem}
+.w-q{grid-column:1/-1;position:relative;font:700 1.08rem/1.35 var(--f-display);color:var(--ink);background:var(--red-soft);border-radius:16px;padding:.75rem .9rem}
+.w-q::before{content:"";position:absolute;top:-6px;inset-inline-start:28px;width:14px;height:14px;background:var(--red-soft);transform:rotate(45deg);border-radius:2px}
+.w-a{grid-column:1/-1;display:grid;grid-template-columns:26px 1fr;gap:.6rem;font-size:.95rem;line-height:1.5;color:var(--muted);border-top:1px dashed var(--line);padding-top:.8rem;transition:color .4s}
+.worry.solved .w-a{color:var(--ink)}
+.ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.85rem;line-height:1;flex:none}
 .ic.y{background:var(--green);color:#fff}
 .ic.n{background:var(--red-soft);color:var(--red)}
 .ic.p{background:var(--soft);color:var(--muted)}
-@media (min-width:800px){
-  .c-head,.c-row{grid-template-columns:1.6fr repeat(3,1fr)}
-  .c-label{grid-column:auto;padding:1rem 1.2rem;align-self:center}
-  .c-cell{padding:1rem .6rem;font-size:.85rem}
-}
-.c-cost .c-label{font-weight:700}
-.c-cost .c-cell{font:700 .85rem/1.3 var(--f-display)}
+.w-a .ic{transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.worry:not(.solved) .w-a .ic{transform:scale(.7)}
+.swipe-hint{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+@media (min-width:760px){.swipe-hint{display:none}}
 
-/* roadmap */
-.road{display:grid;gap:var(--s-4);counter-reset:step;position:relative}
-@media (min-width:900px){.road{grid-template-columns:repeat(4,1fr)}}
-.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;display:grid;gap:.6rem;align-content:start}
-.step-top{display:flex;align-items:center;gap:.7rem}
-.pin{width:40px;height:40px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--navy);display:grid;place-items:center;flex:none}
-[dir="rtl"] .pin{border-radius:50% 50% 0 50%;transform:rotate(45deg)}
-.pin span{transform:rotate(45deg);color:#fff;font:400 .85rem/1 var(--f-stamp)}
-[dir="rtl"] .pin span{transform:rotate(-45deg)}
-.step:nth-child(3) .pin{background:var(--green)}
-.step:nth-child(4) .pin{background:var(--red)}
-.step h3{font-size:1.1rem;font-weight:700}
-.step .when{font-size:.78rem;color:var(--muted);font-weight:600}
-.step ul{margin:0;padding-inline-start:1.1rem;color:var(--muted);font-size:.92rem;display:grid;gap:.3rem}
+/* dream: postcards */
+.dream{background:var(--card);border-block:1px solid var(--line)}
+.cards3{display:grid;gap:var(--s-5)}
+@media (min-width:900px){.cards3{grid-template-columns:repeat(3,1fr)}}
+.pc{background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transform:rotate(var(--rot,0deg));transition:transform .3s ease}
+.pc:nth-child(1){--rot:-1.2deg}.pc:nth-child(2){--rot:.8deg}.pc:nth-child(3){--rot:-.6deg}
+.pc:hover{transform:rotate(0) translateY(-4px)}
+.pc-art{position:relative;height:200px;overflow:hidden;background:linear-gradient(180deg,#BFE3F5,#FCEFD9 80%);direction:ltr}
+.pc-art .ground{position:absolute;inset:auto 0 0;height:18px;background:var(--street)}
+.pc-art img{position:absolute;bottom:10px;height:auto}
+.pc-stamp{position:absolute;top:10px;right:10px;width:54px;height:62px;background:#fff;border:2px dashed #D2693C;border-radius:4px;display:grid;place-items:center;font:400 .55rem/1.1 var(--f-stamp);color:#D2693C;text-align:center;transform:rotate(6deg);z-index:2}
+.pc-stamp b{display:block;font-size:.9rem}
+.pc-body{padding:1.1rem 1.2rem 1.3rem;display:grid;gap:.4rem}
+.pc-body h3{font-size:1.15rem;font-weight:800}
+.pc-body p{color:var(--muted);font-size:.93rem}
+/* postcard scenes */
+.a1 .bg{left:50%;transform:translateX(-50%);width:270px;bottom:12px}
+.a1 .p1{left:8%;width:62px;animation:sway 2.6s ease-in-out infinite}
+.a1 .p2{left:38%;width:58px;animation:walk .8s ease-in-out infinite alternate}
+.a1 .p3{left:66%;width:64px;animation:bob 3s ease-in-out infinite}
+.a2 .bg1{left:-14px;width:250px;bottom:12px}
+.a2 .bg2{right:-30px;width:220px;bottom:8px}
+.a2 .bike{width:120px;bottom:4px;left:0;animation:ride2 9s linear infinite}
+@keyframes ride2{from{transform:translateX(420px)}to{transform:translateX(-160px)}}
+.a3 .bg{left:4%;width:240px;bottom:12px}
+.a3 .bust{right:4%;width:150px;bottom:-4px}
+.steam{position:absolute;right:23%;bottom:92px;width:8px;height:26px;border-radius:99px;background:rgba(255,255,255,.9);filter:blur(1px);animation:steam 2.4s ease-in-out infinite;z-index:3}
+.steam:nth-of-type(2){right:20%;animation-delay:-1.2s}
+@keyframes steam{0%{transform:translateY(8px) scaleY(.6);opacity:0}40%{opacity:.9}100%{transform:translateY(-22px) scaleY(1.1);opacity:0}}
 
-/* why italy */
-.why{background:var(--card);border-block:1px solid var(--line)}
-.why-grid{display:grid;gap:var(--s-3);grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-.why-card{border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;display:grid;gap:.45rem;background:var(--bg)}
-.why-card .k{font:800 1.6rem/1.1 var(--f-display);color:var(--green)}
-.why-card:nth-child(3n+2) .k{color:var(--navy)}
-:root[data-theme="dark"] .why-card:nth-child(3n+2) .k{color:#8FA6FF}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .why-card:nth-child(3n+2) .k{color:#8FA6FF}}
-.why-card:nth-child(3n) .k{color:var(--red)}
-.why-card h3{font-size:1.05rem;font-weight:700}
-.why-card p{color:var(--muted);font-size:.93rem}
-.fees{margin-top:var(--s-6);display:grid;gap:var(--s-4);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem;background:var(--bg)}
+.facts{margin-top:var(--s-6);display:grid;gap:var(--s-3);grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
+.fact{border:1px solid var(--line);border-radius:var(--r-md);padding:1rem;display:grid;gap:.3rem;background:var(--bg)}
+.fact .k{font:800 1.45rem/1.1 var(--f-display);color:var(--green)}
+.fact:nth-child(2) .k{color:var(--terracotta)}
+.fact:nth-child(3) .k{color:var(--red)}
+.fact h3{font-size:1rem;font-weight:700}
+.fact p{color:var(--muted);font-size:.88rem}
+.fees{margin-top:var(--s-5);display:grid;gap:var(--s-4);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem;background:var(--bg)}
 @media (min-width:900px){.fees{grid-template-columns:.8fr 1.2fr;align-items:center;padding:2rem}}
-.fees h3{font-size:1.3rem;font-weight:800}
+.fees h3{font-size:1.25rem;font-weight:800}
 .fees p{color:var(--muted);font-size:.92rem;margin-top:.4rem}
 .bars{display:grid;gap:.85rem;font-variant-numeric:tabular-nums}
 .bar{display:grid;gap:.3rem}
@@ -227,7 +290,83 @@ a{color:inherit}
 .bar.it b{color:var(--green)}
 .note{font-size:.75rem;color:var(--muted);margin-top:.4rem}
 
-/* pricing */
+/* comparison */
+.compare{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.c-head,.c-row{display:grid;grid-template-columns:repeat(3,1fr)}
+.c-head{position:sticky;top:calc(62px + env(safe-area-inset-top,0px));z-index:3;background:var(--card);border-bottom:1px solid var(--line)}
+.c-head div{padding:.85rem .5rem;text-align:center;font:700 .82rem/1.25 var(--f-display);color:var(--muted)}
+.c-head div.us{color:#fff;background:var(--navy)}
+.c-row{border-bottom:1px solid var(--line)}
+.c-row:last-child{border-bottom:0}
+.c-label{grid-column:1/-1;padding:.9rem 1rem .2rem;font:600 .95rem/1.35 var(--f-body)}
+.c-cell{padding:.35rem .5rem .9rem;text-align:center;font-size:.78rem;line-height:1.3;color:var(--muted);display:grid;justify-items:center;gap:.25rem}
+.c-cell.us{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--ink);font-weight:600}
+@media (min-width:800px){
+  .c-head,.c-row{grid-template-columns:1.6fr repeat(3,1fr)}
+  .c-label{grid-column:auto;padding:1rem 1.2rem;align-self:center}
+  .c-cell{padding:1rem .6rem;font-size:.85rem}
+}
+.c-cost .c-label{font-weight:700}
+.c-cost .c-cell{font:700 .85rem/1.3 var(--f-display)}
+
+/* roadmap */
+.how-head{position:relative}
+.how-mascot{position:absolute;top:-56px;inset-inline-end:0;width:min(34vw,200px);height:auto;animation:flyby 6s ease-in-out infinite;pointer-events:none}
+[dir="rtl"] .how-mascot{transform:scaleX(-1);animation-name:flybyr}
+@keyframes flyby{50%{translate:-10px -10px}}
+@keyframes flybyr{50%{translate:10px -10px}}
+.road{display:grid;gap:var(--s-4)}
+@media (min-width:900px){.road{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;display:grid;gap:.6rem;align-content:start}
+.step-top{display:flex;align-items:center;gap:.7rem}
+.pin{width:40px;height:40px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--navy);display:grid;place-items:center;flex:none}
+.pin span{transform:rotate(45deg);color:#fff;font:400 .85rem/1 var(--f-stamp)}
+.step:nth-child(3) .pin{background:var(--green)}
+.step:nth-child(4) .pin{background:var(--red)}
+.step h3{font-size:1.1rem;font-weight:700}
+.step .when{font-size:.78rem;color:var(--muted);font-weight:600}
+.step ul{margin:0;padding-inline-start:1.1rem;color:var(--muted);font-size:.92rem;display:grid;gap:.3rem}
+
+/* news */
+.news{background:var(--navy);color:var(--on-navy)}
+.news .h2{color:#fff}
+.news .lead{color:var(--on-navy-muted)}
+.news .eyebrow{color:#7FE3A8}
+.stories-press{display:grid;gap:var(--s-5)}
+@media (min-width:900px){.stories-press{grid-template-columns:1.15fr .85fr}}
+.ns{background:#fff;color:#101A3E;border-radius:var(--r-lg);overflow:hidden;display:grid;align-content:start;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.ns-top{padding:1.3rem 1.3rem 0;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.ns-date{font:600 .78rem/1 var(--f-body);color:#59627F;text-transform:uppercase;letter-spacing:.06em}
+[lang="ar"] .ns-date{letter-spacing:0}
+.ns-tag{font:700 .72rem/1 var(--f-display);background:#E3F4EA;color:#0E7E3E;padding:.35rem .6rem;border-radius:99px}
+.ns h3{padding:.6rem 1.3rem 0;font-size:clamp(1.3rem,4.6vw,1.75rem);font-weight:900;color:#0F1F5C}
+.ns p{padding:.7rem 1.3rem 0;color:#3D4A78;font-size:.98rem;line-height:1.6}
+.ns-quote{margin:1rem 1.3rem 0;padding:.9rem 1rem;border-inline-start:4px solid var(--green);background:#F7F5F0;border-radius:0 12px 12px 0;font:600 .98rem/1.45 var(--f-display);color:#0F1F5C}
+[dir="rtl"] .ns-quote{border-radius:12px 0 0 12px}
+.ns-out{padding:1.1rem 1.3rem 1.3rem;display:grid;gap:.6rem;margin-top:.9rem;border-top:1px solid #E2DED3}
+.ns-out small{font-size:.75rem;color:#59627F;font-weight:600}
+.ns-logos{display:flex;flex-wrap:wrap;gap:.5rem}
+.ns-logos a{display:inline-flex;align-items:center;min-height:44px;padding:.45rem .8rem;border:1px solid #E2DED3;border-radius:12px;color:#101A3E;text-decoration:none;transition:border-color .15s,transform .15s}
+.ns-logos a:hover{border-color:#13934A;transform:translateY(-1px)}
+.ns-logos .wm{color:#101A3E;opacity:1;font-size:.95em}
+
+/* partners */
+.partners{display:grid;gap:var(--s-3);grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
+.pt{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.2rem;display:grid;gap:.7rem;align-content:start}
+.pt-logo{height:64px;border-radius:14px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:0 1rem}
+.pt-logo .wm{font-size:1.3rem;opacity:1}
+.pt-logo .wm-inl{font:800 1.45rem/1 var(--f-body);letter-spacing:-.02em}
+.pt-logo .wm-ecap{font:800 1.35rem/1 var(--f-display);gap:0}
+.pt-logo .wm-ecap i{font-style:normal;color:var(--green)}
+.pt-logo .wm-univpm small{display:block;font:600 .5rem/1.2 var(--f-body);letter-spacing:.08em;margin-top:.3rem;opacity:.75}
+.pt-logo .wm-univpm{display:block;text-align:center}
+.pt-tag{justify-self:start;font:700 .72rem/1 var(--f-display);background:var(--green-soft);color:var(--green);padding:.35rem .6rem;border-radius:99px}
+.pt h3{font-size:1.05rem;font-weight:700}
+.pt p{color:var(--muted);font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{background:var(--soft);border-radius:999px;padding:.4rem .75rem;font-size:.82rem;font-weight:600}
+
+/* plans */
 .plan-tabs{display:flex;gap:4px;background:var(--soft);border-radius:999px;padding:4px;margin-bottom:var(--s-5)}
 .plan-tabs button{flex:1;border:0;background:transparent;color:var(--muted);font:400 .78rem/1 var(--f-stamp);padding:.8rem .3rem;border-radius:999px;cursor:pointer;display:grid;gap:.3rem}
 .plan-tabs button small{font:600 .72rem/1 var(--f-body);font-variant-numeric:tabular-nums}
@@ -243,9 +382,7 @@ a{color:inherit}
 [lang="ar"] .badge{font:700 .8rem/1 var(--f-display)}
 .plan-name{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 .plan-name h3{font:400 1.25rem/1 var(--f-stamp);color:var(--ink)}
-.plan-span{font-size:.8rem;font-weight:600;color:var(--navy);background:var(--soft);padding:.3rem .6rem;border-radius:999px;white-space:nowrap}
-:root[data-theme="dark"] .plan-span{color:var(--ink)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .plan-span{color:var(--ink)}}
+.plan-span{font-size:.8rem;font-weight:600;color:var(--ink);background:var(--soft);padding:.3rem .6rem;border-radius:999px;white-space:nowrap}
 .plan-for{color:var(--muted);font-size:.92rem}
 .price{display:flex;align-items:baseline;gap:.4rem;font-variant-numeric:tabular-nums}
 .price b{font:900 2.4rem/1 var(--f-display);color:var(--ink)}
@@ -258,33 +395,28 @@ a{color:inherit}
 .plan .btn{width:100%}
 .excluded{margin-top:var(--s-5);border:1px dashed var(--line);border-radius:var(--r-md);padding:1rem 1.2rem;font-size:.88rem;color:var(--muted)}
 .excluded b{color:var(--ink)}
-
 .addons{margin-top:var(--s-7)}
 .addons h3{font-size:1.4rem;font-weight:800;margin-bottom:.4rem}
 .ad-grid{display:grid;gap:var(--s-3);margin-top:var(--s-4)}
 @media (min-width:800px){.ad-grid{grid-template-columns:repeat(3,1fr)}}
 .addon{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1.1rem}
 .addon .ai{grid-row:span 3;width:48px;height:48px;border-radius:14px;background:var(--soft);display:grid;place-items:center}
-.addon .ai svg{width:26px;height:26px;color:var(--navy)}
-:root[data-theme="dark"] .addon .ai svg{color:var(--ink)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .addon .ai svg{color:var(--ink)}}
-.addon h4{margin:0;font:700 1rem/1.3 var(--f-display)}
+.addon .ai svg{width:26px;height:26px;color:var(--ink)}
+.addon h4{font:700 1rem/1.3 var(--f-display)}
 .addon p{color:var(--muted);font-size:.88rem}
 .addon .ap{font:700 .85rem/1 var(--f-display);color:var(--green)}
 
-/* stories */
-.stories{display:grid;gap:var(--s-3);grid-auto-flow:column;grid-auto-columns:minmax(260px,80%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem}
-@media (min-width:900px){.stories{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible}}
-.story{scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;display:grid;gap:.8rem;align-content:start}
+/* testimonials */
+.tst{display:grid;gap:var(--s-3);grid-auto-flow:column;grid-auto-columns:minmax(260px,80%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem}
+@media (min-width:900px){.tst{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible}}
+.story{scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;display:grid;gap:.8rem;align-content:start;margin:0}
 .story-who{display:flex;gap:.7rem;align-items:center}
-.av{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font:800 .9rem/1 var(--f-display);color:var(--muted);flex:none}
+.av{width:48px;height:48px;border-radius:50%;background:var(--soft);overflow:hidden;flex:none}
+.av img{width:100%;height:auto;margin-top:2px}
 .story-who b{display:block;font-family:var(--f-display)}
 .story-who span{font-size:.82rem;color:var(--muted)}
 .story q{color:var(--ink);font-size:.95rem;quotes:none}
 .ph{justify-self:start;font:600 .68rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.06em;color:var(--red);border:1px dashed var(--red);padding:.3rem .5rem;border-radius:6px}
-.press{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)}
-.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font-size:.85rem;font-weight:500}
-.chip b{font-family:var(--f-display);margin-inline-end:.3em}
 
 /* faq */
 .faq{display:grid;gap:var(--s-2);max-width:820px}
@@ -295,12 +427,18 @@ a{color:inherit}
 .faq details[open] summary::after{content:"–"}
 .faq details p{padding-bottom:1rem;color:var(--muted);font-size:.95rem}
 
-/* final cta + form */
-.final{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+/* final */
+.final{background:linear-gradient(180deg,var(--navy),var(--navy-deep));color:var(--on-navy);position:relative;overflow:hidden}
 .final .wrap{display:grid;gap:var(--s-6);padding-block:var(--s-8)}
 @media (min-width:900px){.final .wrap{grid-template-columns:1fr 1fr;align-items:center}}
 .final h2{font-size:clamp(1.8rem,6vw,2.8rem);font-weight:900;color:#fff}
-.final p.lead{color:var(--on-navy-muted)}
+.final .lead{color:var(--on-navy-muted)}
+.final .eyebrow{color:#7FE3A8}
+.final-peeps{display:flex;align-items:flex-end;gap:.4rem;margin-top:var(--s-5);direction:ltr}
+.final-peeps img{height:130px;width:auto}
+.final-peeps img:nth-child(1){animation:sway 2.6s ease-in-out infinite}
+.final-peeps img:nth-child(2){animation:walk .8s ease-in-out infinite alternate}
+.final-peeps img:nth-child(3){animation:bob 3s ease-in-out infinite}
 .contact-lines{display:grid;gap:.5rem;margin-top:var(--s-4);font-size:.95rem}
 .contact-lines span{color:var(--on-navy-muted)}
 .contact-lines b{font-family:var(--f-display);direction:ltr;unicode-bidi:isolate;user-select:all}
@@ -316,7 +454,6 @@ a{color:inherit}
 .form small{color:var(--muted);font-size:.78rem}
 .form-ok{background:var(--green-soft);border-radius:12px;padding:.8rem 1rem;font-size:.9rem}
 
-/* footer */
 footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.88rem}
 footer .wrap{display:grid;gap:var(--s-5);padding-block:var(--s-7)}
 @media (min-width:800px){footer .wrap{grid-template-columns:1.4fr 1fr 1fr}}
@@ -327,18 +464,16 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
 .foot-brand small{display:block;margin-top:.4rem;font:400 .62rem/1.3 var(--f-stamp)}
 .foot-brand small i{font-style:normal}
 
-/* mobile sticky bar */
 .mbar{position:fixed;inset:auto 0 0;z-index:55;background:var(--card);border-top:1px solid var(--line);padding:.6rem max(16px,env(safe-area-inset-right,0px)) calc(.6rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:1fr auto;gap:.6rem}
 .mbar .btn{min-height:50px}
-.mbar .btn-line{padding-inline:1rem}
+.mbar .btn-wa{width:54px;padding:0}
+.mbar .btn-quiz{min-height:50px;max-width:none;font-size:.95rem;padding:.5em 1em}
 @media (min-width:900px){.mbar{display:none}}
-
 .draft{background:#FFF4C2;color:#5A4500;font-size:.8rem;text-align:center;padding:.45rem 1rem}
 </style>
 </head>
 <body>
-
-<div class="draft" id="draft">BOZZA · Draft for internal review — numeri, testimonianze e prezzi add-on da confermare</div>
+<div class="draft">BOZZA · Draft for internal review — testimonianze, prezzi add-on e loghi ufficiali da inserire</div>
 
 <header class="top">
   <div class="wrap">
@@ -347,9 +482,9 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
       <span class="brand-name">ESPRESSO STUDY<small data-i18n="tagline">Your way to study in Italy</small></span>
     </a>
     <nav class="nav" aria-label="Sezioni">
-      <a href="#compare" data-i18n="nav_compare">Why us</a>
-      <a href="#how" data-i18n="nav_how">How it works</a>
-      <a href="#italy" data-i18n="nav_italy">Why Italy</a>
+      <a href="#worries" data-i18n="nav_worries">Your worries</a>
+      <a href="#italy" data-i18n="nav_italy">Life in Italy</a>
+      <a href="#news" data-i18n="nav_news">In the news</a>
       <a href="#plans" data-i18n="nav_plans">Plans</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </nav>
@@ -359,7 +494,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="fr" aria-pressed="false">FR</button>
       </div>
-      <a class="btn btn-wa js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span data-i18n="cta_wa_short">WhatsApp</span></a>
+      <a class="btn btn-wa js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span>WhatsApp</span></a>
     </div>
   </div>
 </header>
@@ -367,102 +502,116 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
 <main id="top">
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap hero-a">
       <div class="hero-copy">
         <span class="pos"><i></i><span data-i18n="positioning">Specialists for Arabic-speaking students in Italy</span></span>
-        <h1 data-i18n-html="h1">Study in Italy. <em>We handle the rest.</em></h1>
-        <p class="hero-sub" data-i18n="hero_sub">We walk you from home to your Italian university seat: documents, visa, residence permit, housing and scholarship. In Arabic, step by step, with one person who knows your file.</p>
+        <h1 data-i18n-html="h1">Study in Italy. <em>Live the dream,</em> we handle the stress.</h1>
+      </div>
+    </div>
+    <div class="wrap hero-b">
+      <div class="hero-copy">
+        <p class="hero-sub" data-i18n="hero_sub">Picture it: espresso at 8, lectures in a centuries-old palazzo, friends from all over the world. We handle visa, papers, housing and scholarship, in Arabic, so you can focus on living it.</p>
         <div class="hero-ctas">
-          <a class="btn btn-wa js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span data-i18n="cta_wa">Free consultation on WhatsApp</span></a>
-          <a class="btn btn-ghost" href="#plans" data-i18n="cta_plans">See plans &amp; prices</a>
-        </div>
-        <div class="proof">
-          <span><b>120+</b><span data-i18n="proof_students">students supported in Italy</span></span>
-          <span><b>UNIVPM</b><span data-i18n="proof_univpm">official agreement</span></span>
-          <span><b>eCapital</b><span data-i18n="proof_award">2025 award-winning startup</span></span>
+          <a class="btn btn-quiz" href="#quiz" data-quiz-start>
+            <span class="t"><span data-i18n="cta_quiz">Can I study in Italy?</span><small data-i18n="cta_quiz_s">Find out in 60 seconds · free</small></span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="wa-link js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span data-i18n="cta_wa_alt">or chat with us on WhatsApp</span></a>
+          <p class="hero-note" data-i18n="hero_note">Free · No commitment · We reply in Arabic, English or French</p>
         </div>
       </div>
+    </div>
 
-      <div class="pass-zone" aria-hidden="true">
-        <img class="mascot" src="assets/mascot.webp" alt="" width="520" height="260">
-        <div class="pass">
-          <div class="pass-head"><span data-i18n="pass_title">BOARDING PASS</span><span>ESPRESSO STUDY</span></div>
-          <div class="pass-body">
-            <div class="route">
-              <div class="iata" id="fromCode">HOME<small id="fromName" data-i18n="pass_from">Your country</small></div>
-              <div class="flightline"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5Z" transform="rotate(90 12 12)"/></svg><span class="dur" id="flightDur">2–6h</span></div>
-              <div class="iata to">ITA<small data-i18n="pass_to">Your university</small></div>
-            </div>
-            <dl class="fields">
-              <div><dt data-i18n="pass_pax">Passenger</dt><dd data-i18n="pass_pax_v">You</dd></div>
-              <div><dt data-i18n="pass_class">Class</dt><dd data-i18n="pass_class_v">Student</dd></div>
-              <div><dt data-i18n="pass_gate">Intake</dt><dd data-i18n="pass_gate_v">Sept 2027</dd></div>
-              <div><dt data-i18n="pass_lang">Language</dt><dd data-i18n="pass_lang_v">Arabic</dd></div>
-              <div><dt data-i18n="pass_bag">Paperwork</dt><dd data-i18n="pass_bag_v">On us</dd></div>
-              <div><dt data-i18n="pass_seat">Seat</dt><dd data-i18n="pass_seat_v">Reserved</dd></div>
-            </dl>
+    <div class="scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+      <div class="strip"><img src="assets/italy/skyline.svg" alt="" width="1800" height="300"><img src="assets/italy/skyline.svg" alt="" width="1800" height="300"></div>
+      <div class="street"></div>
+      <img class="p p-amira" src="assets/peeps/amira.svg" alt="">
+      <img class="p p-giulia" src="assets/peeps/giulia.svg" alt="">
+      <img class="p p-omar" src="assets/peeps/lina.svg" alt="">
+      <img class="p p-karim" src="assets/peeps/karim.svg" alt="">
+      <img class="p p-bike" src="assets/peeps/yousef.svg" alt="">
+      <div class="toasts">
+        <div class="toast" style="--i:0"><img src="assets/cup.webp" alt=""><div><small data-i18n="toast_from">Espresso Study · now</small><b data-i18n="toast1">Visa approved ✅</b></div></div>
+        <div class="toast" style="--i:1"><img src="assets/cup.webp" alt=""><div><small data-i18n="toast_from">Espresso Study · now</small><b data-i18n="toast2">Room found, contract checked 🏠</b></div></div>
+        <div class="toast" style="--i:2"><img src="assets/cup.webp" alt=""><div><small data-i18n="toast_from">Espresso Study · now</small><b data-i18n="toast3">Scholarship granted 🎓</b></div></div>
+        <div class="toast" style="--i:3"><img src="assets/cup.webp" alt=""><div><small data-i18n="toast_from">Espresso Study · now</small><b data-i18n="toast4">Ciao! Welcome to Ancona 👋</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AS SEEN ON -->
+  <section class="asseen" aria-label="Press">
+    <div class="wrap">
+      <span class="asseen-label" data-i18n="asseen">As seen on</span>
+      <div class="marquee"><div class="marquee-track" id="marquee"></div></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-sec">
+    <div class="wrap">
+      <div class="quiz" id="quiz" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- WORRIES -->
+  <section class="section" id="worries">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-i18n="w_eye">We get it</span>
+        <h2 class="h2" data-i18n="w_h">The questions that keep you up at night</h2>
+        <p class="lead" data-i18n="w_lead">Every student we meet has the same worries, and so do their parents. Here is how we answer them, one by one.</p>
+      </div>
+      <div class="worries" id="worryGrid"></div>
+      <p class="swipe-hint" data-i18n="swipe">Swipe to see more →</p>
+    </div>
+  </section>
+
+  <!-- DREAM / WHY ITALY -->
+  <section class="section dream" id="italy">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-i18n="d_eye">Why Italy</span>
+        <h2 class="h2" data-i18n="d_h">What's waiting for you in Italy</h2>
+        <p class="lead" data-i18n="d_lead">Not just a degree. A new life, a few hours from home.</p>
+      </div>
+      <div class="cards3">
+        <article class="pc">
+          <div class="pc-art a1" aria-hidden="true">
+            <span class="pc-stamp">ITALIA<b>☕</b></span>
+            <img class="bg" src="assets/italy/houses.svg" alt="">
+            <div class="ground"></div>
+            <img class="p1" src="assets/peeps/giulia.svg" alt="">
+            <img class="p2" src="assets/peeps/amira.svg" alt="">
+            <img class="p3" src="assets/peeps/omar.svg" alt="">
           </div>
-          <div class="pass-stub"><div class="barcode"></div><div class="stamp">VISTO<br>OK</div></div>
-        </div>
+          <div class="pc-body"><h3 data-i18n="pc1_h">Friends from all over the world</h3><p data-i18n="pc1_p">Italian classmates, Arab students, Erasmus friends: study groups, football, long dinners that end at midnight.</p></div>
+        </article>
+        <article class="pc">
+          <div class="pc-art a2" aria-hidden="true">
+            <span class="pc-stamp">ROMA<b>🏛</b></span>
+            <img class="bg1" src="assets/italy/colosseum.svg" alt="">
+            <img class="bg2" src="assets/italy/rialto.svg" alt="">
+            <div class="ground"></div>
+            <img class="bike" src="assets/peeps/yousef.svg" alt="">
+          </div>
+          <div class="pc-body"><h3 data-i18n="pc2_h">Rome, Florence, Venice for the weekend</h3><p data-i18n="pc2_p">Fast trains link the big cities in a few hours. Your weekends will look like postcards.</p></div>
+        </article>
+        <article class="pc">
+          <div class="pc-art a3" aria-hidden="true">
+            <span class="pc-stamp">FIRENZE<b>⛪</b></span>
+            <img class="bg" src="assets/italy/duomo.svg" alt="">
+            <div class="ground"></div>
+            <span class="steam"></span><span class="steam"></span>
+            <img class="bust" src="assets/peeps/b-yasmin-coffee.svg" alt="">
+          </div>
+          <div class="pc-body"><h3 data-i18n="pc3_h">Your espresso, your new routine</h3><p data-i18n="pc3_p">Mediterranean food and sun, halal shops and mosques in every big city. You'll feel at home sooner than you think.</p></div>
+        </article>
       </div>
-    </div>
-  </section>
 
-  <!-- TRUST -->
-  <section class="trust" aria-label="Numbers">
-    <div class="wrap">
-      <div class="t-item"><b>120+</b><span data-i18n="t1">international students supported in 2026</span></div>
-      <div class="t-item"><b>UNIVPM</b><span data-i18n="t2">formal agreement with Università Politecnica delle Marche</span></div>
-      <div class="t-item"><b>Inlingua</b><span data-i18n="t3">partner school for Italian courses</span></div>
-      <div class="t-item"><b data-i18n="t4b">On the ground</b><span data-i18n="t4">local partners in Algeria, Israel and Lebanon</span></div>
-    </div>
-  </section>
-
-  <!-- PAIN -->
-  <section class="section" id="pain">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow" data-i18n="pain_eye">The real problem</span>
-        <h2 class="h2" data-i18n="pain_h">Studying is the easy part.</h2>
-        <p class="lead" data-i18n="pain_lead">The hard part is everything around it: Italian offices, Italian forms, Italian deadlines. Here is what is waiting for you before your first lecture.</p>
-      </div>
-      <div class="stamps" id="stamps"></div>
-      <div class="pain-foot"><p data-i18n-html="pain_foot">One mistake can cost you a full academic year. <span>With us, nobody does it alone.</span></p></div>
-    </div>
-  </section>
-
-  <!-- COMPARE -->
-  <section class="section" id="compare" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow" data-i18n="cmp_eye">Your three options</span>
-        <h2 class="h2" data-i18n="cmp_h">Alone, with the university, or with us?</h2>
-        <p class="lead" data-i18n="cmp_lead">The university's international office is there to help with its own procedures. Nobody follows you from your country to your first exam, except us.</p>
-      </div>
-      <div class="compare" id="compareTable"></div>
-    </div>
-  </section>
-
-  <!-- HOW -->
-  <section class="section" id="how" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow" data-i18n="how_eye">Your roadmap to Italy</span>
-        <h2 class="h2" data-i18n="how_h">Four stages, one person by your side.</h2>
-      </div>
-      <div class="road" id="road"></div>
-    </div>
-  </section>
-
-  <!-- WHY ITALY -->
-  <section class="section why" id="italy">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow" data-i18n="it_eye">Why Italy</span>
-        <h2 class="h2" data-i18n="it_h">A European degree, at a fraction of the price.</h2>
-        <p class="lead" data-i18n="it_lead">Italy is home to the oldest university in the Western world (Bologna, 1088) and some of the most affordable public universities in Europe.</p>
-      </div>
-      <div class="why-grid" id="whyGrid"></div>
+      <div class="facts" id="facts"></div>
 
       <div class="fees">
         <div>
@@ -477,18 +626,65 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
     </div>
   </section>
 
+  <!-- COMPARE -->
+  <section class="section" id="compare">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-i18n="cmp_eye">Alone, the university, or us</span>
+        <h2 class="h2" data-i18n="cmp_h">When something goes wrong, who's with you?</h2>
+        <p class="lead" data-i18n="cmp_lead">The university's international office helps with its own procedures. Nobody follows you from your country to your first exam, except us.</p>
+      </div>
+      <div class="compare" id="compareTable"></div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section" id="how" style="padding-top:0">
+    <div class="wrap">
+      <div class="head how-head">
+        <img class="how-mascot" src="assets/mascot.webp" alt="" width="520" height="260">
+        <span class="eyebrow" data-i18n="how_eye">Your roadmap to Italy</span>
+        <h2 class="h2" data-i18n="how_h">Four stages, one person by your side.</h2>
+      </div>
+      <div class="road" id="road"></div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section news" id="news">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-i18n="n_eye">In the news</span>
+        <h2 class="h2" data-i18n="n_h">What the Italian press says about us</h2>
+        <p class="lead" data-i18n="n_lead">Don't just take our word for it. Here is what the national and local press reported in 2026.</p>
+      </div>
+      <div class="stories-press" id="newsGrid"></div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section" id="partners">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-i18n="p_eye">Partners</span>
+        <h2 class="h2" data-i18n="p_h">We don't work alone either</h2>
+        <p class="lead" data-i18n="p_lead">Official agreements with Italian institutions, and local partners who meet you in your country.</p>
+      </div>
+      <div class="partners" id="partnerGrid"></div>
+    </div>
+  </section>
+
   <!-- PLANS -->
-  <section class="section" id="plans">
+  <section class="section" id="plans" style="padding-top:0">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow" data-i18n="pl_eye">Plans</span>
-        <h2 class="h2" data-i18n="pl_h">Clear prices. Choose how far we walk with you.</h2>
-        <p class="lead" data-i18n="pl_lead">One fee for the service, no surprises. Parents get one contact person and updates at every step.</p>
+        <h2 class="h2" data-i18n="pl_h">Clear prices. You choose how far we walk with you.</h2>
+        <p class="lead" data-i18n="pl_lead">One fee for the service, no surprises. Parents get one contact person and an update at every step.</p>
       </div>
       <div class="plan-tabs" id="planTabs" role="tablist"></div>
       <div class="plans" id="plansGrid"></div>
       <p class="excluded" data-i18n-html="pl_excl"><b>Never included in any plan:</b> university fees, visa and consular fees, official translations and legalisations, flights, rent and deposits, insurance premiums. We tell you every cost upfront.</p>
-
       <div class="addons">
         <span class="eyebrow" data-i18n="ad_eye">Add-ons</span>
         <h3 data-i18n="ad_h">Add what you need</h3>
@@ -498,19 +694,14 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
     </div>
   </section>
 
-  <!-- STORIES -->
+  <!-- TESTIMONIALS -->
   <section class="section" id="stories" style="padding-top:0">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow" data-i18n="st_eye">Students who did it</span>
         <h2 class="h2" data-i18n="st_h">From their city to Italy.</h2>
       </div>
-      <div class="stories" id="storiesGrid"></div>
-      <div class="press">
-        <span class="chip"><b>ANSA</b><span data-i18n="press1">eCapital 2025: among the 10 award-winning startups</span></span>
-        <span class="chip"><b>UNIVPM</b><span data-i18n="press2">dedicated page for Espresso Study</span></span>
-        <span class="chip"><b>Fondazione Marche</b><span data-i18n="press3">2026 institutional report</span></span>
-      </div>
+      <div class="tst" id="storiesGrid"></div>
     </div>
   </section>
 
@@ -525,16 +716,19 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- FINAL -->
   <section class="final" id="contact">
     <div class="wrap">
       <div>
-        <span class="eyebrow" style="color:#7FE3A8" data-i18n="fin_eye">Free first consultation</span>
-        <h2 data-i18n="fin_h">Tell us your plan. We'll tell you if it's possible, and how.</h2>
-        <p class="lead" data-i18n="fin_lead">20 minutes on WhatsApp or video call, in Arabic, English or French. No commitment.</p>
+        <span class="eyebrow" data-i18n="fin_eye">Free first consultation</span>
+        <h2 data-i18n="fin_h">Your story in Italy can start this week.</h2>
+        <p class="lead" data-i18n="fin_lead">Tell us your dream in a free 20-minute call, in Arabic, English or French. We'll tell you honestly if it's possible, and how.</p>
         <div class="contact-lines">
           <div><span>WhatsApp · </span><b>+39 327 599 0381</b></div>
           <div><span>Email · </span><b>info@espressostudy.it</b></div>
+        </div>
+        <div class="final-peeps" aria-hidden="true">
+          <img src="assets/peeps/giulia.svg" alt=""><img src="assets/peeps/amira.svg" alt=""><img src="assets/peeps/omar.svg" alt="">
         </div>
       </div>
       <form class="form" id="leadForm" novalidate>
@@ -554,11 +748,9 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
               <option value="unsure" data-i18n="o_unsure">Not sure yet</option>
             </select></div>
           <div class="field"><label for="f-when" data-i18n="f_when">Start</label>
-            <select id="f-when" name="when">
-              <option>2027</option><option>2028</option><option value="later" data-i18n="o_later">Later / not sure</option>
-            </select></div>
+            <select id="f-when" name="when"><option>2027</option><option>2028</option><option value="later" data-i18n="o_later">Later / not sure</option></select></div>
         </div>
-        <div class="field"><label for="f-msg" data-i18n="f_msg">Field of study or question (optional)</label><textarea id="f-msg" name="msg"></textarea></div>
+        <div class="field"><label for="f-msg" data-i18n="f_msg">Your dream, in one line (optional)</label><textarea id="f-msg" name="msg"></textarea></div>
         <button class="btn btn-wa" type="submit"><span data-i18n="f_send">Send on WhatsApp</span></button>
         <small data-i18n="f_small">We reply within 24 hours. Your data is used only to contact you.</small>
         <div class="form-ok" id="formOk" hidden></div>
@@ -571,257 +763,334 @@ footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);paddin
   <div class="wrap">
     <div>
       <div class="foot-brand">ESPRESSO STUDY<small><i style="color:#3DDC84">YOUR WAY</i> TO STUDY <i style="color:#FF6B70">IN ITALY</i></small></div>
-      <p style="margin-top:.8rem;max-width:40ch" data-i18n="foot_about">Italian company based in Ancona (Marche), supporting international students across all of Italy.</p>
+      <p style="margin-top:.8rem;max-width:40ch" data-i18n="foot_about">Italian company based in Ancona (Marche), founded by former Univpm students, supporting international students across Italy.</p>
     </div>
-    <div>
-      <h4 data-i18n="foot_contact">Contact</h4>
-      <p>WhatsApp +39 327 599 0381<br>info@espressostudy.it</p>
-    </div>
-    <div>
-      <h4 data-i18n="foot_follow">Follow us</h4>
-      <p><a href="https://www.facebook.com/p/Espresso-Study-61573961554231/" target="_blank" rel="noopener">Facebook</a> · Instagram · TikTok</p>
-    </div>
+    <div><h4 data-i18n="foot_contact">Contact</h4><p>WhatsApp +39 327 599 0381<br>info@espressostudy.it</p></div>
+    <div><h4 data-i18n="foot_follow">Follow us</h4><p><a href="https://www.facebook.com/p/Espresso-Study-61573961554231/" target="_blank" rel="noopener">Facebook</a> · Instagram · TikTok</p></div>
     <div class="legal">© 2026 Espresso Study · P.IVA IT03007910429 · Privacy Policy · Cookie Policy</div>
   </div>
 </footer>
 
 <div class="mbar">
-  <a class="btn btn-wa js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span data-i18n="cta_wa_bar">Free consultation</span></a>
-  <a class="btn btn-line" href="#plans" data-i18n="cta_prices">Prices</a>
+  <a class="btn btn-quiz" href="#quiz" data-quiz-start><span class="t"><span data-i18n="cta_quiz_bar">Can I study in Italy? 60s</span></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  <a class="btn btn-wa js-wa" href="https://wa.me/393275990381" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg></a>
 </div>
 
 <script>
 (function(){
 const WA = "393275990381";
 
-/* ---------- copy ---------- */
+/* ---------- interface copy ---------- */
 const T = {
 en:{
- tagline:"Your way to study in Italy",nav_compare:"Why us",nav_how:"How it works",nav_italy:"Why Italy",nav_plans:"Plans",nav_faq:"FAQ",
- cta_wa_short:"WhatsApp",cta_wa:"Free consultation on WhatsApp",cta_plans:"See plans & prices",cta_wa_bar:"Free consultation",cta_prices:"Prices",
+ tagline:"Your way to study in Italy",nav_worries:"Your worries",nav_italy:"Life in Italy",nav_news:"In the news",nav_plans:"Plans",nav_faq:"FAQ",
  positioning:"Specialists for Arabic-speaking students in Italy",
- h1:"Study in Italy. <em>We handle the rest.</em>",
- hero_sub:"We walk you from home to your Italian university seat: documents, visa, residence permit, housing and scholarship. In Arabic, step by step, with one person who knows your file.",
- proof_students:"students supported in Italy",proof_univpm:"official agreement",proof_award:"2025 award-winning startup",
- pass_title:"BOARDING PASS",pass_from:"Your country",pass_to:"Your university",pass_pax:"Passenger",pass_pax_v:"You",pass_class:"Class",pass_class_v:"Student",pass_gate:"Intake",pass_gate_v:"Sept 2027",pass_lang:"Language",pass_lang_v:"Arabic",pass_bag:"Paperwork",pass_bag_v:"On us",pass_seat:"Seat",pass_seat_v:"Reserved",
- t1:"international students supported in 2026",t2:"formal agreement with Università Politecnica delle Marche",t3:"partner school for Italian courses",t4b:"On the ground",t4:"local partners in Algeria, Israel and Lebanon",
- pain_eye:"The real problem",pain_h:"Studying is the easy part.",pain_lead:"The hard part is everything around it: Italian offices, Italian forms, Italian deadlines. Here is what is waiting for you before your first lecture.",
- pain_foot:"One mistake can cost you a full academic year. <span>With us, nobody does it alone.</span>",
- cmp_eye:"Your three options",cmp_h:"Alone, with the university, or with us?",cmp_lead:"The university's international office is there to help with its own procedures. Nobody follows you from your country to your first exam, except us.",
- how_eye:"Your roadmap to Italy",how_h:"Four stages, one person by your side.",
- it_eye:"Why Italy",it_h:"A European degree, at a fraction of the price.",it_lead:"Italy is home to the oldest university in the Western world (Bologna, 1088) and some of the most affordable public universities in Europe.",
+ h1:"Study in Italy. <em>Live the dream,</em> we handle the stress.",
+ hero_sub:"Picture it: espresso at 8, lectures in a centuries-old palazzo, friends from all over the world. We handle visa, papers, housing and scholarship, in Arabic, so you can focus on living it.",
+ cta_quiz:"Can I study in Italy?",cta_quiz_s:"Find out in 60 seconds · free",cta_quiz_bar:"Can I study in Italy? 60s",cta_wa_alt:"or chat with us on WhatsApp",
+ hero_note:"Free · No commitment · We reply in Arabic, English or French",
+ toast_from:"Espresso Study · now",toast1:"Visa approved ✅",toast2:"Room found, contract checked 🏠",toast3:"Scholarship granted 🎓",toast4:"Ciao! Welcome to Ancona 👋",
+ asseen:"As seen on",
+ q_eye:"60-second check",q_step:"Question {n} of 3",q_back:"← Back",
+ q1:"What do you dream of studying?",q2:"Which degree?",q3:"When would you like to start?",
+ res_h:"Good news: Italy can work for you 🎉",res_cta:"Get my free plan on WhatsApp",res_alt:"See plans and prices",restart:"Start again",
+ res_more:"We'll match you with the right universities, deadlines and costs, in a free 20-minute call.",
+ wa_quiz:"Hi Espresso Study! I did the 60-second check.\nField: {f}\nDegree: {l}\nStart: {s}\nCan you send me my free plan?",
+ w_eye:"We get it",w_h:"The questions that keep you up at night",w_lead:"Every student we meet has the same worries, and so do their parents. Here is how we answer them, one by one.",
+ swipe:"Swipe to see more →",who_s:"Student",who_p:"Parent",
+ d_eye:"Why Italy",d_h:"What's waiting for you in Italy",d_lead:"Not just a degree. A new life, a few hours from home.",
+ pc1_h:"Friends from all over the world",pc1_p:"Italian classmates, Arab students, Erasmus friends: study groups, football, long dinners that end at midnight.",
+ pc2_h:"Rome, Florence, Venice for the weekend",pc2_p:"Fast trains link the big cities in a few hours. Your weekends will look like postcards.",
+ pc3_h:"Your espresso, your new routine",pc3_p:"Mediterranean food and sun, halal shops and mosques in every big city. You'll feel at home sooner than you think.",
  fees_h:"Yearly tuition at a public university",fees_p:"Typical fees for an international bachelor student. In Italy the fee depends on family income, and many students pay much less.",fees_note:"Indicative figures for 2025/26, rounded. Each university sets its own fees: we check the exact amount for your case.",
- pl_eye:"Plans",pl_h:"Clear prices. Choose how far we walk with you.",pl_lead:"One fee for the service, no surprises. Parents get one contact person and updates at every step.",
+ cmp_eye:"Alone, the university, or us",cmp_h:"When something goes wrong, who's with you?",cmp_lead:"The university's international office helps with its own procedures. Nobody follows you from your country to your first exam, except us.",
+ cmp_cols:["Alone","University only","Espresso Study"],
+ how_eye:"Your roadmap to Italy",how_h:"Four stages, one person by your side.",
+ n_eye:"In the news",n_h:"What the Italian press says about us",n_lead:"Don't just take our word for it. Here is what the national and local press reported in 2026.",read_on:"Read the article on:",
+ p_eye:"Partners",p_h:"We don't work alone either",p_lead:"Official agreements with Italian institutions, and local partners who meet you in your country.",
+ pl_eye:"Plans",pl_h:"Clear prices. You choose how far we walk with you.",pl_lead:"One fee for the service, no surprises. Parents get one contact person and an update at every step.",
  pl_excl:"<b>Never included in any plan:</b> university fees, visa and consular fees, official translations and legalisations, flights, rent and deposits, insurance premiums. We tell you every cost upfront.",
  ad_eye:"Add-ons",ad_h:"Add what you need",ad_lead:"Available with every plan.",
- st_eye:"Students who did it",st_h:"From their city to Italy.",press1:"eCapital 2025: among the 10 award-winning startups",press2:"dedicated page for Espresso Study",press3:"2026 institutional report",
+ st_eye:"Students who did it",st_h:"From their city to Italy.",
  faq_h:"Questions students (and parents) ask us",
- fin_eye:"Free first consultation",fin_h:"Tell us your plan. We'll tell you if it's possible, and how.",fin_lead:"20 minutes on WhatsApp or video call, in Arabic, English or French. No commitment.",
- form_h:"Get your free plan",f_name:"Your name",f_from:"City and country",f_wa:"WhatsApp number",f_level:"I want to study",o_bach:"Bachelor",o_mast:"Master",o_med:"Medicine / Dentistry",o_lang:"Italian language course",o_unsure:"Not sure yet",f_when:"Start",o_later:"Later / not sure",f_msg:"Field of study or question (optional)",f_send:"Send on WhatsApp",f_small:"We reply within 24 hours. Your data is used only to contact you.",
+ fin_eye:"Free first consultation",fin_h:"Your story in Italy can start this week.",fin_lead:"Tell us your dream in a free 20-minute call, in Arabic, English or French. We'll tell you honestly if it's possible, and how.",
+ form_h:"Get your free plan",f_name:"Your name",f_from:"City and country",f_wa:"WhatsApp number",f_level:"I want to study",o_bach:"Bachelor",o_mast:"Master",o_med:"Medicine / Dentistry",o_lang:"Italian language course",o_unsure:"Not sure yet",f_when:"Start",o_later:"Later / not sure",f_msg:"Your dream, in one line (optional)",f_send:"Send on WhatsApp",f_small:"We reply within 24 hours. Your data is used only to contact you.",
  f_err:"Please fill in your name, city and WhatsApp number.",f_ok:"WhatsApp is opening with your message. If it doesn't, write to +39 327 599 0381.",
- foot_about:"Italian company based in Ancona (Marche), supporting international students across all of Italy.",foot_contact:"Contact",foot_follow:"Follow us",
- recommended:"MOST CHOSEN",choose:"Choose",onetime:"one-time fee",onrequest:"Price on request",
- cmp_cols:["Alone","University only","Espresso Study"],
- placeholder:"Placeholder: real testimonial needed",
- home:"Your country",dur_default:"2–6h"
+ foot_about:"Italian company based in Ancona (Marche), founded by former Univpm students, supporting international students across Italy.",foot_contact:"Contact",foot_follow:"Follow us",
+ recommended:"MOST CHOSEN",choose:"Choose",onetime:"one-time fee",onrequest:"Price on request",placeholder:"Placeholder: real testimonial needed",
+ greet:"Hi Espresso Study! I'd like a free consultation to study in Italy."
 },
 ar:{
- tagline:"طريقك للدراسة في إيطاليا",nav_compare:"ليش نحن",nav_how:"كيف نشتغل",nav_italy:"ليش إيطاليا",nav_plans:"الباقات",nav_faq:"أسئلة",
- cta_wa_short:"واتساب",cta_wa:"استشارة مجانية على واتساب",cta_plans:"شوف الباقات والأسعار",cta_wa_bar:"استشارة مجانية",cta_prices:"الأسعار",
+ tagline:"طريقك للدراسة في إيطاليا",nav_worries:"مخاوفك",nav_italy:"الحياة في إيطاليا",nav_news:"في الأخبار",nav_plans:"الباقات",nav_faq:"أسئلة شائعة",
  positioning:"متخصصون في مرافقة الطلاب العرب للدراسة في إيطاليا",
- h1:"ادرس في إيطاليا. <em>والباقي علينا.</em>",
- hero_sub:"نرافقك من بيتك حتى مقعدك في الجامعة الإيطالية: الأوراق، الفيزا، الإقامة، السكن والمنحة. بالعربي، خطوة بخطوة، مع شخص واحد يعرف ملفك.",
- proof_students:"طالب رافقناهم في إيطاليا",proof_univpm:"اتفاقية رسمية",proof_award:"شركة ناشئة فائزة بجائزة 2025",
- pass_title:"بطاقة صعود",pass_from:"بلدك",pass_to:"جامعتك",pass_pax:"المسافر",pass_pax_v:"أنت",pass_class:"الدرجة",pass_class_v:"طالب",pass_gate:"بداية الدراسة",pass_gate_v:"سبتمبر 2027",pass_lang:"اللغة",pass_lang_v:"العربية",pass_bag:"الأوراق",pass_bag_v:"علينا",pass_seat:"المقعد",pass_seat_v:"محجوز",
- t1:"طالب دولي رافقناهم في 2026",t2:"اتفاقية رسمية مع جامعة البوليتكنيك في ماركي",t3:"مدرسة شريكة لدورات اللغة الإيطالية",t4b:"على الأرض",t4:"شركاء محليون في الجزائر والداخل ولبنان",
- pain_eye:"المشكلة الحقيقية",pain_h:"الدراسة هي الجزء السهل.",pain_lead:"الصعب هو كل شي حولها: مكاتب إيطالية، استمارات بالإيطالي، ومواعيد ما بتستنى. هذا اللي بيستناك قبل أول محاضرة:",
- pain_foot:"غلطة وحدة ممكن تكلفك سنة دراسية كاملة. <span>معنا، ما حدا بيمشي الطريق لحاله.</span>",
- cmp_eye:"عندك ثلاث خيارات",cmp_h:"لحالك، مع الجامعة، أو معنا؟",cmp_lead:"مكتب الطلاب الدوليين بالجامعة بيساعدك بإجراءاته هو بس. ما حدا بيرافقك من بلدك لأول امتحان… إلا نحن.",
- how_eye:"خريطة طريقك لإيطاليا",how_h:"أربع مراحل، وشخص واحد جنبك.",
- it_eye:"ليش إيطاليا",it_h:"شهادة أوروبية، بجزء صغير من السعر.",it_lead:"إيطاليا فيها أقدم جامعة في العالم الغربي (بولونيا، 1088) ومن أرخص الجامعات الحكومية في أوروبا.",
- fees_h:"الرسوم السنوية في جامعة حكومية",fees_p:"رسوم تقريبية لطالب بكالوريوس دولي. في إيطاليا الرسوم بتعتمد على دخل العائلة، وكثير من الطلاب بيدفعوا أقل بكثير.",fees_note:"أرقام تقريبية للعام 2025/26. كل جامعة بتحدد رسومها، ونحن منتأكد من المبلغ الدقيق لحالتك.",
- pl_eye:"الباقات",pl_h:"أسعار واضحة. اختار لوين بدك نمشي معك.",pl_lead:"سعر واحد للخدمة، بدون مفاجآت. والأهل عندهم شخص واحد يتواصلوا معه وتحديثات بكل خطوة.",
- pl_excl:"<b>غير مشمول بأي باقة:</b> رسوم الجامعة، رسوم الفيزا والقنصلية، الترجمة والتصديق الرسمي، تذاكر الطيران، الإيجار والتأمين على السكن، أقساط التأمين. منقلك كل التكاليف من البداية.",
- ad_eye:"إضافات",ad_h:"زيد اللي بتحتاجه",ad_lead:"متوفرة مع كل الباقات.",
- st_eye:"طلاب عملوها",st_h:"من مدينتهم إلى إيطاليا.",press1:"eCapital 2025: من بين 10 شركات ناشئة فائزة",press2:"صفحة خاصة بـ Espresso Study",press3:"التقرير المؤسسي 2026",
- faq_h:"أسئلة بيسألونا ياها الطلاب (والأهل)",
- fin_eye:"أول استشارة مجانية",fin_h:"احكيلنا خطتك. ومنقلك إذا ممكنة، وكيف.",fin_lead:"20 دقيقة على واتساب أو مكالمة فيديو، بالعربي أو الإنجليزي أو الفرنسي. بدون أي التزام.",
- form_h:"احصل على خطتك المجانية",f_name:"اسمك",f_from:"المدينة والبلد",f_wa:"رقم الواتساب",f_level:"بدي أدرس",o_bach:"بكالوريوس",o_mast:"ماستر",o_med:"طب / طب أسنان",o_lang:"دورة لغة إيطالية",o_unsure:"لسا مش متأكد",f_when:"البداية",o_later:"بعدين / مش متأكد",f_msg:"التخصص أو سؤالك (اختياري)",f_send:"إرسال على واتساب",f_small:"منرد خلال 24 ساعة. بياناتك بس للتواصل معك.",
- f_err:"عبّي اسمك ومدينتك ورقم الواتساب لو سمحت.",f_ok:"عم ينفتح واتساب مع رسالتك. إذا ما انفتح، راسلنا على ‎+39 327 599 0381.",
- foot_about:"شركة إيطالية مقرها أنكونا (منطقة ماركي)، بترافق الطلاب الدوليين بكل إيطاليا.",foot_contact:"تواصل",foot_follow:"تابعنا",
- recommended:"الأكثر طلباً",choose:"اختار",onetime:"دفعة واحدة",onrequest:"السعر عند الطلب",
- cmp_cols:["لحالك","الجامعة بس","Espresso Study"],
- placeholder:"مكان مؤقت: بحاجة لشهادة حقيقية",
- home:"بلدك",dur_default:"2–6 ساعات"
+ h1:"ادرس في إيطاليا. <em>عِش الحلم،</em> واترك التعب علينا.",
+ hero_sub:"تخيّل: قهوة إسبريسو في الصباح، محاضرات في قصر عمره مئات السنين، وأصدقاء من كل العالم. نحن نتولى الفيزا والأوراق والسكن والمنحة، بالعربية، لتركّز أنت على عيش التجربة.",
+ cta_quiz:"هل أستطيع الدراسة في إيطاليا؟",cta_quiz_s:"اعرف الجواب خلال 60 ثانية · مجاناً",cta_quiz_bar:"اختبر فرصتك في 60 ثانية",cta_wa_alt:"أو تحدّث معنا على واتساب",
+ hero_note:"مجاني · بدون التزام · نرد بالعربية أو الإنجليزية أو الفرنسية",
+ toast_from:"Espresso Study · الآن",toast1:"تمت الموافقة على الفيزا ✅",toast2:"وجدنا السكن وراجعنا العقد 🏠",toast3:"حصلت على المنحة 🎓",toast4:"Ciao! أهلاً بك في أنكونا 👋",
+ asseen:"تحدّثوا عنّا",
+ q_eye:"فحص في 60 ثانية",q_step:"السؤال {n} من 3",q_back:"→ رجوع",
+ q1:"ماذا تحلم أن تدرس؟",q2:"أي مرحلة دراسية؟",q3:"متى تريد أن تبدأ؟",
+ res_h:"خبر جميل: إيطاليا مناسبة لك 🎉",res_cta:"احصل على خطتك المجانية على واتساب",res_alt:"شاهد الباقات والأسعار",restart:"ابدأ من جديد",
+ res_more:"سنختار معك الجامعات والمواعيد والتكاليف المناسبة، في مكالمة مجانية مدتها 20 دقيقة.",
+ wa_quiz:"مرحباً Espresso Study! أكملت الفحص في 60 ثانية.\nالتخصص: {f}\nالمرحلة: {l}\nالبداية: {s}\nهل يمكنكم إرسال خطتي المجانية؟",
+ w_eye:"نحن نفهمك",w_h:"الأسئلة التي تقلقك قبل النوم",w_lead:"كل طالب نلتقيه يحمل نفس المخاوف، وكذلك أهله. هكذا نجيب عنها، واحدة تلو الأخرى.",
+ swipe:"اسحب لترى المزيد ←",who_s:"طالب/ة",who_p:"وليّ أمر",
+ d_eye:"لماذا إيطاليا",d_h:"ما الذي ينتظرك في إيطاليا",d_lead:"ليست مجرد شهادة. حياة جديدة على بُعد ساعات من بيتك.",
+ pc1_h:"أصدقاء من كل العالم",pc1_p:"زملاء إيطاليون، طلاب عرب، وأصدقاء من برنامج إيراسموس: مجموعات دراسة، كرة قدم، وعشاء طويل حتى منتصف الليل.",
+ pc2_h:"روما وفلورنسا والبندقية في عطلة نهاية الأسبوع",pc2_p:"القطارات السريعة تربط المدن الكبرى في ساعات قليلة. عطلاتك ستبدو مثل البطاقات البريدية.",
+ pc3_h:"قهوتك الإسبريسو، وروتينك الجديد",pc3_p:"طعام البحر المتوسط وشمسه، محلات حلال ومساجد في كل مدينة كبيرة. ستشعر أنك في بيتك أسرع مما تتوقع.",
+ fees_h:"الرسوم السنوية في جامعة حكومية",fees_p:"رسوم تقريبية لطالب بكالوريوس دولي. في إيطاليا تعتمد الرسوم على دخل العائلة، وكثير من الطلاب يدفعون أقل بكثير.",fees_note:"أرقام تقريبية للعام 2025/26. كل جامعة تحدد رسومها، ونحن نتحقق من المبلغ الدقيق لحالتك.",
+ cmp_eye:"وحدك، الجامعة، أو نحن",cmp_h:"عندما يحدث أي خطأ، من يكون معك؟",cmp_lead:"مكتب الطلاب الدوليين في الجامعة يساعدك في إجراءاته فقط. لا أحد يرافقك من بلدك حتى أول امتحان… إلا نحن.",
+ cmp_cols:["وحدك","الجامعة فقط","Espresso Study"],
+ how_eye:"خريطة طريقك إلى إيطاليا",how_h:"أربع مراحل، وشخص واحد بجانبك.",
+ n_eye:"في الأخبار",n_h:"ماذا تقول الصحافة الإيطالية عنّا",n_lead:"لا تكتفِ بكلامنا. هذا ما نشرته الصحافة الوطنية والمحلية في 2026.",read_on:"اقرأ المقال على:",
+ p_eye:"شركاؤنا",p_h:"نحن أيضاً لا نعمل وحدنا",p_lead:"اتفاقيات رسمية مع مؤسسات إيطالية، وشركاء محليون يلتقون بك في بلدك.",
+ pl_eye:"الباقات",pl_h:"أسعار واضحة. أنت تختار إلى أين نرافقك.",pl_lead:"سعر واحد للخدمة، بدون مفاجآت. وللأهل شخص واحد للتواصل وتحديث في كل خطوة.",
+ pl_excl:"<b>غير مشمول في أي باقة:</b> رسوم الجامعة، رسوم الفيزا والقنصلية، الترجمة والتصديق الرسمي، تذاكر الطيران، الإيجار والتأمين على السكن، أقساط التأمين. نوضح لك كل التكاليف من البداية.",
+ ad_eye:"إضافات",ad_h:"أضف ما تحتاجه",ad_lead:"متوفرة مع كل الباقات.",
+ st_eye:"طلاب حققوا الحلم",st_h:"من مدينتهم إلى إيطاليا.",
+ faq_h:"أسئلة يطرحها علينا الطلاب (والأهل)",
+ fin_eye:"أول استشارة مجانية",fin_h:"قصتك في إيطاليا يمكن أن تبدأ هذا الأسبوع.",fin_lead:"أخبرنا بحلمك في مكالمة مجانية مدتها 20 دقيقة، بالعربية أو الإنجليزية أو الفرنسية. سنقول لك بصراحة إن كان ممكناً، وكيف.",
+ form_h:"احصل على خطتك المجانية",f_name:"اسمك",f_from:"المدينة والبلد",f_wa:"رقم الواتساب",f_level:"أريد أن أدرس",o_bach:"بكالوريوس",o_mast:"ماجستير",o_med:"طب / طب أسنان",o_lang:"دورة لغة إيطالية",o_unsure:"لست متأكداً بعد",f_when:"البداية",o_later:"لاحقاً / لست متأكداً",f_msg:"حلمك في سطر واحد (اختياري)",f_send:"إرسال على واتساب",f_small:"نرد خلال 24 ساعة. بياناتك تُستخدم فقط للتواصل معك.",
+ f_err:"يرجى كتابة اسمك ومدينتك ورقم الواتساب.",f_ok:"يتم فتح واتساب مع رسالتك. إذا لم يُفتح، راسلنا على ‎+39 327 599 0381.",
+ foot_about:"شركة إيطالية مقرها أنكونا (منطقة ماركي)، أسسها طلاب سابقون في جامعة Univpm، وترافق الطلاب الدوليين في كل إيطاليا.",foot_contact:"تواصل معنا",foot_follow:"تابعنا",
+ recommended:"الأكثر طلباً",choose:"اختر",onetime:"دفعة واحدة",onrequest:"السعر عند الطلب",placeholder:"مكان مؤقت: بحاجة إلى شهادة حقيقية",
+ greet:"مرحباً Espresso Study! أريد استشارة مجانية للدراسة في إيطاليا."
 },
 fr:{
- tagline:"Ton chemin pour étudier en Italie",nav_compare:"Pourquoi nous",nav_how:"Comment ça marche",nav_italy:"Pourquoi l'Italie",nav_plans:"Formules",nav_faq:"FAQ",
- cta_wa_short:"WhatsApp",cta_wa:"Consultation gratuite sur WhatsApp",cta_plans:"Voir les formules et les prix",cta_wa_bar:"Consultation gratuite",cta_prices:"Prix",
- positioning:"Spécialistes de l'accompagnement des étudiants arabophones en Italie",
- h1:"Étudie en Italie. <em>On s'occupe du reste.</em>",
- hero_sub:"On t'accompagne de chez toi jusqu'à ta place à l'université italienne : dossier, visa, titre de séjour, logement et bourse. En arabe ou en français, étape par étape, avec une seule personne qui connaît ton dossier.",
- proof_students:"étudiants accompagnés en Italie",proof_univpm:"convention officielle",proof_award:"startup primée en 2025",
- pass_title:"CARTE D'EMBARQUEMENT",pass_from:"Ton pays",pass_to:"Ton université",pass_pax:"Passager",pass_pax_v:"Toi",pass_class:"Classe",pass_class_v:"Étudiant",pass_gate:"Rentrée",pass_gate_v:"Sept. 2027",pass_lang:"Langue",pass_lang_v:"Arabe / FR",pass_bag:"Paperasse",pass_bag_v:"Pour nous",pass_seat:"Place",pass_seat_v:"Réservée",
- t1:"étudiants internationaux accompagnés en 2026",t2:"convention avec l'Università Politecnica delle Marche",t3:"école partenaire pour les cours d'italien",t4b:"Sur place",t4:"partenaires locaux en Algérie, en Israël et au Liban",
- pain_eye:"Le vrai problème",pain_h:"Étudier, c'est la partie facile.",pain_lead:"Le plus dur, c'est tout le reste : bureaux italiens, formulaires en italien, délais italiens. Voici ce qui t'attend avant ton premier cours.",
- pain_foot:"Une seule erreur peut te coûter une année entière. <span>Avec nous, personne ne le fait seul.</span>",
- cmp_eye:"Tes trois options",cmp_h:"Seul, avec l'université, ou avec nous ?",cmp_lead:"Le bureau international de l'université t'aide pour ses propres démarches. Personne ne te suit de ton pays jusqu'à ton premier examen, sauf nous.",
- how_eye:"Ta feuille de route vers l'Italie",how_h:"Quatre étapes, une personne à tes côtés.",
- it_eye:"Pourquoi l'Italie",it_h:"Un diplôme européen, pour une fraction du prix.",it_lead:"L'Italie abrite la plus ancienne université du monde occidental (Bologne, 1088) et certaines des universités publiques les plus abordables d'Europe.",
+ tagline:"Ton chemin pour étudier en Italie",nav_worries:"Tes inquiétudes",nav_italy:"La vie en Italie",nav_news:"Presse",nav_plans:"Formules",nav_faq:"FAQ",
+ positioning:"Spécialistes des étudiants arabophones en Italie",
+ h1:"Étudie en Italie. <em>Vis ton rêve,</em> on gère le stress.",
+ hero_sub:"Imagine : un espresso à 8 h, des cours dans un palais historique, des amis du monde entier. On s'occupe du visa, des papiers, du logement et de la bourse, en arabe ou en français, pour que tu profites de chaque moment.",
+ cta_quiz:"Puis-je étudier en Italie ?",cta_quiz_s:"Réponse en 60 secondes · gratuit",cta_quiz_bar:"Mon test en 60 s",cta_wa_alt:"ou écris-nous sur WhatsApp",
+ hero_note:"Gratuit · Sans engagement · Réponse en arabe, anglais ou français",
+ toast_from:"Espresso Study · maintenant",toast1:"Visa accepté ✅",toast2:"Logement trouvé, contrat vérifié 🏠",toast3:"Bourse obtenue 🎓",toast4:"Ciao ! Bienvenue à Ancône 👋",
+ asseen:"Ils parlent de nous",
+ q_eye:"Test en 60 secondes",q_step:"Question {n} sur 3",q_back:"← Retour",
+ q1:"Que rêves-tu d'étudier ?",q2:"Quel niveau ?",q3:"Quand veux-tu commencer ?",
+ res_h:"Bonne nouvelle : l'Italie peut te convenir 🎉",res_cta:"Recevoir mon plan gratuit sur WhatsApp",res_alt:"Voir les formules et les prix",restart:"Recommencer",
+ res_more:"On choisit avec toi les bonnes universités, les délais et les coûts, lors d'un appel gratuit de 20 minutes.",
+ wa_quiz:"Bonjour Espresso Study ! J'ai fait le test en 60 secondes.\nDomaine : {f}\nNiveau : {l}\nRentrée : {s}\nPouvez-vous m'envoyer mon plan gratuit ?",
+ w_eye:"On te comprend",w_h:"Les questions qui t'empêchent de dormir",w_lead:"Chaque étudiant qu'on rencontre a les mêmes inquiétudes, et ses parents aussi. Voici nos réponses, une par une.",
+ swipe:"Fais glisser pour voir la suite →",who_s:"Étudiant·e",who_p:"Parent",
+ d_eye:"Pourquoi l'Italie",d_h:"Ce qui t'attend en Italie",d_lead:"Pas juste un diplôme. Une nouvelle vie, à quelques heures de chez toi.",
+ pc1_h:"Des amis du monde entier",pc1_p:"Camarades italiens, étudiants arabes, amis Erasmus : groupes d'étude, foot, longs dîners jusqu'à minuit.",
+ pc2_h:"Rome, Florence, Venise le week-end",pc2_p:"Les trains rapides relient les grandes villes en quelques heures. Tes week-ends ressembleront à des cartes postales.",
+ pc3_h:"Ton espresso, ta nouvelle routine",pc3_p:"Cuisine et soleil méditerranéens, commerces halal et mosquées dans chaque grande ville. Tu te sentiras chez toi plus vite que tu ne le penses.",
  fees_h:"Frais de scolarité annuels, université publique",fees_p:"Frais typiques pour un étudiant international en licence. En Italie, les frais dépendent des revenus de la famille, et beaucoup paient bien moins.",fees_note:"Chiffres indicatifs 2025/26, arrondis. Chaque université fixe ses frais : on vérifie le montant exact pour ton cas.",
- pl_eye:"Formules",pl_h:"Des prix clairs. Choisis jusqu'où on t'accompagne.",pl_lead:"Un seul tarif pour le service, sans surprise. Les parents ont un seul interlocuteur et des nouvelles à chaque étape.",
+ cmp_eye:"Seul, l'université, ou nous",cmp_h:"Quand quelque chose coince, qui est avec toi ?",cmp_lead:"Le bureau international de l'université t'aide pour ses propres démarches. Personne ne te suit de ton pays jusqu'à ton premier examen, sauf nous.",
+ cmp_cols:["Seul","Université seule","Espresso Study"],
+ how_eye:"Ta feuille de route vers l'Italie",how_h:"Quatre étapes, une personne à tes côtés.",
+ n_eye:"Dans la presse",n_h:"Ce que la presse italienne dit de nous",n_lead:"Ne nous crois pas sur parole. Voici ce qu'a publié la presse nationale et locale en 2026.",read_on:"Lire l'article sur :",
+ p_eye:"Partenaires",p_h:"Nous non plus, on ne travaille pas seuls",p_lead:"Des conventions officielles avec des institutions italiennes, et des partenaires qui te rencontrent dans ton pays.",
+ pl_eye:"Formules",pl_h:"Des prix clairs. Tu choisis jusqu'où on t'accompagne.",pl_lead:"Un seul tarif pour le service, sans surprise. Les parents ont un seul interlocuteur et des nouvelles à chaque étape.",
  pl_excl:"<b>Jamais inclus :</b> frais universitaires, frais de visa et consulaires, traductions et légalisations officielles, billets d'avion, loyer et caution, primes d'assurance. On t'annonce chaque coût dès le départ.",
  ad_eye:"Options",ad_h:"Ajoute ce dont tu as besoin",ad_lead:"Disponibles avec toutes les formules.",
- st_eye:"Ils l'ont fait",st_h:"De leur ville jusqu'en Italie.",press1:"eCapital 2025 : parmi les 10 startups primées",press2:"page dédiée à Espresso Study",press3:"rapport institutionnel 2026",
+ st_eye:"Ils l'ont fait",st_h:"De leur ville jusqu'en Italie.",
  faq_h:"Les questions des étudiants (et des parents)",
- fin_eye:"Première consultation gratuite",fin_h:"Raconte-nous ton projet. On te dit s'il est possible, et comment.",fin_lead:"20 minutes sur WhatsApp ou en visio, en arabe, anglais ou français. Sans engagement.",
- form_h:"Reçois ton plan gratuit",f_name:"Ton nom",f_from:"Ville et pays",f_wa:"Numéro WhatsApp",f_level:"Je veux étudier",o_bach:"Licence",o_mast:"Master",o_med:"Médecine / Dentaire",o_lang:"Cours d'italien",o_unsure:"Je ne sais pas encore",f_when:"Rentrée",o_later:"Plus tard / pas sûr",f_msg:"Domaine d'études ou question (facultatif)",f_send:"Envoyer sur WhatsApp",f_small:"Réponse sous 24 h. Tes données servent uniquement à te contacter.",
+ fin_eye:"Première consultation gratuite",fin_h:"Ton histoire en Italie peut commencer cette semaine.",fin_lead:"Raconte-nous ton rêve lors d'un appel gratuit de 20 minutes, en arabe, anglais ou français. On te dit honnêtement si c'est possible, et comment.",
+ form_h:"Reçois ton plan gratuit",f_name:"Ton nom",f_from:"Ville et pays",f_wa:"Numéro WhatsApp",f_level:"Je veux étudier",o_bach:"Licence",o_mast:"Master",o_med:"Médecine / Dentaire",o_lang:"Cours d'italien",o_unsure:"Je ne sais pas encore",f_when:"Rentrée",o_later:"Plus tard / pas sûr",f_msg:"Ton rêve, en une ligne (facultatif)",f_send:"Envoyer sur WhatsApp",f_small:"Réponse sous 24 h. Tes données servent uniquement à te contacter.",
  f_err:"Indique ton nom, ta ville et ton numéro WhatsApp.",f_ok:"WhatsApp s'ouvre avec ton message. Sinon, écris au +39 327 599 0381.",
- foot_about:"Entreprise italienne basée à Ancône (Marches), qui accompagne les étudiants internationaux dans toute l'Italie.",foot_contact:"Contact",foot_follow:"Suis-nous",
- recommended:"LE PLUS CHOISI",choose:"Choisir",onetime:"paiement unique",onrequest:"Prix sur demande",
- cmp_cols:["Seul","Université seule","Espresso Study"],
- placeholder:"Provisoire : témoignage réel à insérer",
- home:"Ton pays",dur_default:"2–6 h"
+ foot_about:"Entreprise italienne basée à Ancône (Marches), fondée par d'anciens étudiants de l'Univpm, qui accompagne les étudiants internationaux dans toute l'Italie.",foot_contact:"Contact",foot_follow:"Suis-nous",
+ recommended:"LE PLUS CHOISI",choose:"Choisir",onetime:"paiement unique",onrequest:"Prix sur demande",placeholder:"Provisoire : témoignage réel à insérer",
+ greet:"Bonjour Espresso Study ! Je voudrais une consultation gratuite pour étudier en Italie."
 }};
 
-/* bureaucracy steps: Italian names stay in Italian (that's what the student will see) */
-const STAMPS = [
- {it:"Universitaly", en:"Online pre-enrolment, required for every non-EU student.", ar:"التسجيل المسبق أونلاين، إلزامي لكل طالب من خارج الاتحاد الأوروبي.", fr:"Pré-inscription en ligne, obligatoire pour tout étudiant non-UE."},
- {it:"Dichiarazione di valore / CIMEA", en:"Official recognition of your high-school diploma.", ar:"الاعتراف الرسمي بشهادة الثانوية (البكالوريا/التوجيهي).", fr:"Reconnaissance officielle de ton bac."},
- {it:"Visto per studio (tipo D)", en:"Study visa at the Italian embassy or visa centre.", ar:"فيزا الدراسة من السفارة الإيطالية أو مركز التأشيرات.", fr:"Visa d'études à l'ambassade ou au centre de visas."},
- {it:"Permesso di soggiorno", en:"Residence permit: apply within 8 days of arrival.", ar:"تصريح الإقامة: لازم تقدّم خلال 8 أيام من وصولك.", fr:"Titre de séjour : demande dans les 8 jours après l'arrivée."},
- {it:"Codice fiscale", en:"Italian tax code: you need it for rent, phone, bank.", ar:"الرقم الضريبي الإيطالي: بتحتاجه للإيجار والخط والبنك.", fr:"Code fiscal : indispensable pour le loyer, le téléphone, la banque."},
- {it:"ISEE parificato + borsa DSU", en:"Family-income paperwork to lower fees and win a regional scholarship.", ar:"أوراق دخل العائلة لتخفيض الرسوم والحصول على المنحة الإقليمية.", fr:"Dossier de revenus pour réduire les frais et obtenir la bourse régionale."},
- {it:"Contratto d'affitto", en:"Finding a room from abroad, without scams.", ar:"إيجاد غرفة وأنت بالخارج، بدون نصب.", fr:"Trouver une chambre depuis l'étranger, sans arnaque."},
- {it:"Conto, SIM, assicurazione", en:"Bank account, phone line, health cover.", ar:"حساب بنكي، خط تلفون، تأمين صحي.", fr:"Compte bancaire, ligne téléphonique, couverture santé."}
+/* ---------- 60-second check ---------- */
+const QUIZ = [
+ {k:"field", opts:[
+  {v:"med",em:"🩺",t:{en:"Medicine & health",ar:"الطب والصحة",fr:"Médecine et santé"}},
+  {v:"eng",em:"⚙️",t:{en:"Engineering & IT",ar:"الهندسة وتكنولوجيا المعلومات",fr:"Ingénierie et informatique"}},
+  {v:"biz",em:"📈",t:{en:"Business & economics",ar:"إدارة الأعمال والاقتصاد",fr:"Commerce et économie"}},
+  {v:"arch",em:"🏛️",t:{en:"Architecture & design",ar:"العمارة والتصميم",fr:"Architecture et design"}},
+  {v:"other",em:"✨",t:{en:"Something else",ar:"تخصص آخر",fr:"Autre chose"}}]},
+ {k:"level", opts:[
+  {v:"bach",em:"🎒",t:{en:"Bachelor (after high school)",ar:"بكالوريوس (بعد الثانوية)",fr:"Licence (après le bac)"}},
+  {v:"mast",em:"🎓",t:{en:"Master (after a bachelor)",ar:"ماجستير (بعد البكالوريوس)",fr:"Master (après une licence)"}},
+  {v:"unsure",em:"🤔",t:{en:"Not sure yet",ar:"لست متأكداً بعد",fr:"Pas encore sûr"}}]},
+ {k:"start", opts:[
+  {v:"y27",em:"🚀",t:{en:"September 2027",ar:"سبتمبر 2027",fr:"Septembre 2027"}},
+  {v:"y28",em:"🗓️",t:{en:"September 2028",ar:"سبتمبر 2028",fr:"Septembre 2028"}},
+  {v:"explore",em:"👀",t:{en:"Just exploring",ar:"أستكشف فقط",fr:"Je me renseigne"}}]}
+];
+const RES_FIELD = {
+ med:{en:"Medicine is taught in Italian and in English (with the IMAT admission test), at public fees from €156 a year. Places are limited, so preparation makes the difference.",ar:"الطب يُدرَّس بالإيطالية وبالإنجليزية (مع امتحان القبول IMAT)، برسوم حكومية تبدأ من 156 يورو سنوياً. المقاعد محدودة، لذلك التحضير يصنع الفرق.",fr:"La médecine s'étudie en italien et en anglais (avec le test IMAT), avec des frais publics dès 156 € par an. Les places sont limitées : la préparation fait la différence."},
+ eng:{en:"Italy has renowned engineering schools, like the Politecnico di Milano and Torino, and many engineering degrees are taught in English.",ar:"في إيطاليا مدارس هندسة مشهورة عالمياً، مثل بوليتكنيكو ميلانو وتورينو، والكثير من تخصصات الهندسة تُدرَّس بالإنجليزية.",fr:"L'Italie compte des écoles d'ingénieurs réputées, comme les Politecnico de Milan et de Turin, et beaucoup de cursus sont en anglais."},
+ biz:{en:"Many business and economics degrees are taught in English, at a fraction of UK or US fees.",ar:"الكثير من تخصصات إدارة الأعمال والاقتصاد تُدرَّس بالإنجليزية، وبجزء صغير من رسوم بريطانيا أو أمريكا.",fr:"Beaucoup de cursus de commerce et d'économie sont en anglais, pour une fraction des frais au Royaume-Uni ou aux États-Unis."},
+ arch:{en:"Study design and architecture where they were born: Milan, Florence, Venice, Rome.",ar:"ادرس التصميم والعمارة حيث وُلدا: ميلانو، فلورنسا، البندقية، روما.",fr:"Étudie le design et l'architecture là où ils sont nés : Milan, Florence, Venise, Rome."},
+ other:{en:"From humanities to agriculture, Italian public universities offer degrees in Italian and in English in almost every field.",ar:"من العلوم الإنسانية إلى الزراعة، تقدم الجامعات الحكومية الإيطالية تخصصات بالإيطالية والإنجليزية في كل المجالات تقريباً.",fr:"Des lettres à l'agronomie, les universités publiques italiennes proposent des cursus en italien et en anglais dans presque tous les domaines."}
+};
+const RES_TIME = {
+ y27:{en:"Perfect timing: the right moment to start your file is now.",ar:"توقيت ممتاز: الوقت المناسب لبدء ملفك هو الآن.",fr:"Timing parfait : c'est maintenant qu'il faut lancer ton dossier."},
+ y28:{en:"Great: you have time to learn Italian and build a strong file.",ar:"رائع: لديك وقت لتتعلم الإيطالية وتجهّز ملفاً قوياً.",fr:"Super : tu as le temps d'apprendre l'italien et de préparer un dossier solide."},
+ explore:{en:"Let's explore together, with no commitment.",ar:"لنستكشف معاً، بدون أي التزام.",fr:"Explorons ensemble, sans engagement."}
+};
+
+/* ---------- worries → answers ---------- */
+const WORRIES = [
+ {p:"amira",who:"s",q:{en:"What if my visa gets refused?",ar:"ماذا لو رُفضت الفيزا؟",fr:"Et si mon visa est refusé ?"},a:{en:"We check your visa file line by line before the embassy, and prepare a Plan B from day one.",ar:"نراجع ملف الفيزا سطراً بسطر قبل السفارة، ونجهّز خطة بديلة من اليوم الأول.",fr:"On vérifie ton dossier ligne par ligne avant l'ambassade, et on prépare un plan B dès le premier jour."}},
+ {p:"karim",who:"s",q:{en:"I don't speak a word of Italian.",ar:"لا أعرف كلمة واحدة بالإيطالية.",fr:"Je ne parle pas un mot d'italien."},a:{en:"Many degrees are taught in English. And if you want Italian, we take you from zero to B2 with Inlingua.",ar:"الكثير من التخصصات تُدرَّس بالإنجليزية. وإذا أردت الإيطالية، نأخذك من الصفر إلى مستوى B2 مع Inlingua.",fr:"Beaucoup de cursus sont en anglais. Et si tu veux l'italien, on t'amène de zéro à B2 avec Inlingua."}},
+ {p:"lina",who:"s",q:{en:"How do I find a room from abroad without getting scammed?",ar:"كيف أجد سكناً وأنا في الخارج بدون أن أتعرض للاحتيال؟",fr:"Comment trouver une chambre depuis l'étranger sans arnaque ?"},a:{en:"We find and check your room before you land, and read the contract with you.",ar:"نجد لك السكن ونتأكد منه قبل وصولك، ونقرأ العقد معك.",fr:"On trouve et vérifie ta chambre avant ton arrivée, et on lit le contrat avec toi."}},
+ {p:"omar",who:"s",q:{en:"Will I be alone over there?",ar:"هل سأكون وحيداً هناك؟",fr:"Est-ce que je serai seul là-bas ?"},a:{en:"From day one you have a buddy, a team that speaks Arabic, and students who made the same journey.",ar:"من أول يوم معك صديق مرافق (buddy)، وفريق يتكلم العربية، وطلاب مرّوا بنفس الرحلة.",fr:"Dès le premier jour, tu as un buddy, une équipe qui parle arabe et des étudiants qui ont fait le même voyage."}},
+ {p:"baba",who:"p",q:{en:"Will my child be safe and looked after?",ar:"هل سيكون ابني أو ابنتي بأمان وتحت المتابعة؟",fr:"Mon enfant sera-t-il en sécurité et suivi ?"},a:{en:"Parents get one contact person in Italy and an update at every step, from the visa to the first exam.",ar:"للأهل شخص واحد للتواصل في إيطاليا، وتحديث في كل خطوة، من الفيزا حتى أول امتحان.",fr:"Les parents ont un interlocuteur unique en Italie et des nouvelles à chaque étape, du visa au premier examen."}},
+ {p:"mama",who:"p",q:{en:"Can we really afford it?",ar:"هل نستطيع تحمّل التكاليف فعلاً؟",fr:"Est-ce qu'on peut vraiment se le permettre ?"},a:{en:"Public fees from €156 a year, scholarships that can cover room and meals, and every cost told upfront.",ar:"رسوم حكومية تبدأ من 156 يورو سنوياً، ومنح قد تغطي السكن والوجبات، وكل التكاليف واضحة من البداية.",fr:"Des frais publics dès 156 € par an, des bourses qui peuvent couvrir logement et repas, et chaque coût annoncé dès le départ."}}
 ];
 
-/* comparison rows: [alone, uni, us] each = [icon y|n|p, text-key] */
-const CMP = [
- {l:{en:"Someone who speaks Arabic",ar:"حدا بيحكي عربي",fr:"Quelqu'un qui parle arabe"},
-  c:[["n",{en:"No",ar:"لا",fr:"Non"}],["p",{en:"Rarely",ar:"نادراً",fr:"Rarement"}],["y",{en:"Always",ar:"دايماً",fr:"Toujours"}]]},
- {l:{en:"One person who follows you from home to Italy",ar:"شخص واحد بيتابعك من بلدك لإيطاليا",fr:"Une seule personne qui te suit de chez toi à l'Italie"},
-  c:[["n",{en:"No",ar:"لا",fr:"Non"}],["n",{en:"Only after enrolment",ar:"بس بعد التسجيل",fr:"Seulement après l'inscription"}],["y",{en:"Yes",ar:"نعم",fr:"Oui"}]]},
- {l:{en:"Help choosing city and university",ar:"مساعدة باختيار المدينة والجامعة",fr:"Aide pour choisir ville et université"},
-  c:[["p",{en:"Google",ar:"غوغل",fr:"Google"}],["n",{en:"Only their own",ar:"بس جامعتهم",fr:"Seulement la leur"}],["y",{en:"All of Italy",ar:"كل إيطاليا",fr:"Toute l'Italie"}]]},
- {l:{en:"Visa file checked before the embassy",ar:"فحص ملف الفيزا قبل السفارة",fr:"Dossier visa vérifié avant l'ambassade"},
-  c:[["n",{en:"You hope it's right",ar:"على الله",fr:"Tu espères"}],["p",{en:"Admission letter only",ar:"رسالة القبول بس",fr:"Lettre d'admission"}],["y",{en:"Checked line by line",ar:"سطر بسطر",fr:"Ligne par ligne"}]]},
- {l:{en:"Residence permit, tax code, bank, SIM",ar:"الإقامة، الرقم الضريبي، البنك، الخط",fr:"Titre de séjour, code fiscal, banque, SIM"},
-  c:[["n",{en:"Alone",ar:"لحالك",fr:"Seul"}],["p",{en:"Info only",ar:"معلومات بس",fr:"Infos seulement"}],["y",{en:"With you",ar:"معك",fr:"Avec toi"}]]},
- {l:{en:"Scholarship and ISEE paperwork",ar:"المنحة وأوراق الـ ISEE",fr:"Bourse et dossier ISEE"},
-  c:[["n",{en:"Alone",ar:"لحالك",fr:"Seul"}],["p",{en:"Help desk",ar:"شباك معلومات",fr:"Guichet"}],["y",{en:"We prepare it",ar:"نحن منحضّره",fr:"On le prépare"}]]},
- {l:{en:"Plan B if admission or visa fails",ar:"خطة بديلة إذا ما زبط القبول أو الفيزا",fr:"Plan B si admission ou visa échouent"},
-  c:[["n",{en:"No",ar:"لا",fr:"Non"}],["n",{en:"No",ar:"لا",fr:"Non"}],["y",{en:"Built from day one",ar:"من أول يوم",fr:"Dès le premier jour"}]]},
- {l:{en:"A buddy and help settling in",ar:"صديق (buddy) ومساعدة بالاندماج",fr:"Un buddy et de l'aide pour s'installer"},
-  c:[["n",{en:"No",ar:"لا",fr:"Non"}],["p",{en:"Some events",ar:"بعض الفعاليات",fr:"Quelques événements"}],["y",{en:"Yes",ar:"نعم",fr:"Oui"}]]},
- {cost:true,l:{en:"What it really costs",ar:"شو بتكلّف فعلياً",fr:"Ce que ça coûte vraiment"},
-  c:[["p",{en:"Free, until a mistake costs a year",ar:"ببلاش… لحتى غلطة تكلفك سنة",fr:"Gratuit, jusqu'à l'erreur qui coûte un an"}],["p",{en:"Free, but limited",ar:"ببلاش، بس محدود",fr:"Gratuit mais limité"}],["y",{en:"From €1,600, all in one",ar:"من 1,600 يورو، كل شي بمكان واحد",fr:"Dès 1 600 €, tout-en-un"}]]}
+const FACTS = [
+ {k:{en:"from €156",ar:"من 156 يورو",fr:"dès 156 €"},h:{en:"Public tuition per year",ar:"رسوم جامعية سنوية",fr:"Frais publics par an"},p:{en:"Based on family income. Some universities have fixed low fees for non-EU students.",ar:"حسب دخل العائلة. بعض الجامعات لديها رسوم ثابتة ومنخفضة للطلاب من خارج أوروبا.",fr:"Selon les revenus. Certaines universités ont un tarif fixe réduit pour les non-UE."}},
+ {k:{en:"DSU",ar:"منحة DSU",fr:"DSU"},h:{en:"Scholarships open to you",ar:"منح مفتوحة لك",fr:"Des bourses ouvertes à toi"},p:{en:"Regional scholarships can include money, a room and meals.",ar:"المنح الإقليمية قد تشمل مبلغاً مالياً وسكناً ووجبات.",fr:"Les bourses régionales peuvent inclure argent, chambre et repas."}},
+ {k:{en:"EU",ar:"أوروبا",fr:"UE"},h:{en:"A degree valid in Europe",ar:"شهادة معترف بها في أوروبا",fr:"Un diplôme valable en Europe"},p:{en:"Bachelor, Master and PhD on the European Bologna system.",ar:"بكالوريوس وماجستير ودكتوراه وفق نظام بولونيا الأوروبي.",fr:"Licence, master et doctorat selon le système européen de Bologne."}},
+ {k:{en:"IT / EN",ar:"IT / EN",fr:"IT / EN"},h:{en:"Italian or English",ar:"بالإيطالية أو الإنجليزية",fr:"En italien ou en anglais"},p:{en:"Hundreds of degrees are taught in English, Medicine included.",ar:"مئات التخصصات تُدرَّس بالإنجليزية، ومنها الطب.",fr:"Des centaines de cursus en anglais, médecine comprise."}},
+ {k:{en:"20h",ar:"20 ساعة",fr:"20 h"},h:{en:"Work while you study",ar:"اعمل أثناء الدراسة",fr:"Travaille en étudiant"},p:{en:"Up to 20 hours a week, and you can stay to look for a job after graduating.",ar:"حتى 20 ساعة أسبوعياً، ويمكنك البقاء للبحث عن عمل بعد التخرج.",fr:"Jusqu'à 20 h par semaine, et tu peux rester chercher un emploi après le diplôme."}}
 ];
-
-const ROAD = [
- {t:{en:"Orientation",ar:"التوجيه",fr:"Orientation"},w:{en:"9–12 months before",ar:"قبل 9–12 شهر",fr:"9–12 mois avant"},
-  i:{en:["Choice of city and degree","Document checklist for your country","Italian or English? Language plan"],ar:["اختيار المدينة والتخصص","قائمة الأوراق حسب بلدك","إيطالي أو إنجليزي؟ خطة اللغة"],fr:["Choix de la ville et du cursus","Liste des documents pour ton pays","Italien ou anglais ? Plan langue"]}},
- {t:{en:"Preparation",ar:"التحضير",fr:"Préparation"},w:{en:"Spring – summer",ar:"الربيع – الصيف",fr:"Printemps – été"},
-  i:{en:["University application and Universitaly","Visa file and document check","Entrance test preparation"],ar:["التقديم للجامعة وUniversitaly","ملف الفيزا وفحص الأوراق","التحضير لامتحان القبول"],fr:["Candidature et Universitaly","Dossier visa et vérification","Préparation aux tests d'entrée"]}},
- {t:{en:"Arrival in Italy",ar:"الوصول لإيطاليا",fr:"Arrivée en Italie"},w:{en:"September – October",ar:"سبتمبر – أكتوبر",fr:"Septembre – octobre"},
-  i:{en:["Welcome on arrival","Residence permit and scholarship application","Tax code, bank, SIM, Plan B"],ar:["استقبال عند الوصول","طلب الإقامة والمنحة","الرقم الضريبي، البنك، الخط، والخطة البديلة"],fr:["Accueil à l'arrivée","Titre de séjour et bourse","Code fiscal, banque, SIM, plan B"]}},
- {t:{en:"Fully settled",ar:"مستقر تماماً",fr:"Bien installé"},w:{en:"Your first year and beyond",ar:"سنتك الأولى وبعدها",fr:"Ta première année et après"},
-  i:{en:["Your personal buddy","Getting around city and campus","Social and cultural support"],ar:["صديقك الشخصي (buddy)","تتعرف على المدينة والجامعة","دعم اجتماعي وثقافي"],fr:["Ton buddy personnel","Repères en ville et à la fac","Soutien social et culturel"]}}
-];
-
-const WHY = [
- {k:{en:"€156 – €3k",ar:"156 – 3,000 يورو",fr:"156 – 3 000 €"},h:{en:"Low public tuition",ar:"رسوم جامعية منخفضة",fr:"Frais publics bas"},p:{en:"Public university fees per year, based on family income. Some universities have fixed low fees for non-EU students.",ar:"رسوم الجامعة الحكومية بالسنة حسب دخل العائلة. بعض الجامعات عندها رسوم ثابتة ومنخفضة للطلاب من خارج أوروبا.",fr:"Frais annuels en université publique selon les revenus. Certaines universités ont un tarif fixe réduit pour les non-UE."}},
- {k:{en:"DSU",ar:"منحة DSU",fr:"Bourse DSU"},h:{en:"Scholarships open to you",ar:"منح مفتوحة إلك",fr:"Des bourses ouvertes à toi"},p:{en:"Regional scholarships are open to international students and can include money, a room and meals, based on income and grades.",ar:"المنح الإقليمية مفتوحة للطلاب الدوليين، وممكن تشمل مبلغ مالي وسكن ووجبات، حسب الدخل والعلامات.",fr:"Les bourses régionales sont ouvertes aux étudiants internationaux : argent, chambre et repas, selon revenus et résultats."}},
- {k:{en:"EU",ar:"أوروبا",fr:"UE"},h:{en:"A degree valid in Europe",ar:"شهادة معترف فيها بأوروبا",fr:"Un diplôme valable en Europe"},p:{en:"Italian degrees follow the Bologna system (Bachelor, Master, PhD), recognised across the European Higher Education Area.",ar:"الشهادات الإيطالية بتتبع نظام بولونيا (بكالوريوس، ماستر، دكتوراه) ومعترف فيها بكل منطقة التعليم العالي الأوروبية.",fr:"Les diplômes italiens suivent le système de Bologne (licence, master, doctorat), reconnu dans tout l'Espace européen."}},
- {k:{en:"IT / EN",ar:"IT / EN",fr:"IT / EN"},h:{en:"Study in Italian or English",ar:"ادرس بالإيطالي أو بالإنجليزي",fr:"Étudie en italien ou en anglais"},p:{en:"Hundreds of degrees are taught in English, including Medicine. Or learn Italian with us and open every door.",ar:"مئات التخصصات بتندرس بالإنجليزي، ومنها الطب. أو تعلّم الإيطالي معنا وافتح كل الأبواب.",fr:"Des centaines de cursus en anglais, médecine comprise. Ou apprends l'italien avec nous pour tout ouvrir."}},
- {k:{en:"20h",ar:"20 ساعة",fr:"20 h"},h:{en:"Work while you study",ar:"اشتغل وأنت بتدرس",fr:"Travaille pendant tes études"},p:{en:"Students can work part-time up to 20 hours a week. After graduating you can stay to look for a job.",ar:"الطالب بيقدر يشتغل دوام جزئي لحد 20 ساعة بالأسبوع. وبعد التخرج بتقدر تضل لتدوّر على شغل.",fr:"Jusqu'à 20 heures de travail par semaine. Après le diplôme, tu peux rester pour chercher un emploi."}},
- {k:{en:"Close",ar:"قريبة",fr:"Proche"},h:{en:"Close to home, familiar life",ar:"قريبة من بيتك، وحياة مألوفة",fr:"Proche de chez toi, une vie familière"},p:{en:"A short flight from home, Mediterranean food and climate, halal shops, mosques and Arab student communities in every big city.",ar:"رحلة طيران قصيرة من بلدك، أكل ومناخ متوسطي، محلات حلال، مساجد وجاليات طلاب عرب بكل مدينة كبيرة.",fr:"Un vol court, cuisine et climat méditerranéens, commerces halal, mosquées et communautés d'étudiants arabes dans chaque grande ville."}}
-];
-
 const BARS = [
  {it:true,n:{en:"Italy",ar:"إيطاليا",fr:"Italie"},v:3000,lab:"€156 – €3,000"},
  {n:{en:"France",ar:"فرنسا",fr:"France"},v:2895,lab:"≈ €2,900"},
  {n:{en:"United Kingdom",ar:"بريطانيا",fr:"Royaume-Uni"},v:22000,lab:"≈ €15,000 – €30,000"},
- {n:{en:"United States",ar:"أمريكا",fr:"États-Unis"},v:28000,lab:"≈ €25,000 – €40,000"}
+ {n:{en:"United States",ar:"الولايات المتحدة",fr:"États-Unis"},v:28000,lab:"≈ €25,000 – €40,000"}
 ];
 
-/* plans: feature matrix shared by all three cards */
+const CMP = [
+ {l:{en:"Someone who speaks Arabic",ar:"شخص يتكلم العربية",fr:"Quelqu'un qui parle arabe"},c:[["n",{en:"No",ar:"لا",fr:"Non"}],["p",{en:"Rarely",ar:"نادراً",fr:"Rarement"}],["y",{en:"Always",ar:"دائماً",fr:"Toujours"}]]},
+ {l:{en:"One person from home to Italy",ar:"شخص واحد من بلدك حتى إيطاليا",fr:"Une seule personne de chez toi à l'Italie"},c:[["n",{en:"No",ar:"لا",fr:"Non"}],["n",{en:"Only after enrolment",ar:"بعد التسجيل فقط",fr:"Après l'inscription"}],["y",{en:"Yes",ar:"نعم",fr:"Oui"}]]},
+ {l:{en:"Help choosing city and university",ar:"مساعدة في اختيار المدينة والجامعة",fr:"Aide pour choisir ville et université"},c:[["p",{en:"Google",ar:"غوغل",fr:"Google"}],["n",{en:"Only their own",ar:"جامعتهم فقط",fr:"Seulement la leur"}],["y",{en:"All of Italy",ar:"كل إيطاليا",fr:"Toute l'Italie"}]]},
+ {l:{en:"Visa file checked before the embassy",ar:"مراجعة ملف الفيزا قبل السفارة",fr:"Dossier visa vérifié avant l'ambassade"},c:[["n",{en:"You hope it's right",ar:"على أمل أن يكون صحيحاً",fr:"Tu espères"}],["p",{en:"Admission letter only",ar:"رسالة القبول فقط",fr:"Lettre d'admission"}],["y",{en:"Line by line",ar:"سطراً بسطر",fr:"Ligne par ligne"}]]},
+ {l:{en:"Residence permit, tax code, bank, SIM",ar:"الإقامة، الرقم الضريبي، البنك، الخط",fr:"Titre de séjour, code fiscal, banque, SIM"},c:[["n",{en:"Alone",ar:"وحدك",fr:"Seul"}],["p",{en:"Info only",ar:"معلومات فقط",fr:"Infos seulement"}],["y",{en:"With you",ar:"معك",fr:"Avec toi"}]]},
+ {l:{en:"Scholarship and ISEE paperwork",ar:"المنحة وأوراق ISEE",fr:"Bourse et dossier ISEE"},c:[["n",{en:"Alone",ar:"وحدك",fr:"Seul"}],["p",{en:"Help desk",ar:"مكتب استعلامات",fr:"Guichet"}],["y",{en:"We prepare it",ar:"نحن نجهّزها",fr:"On le prépare"}]]},
+ {l:{en:"Plan B if admission or visa fails",ar:"خطة بديلة إذا لم ينجح القبول أو الفيزا",fr:"Plan B si admission ou visa échouent"},c:[["n",{en:"No",ar:"لا",fr:"Non"}],["n",{en:"No",ar:"لا",fr:"Non"}],["y",{en:"From day one",ar:"من اليوم الأول",fr:"Dès le premier jour"}]]},
+ {l:{en:"A buddy and help settling in",ar:"صديق مرافق ومساعدة في الاستقرار",fr:"Un buddy et de l'aide pour s'installer"},c:[["n",{en:"No",ar:"لا",fr:"Non"}],["p",{en:"Some events",ar:"بعض الفعاليات",fr:"Quelques événements"}],["y",{en:"Yes",ar:"نعم",fr:"Oui"}]]},
+ {cost:true,l:{en:"What it really costs",ar:"ما التكلفة الحقيقية",fr:"Ce que ça coûte vraiment"},c:[["p",{en:"Free, until a mistake costs a year",ar:"مجاناً… حتى يكلفك خطأ سنة كاملة",fr:"Gratuit, jusqu'à l'erreur qui coûte un an"}],["p",{en:"Free, but limited",ar:"مجاناً لكن محدود",fr:"Gratuit mais limité"}],["y",{en:"From €1,600, all in one",ar:"من 1,600 يورو، كل شيء في مكان واحد",fr:"Dès 1 600 €, tout-en-un"}]]}
+];
+
+const ROAD = [
+ {t:{en:"Orientation",ar:"التوجيه",fr:"Orientation"},w:{en:"9–12 months before",ar:"قبل 9–12 شهراً",fr:"9–12 mois avant"},i:{en:["Choice of city and degree","Document checklist for your country","Italian or English? Language plan"],ar:["اختيار المدينة والتخصص","قائمة الأوراق حسب بلدك","إيطالية أم إنجليزية؟ خطة اللغة"],fr:["Choix de la ville et du cursus","Liste des documents pour ton pays","Italien ou anglais ? Plan langue"]}},
+ {t:{en:"Preparation",ar:"التحضير",fr:"Préparation"},w:{en:"Spring – summer",ar:"الربيع – الصيف",fr:"Printemps – été"},i:{en:["University application and Universitaly","Visa file and document check","Entrance test preparation"],ar:["التقديم للجامعة وUniversitaly","ملف الفيزا ومراجعة الأوراق","التحضير لامتحان القبول"],fr:["Candidature et Universitaly","Dossier visa et vérification","Préparation aux tests d'entrée"]}},
+ {t:{en:"Arrival in Italy",ar:"الوصول إلى إيطاليا",fr:"Arrivée en Italie"},w:{en:"September – October",ar:"سبتمبر – أكتوبر",fr:"Septembre – octobre"},i:{en:["Welcome on arrival","Residence permit and scholarship application","Tax code, bank, SIM, Plan B"],ar:["استقبال عند الوصول","طلب الإقامة والمنحة","الرقم الضريبي، البنك، الخط، والخطة البديلة"],fr:["Accueil à l'arrivée","Titre de séjour et bourse","Code fiscal, banque, SIM, plan B"]}},
+ {t:{en:"Fully settled",ar:"استقرار كامل",fr:"Bien installé"},w:{en:"Your first year and beyond",ar:"سنتك الأولى وما بعدها",fr:"Ta première année et après"},i:{en:["Your personal buddy","Getting around city and campus","Social and cultural support"],ar:["صديقك المرافق (buddy)","التعرف على المدينة والجامعة","دعم اجتماعي وثقافي"],fr:["Ton buddy personnel","Repères en ville et à la fac","Soutien social et culturel"]}}
+];
+
+/* press wordmarks: replace the inner HTML with <img src="assets/logos/…"> once official files are available */
+const OUTLET = {
+ ansa:{wm:'<span class="wm wm-ansa">ANSA</span>'},
+ carlino:{wm:'<span class="wm wm-carlino">il Resto del <b>Carlino</b></span>'},
+ corriere:{wm:'<span class="wm wm-corriere">Corriere Adriatico</span>'},
+ today:{wm:'<span class="wm wm-today">Ancona<span>Today</span></span>'},
+ centro:{wm:'<span class="wm wm-centro">Centro<span>Pagina</span></span>'},
+ tvcm:{wm:'<span class="wm wm-tvcm">TV Centro Marche</span>'},
+ univpm:{wm:'<span class="wm wm-univpm">UNIVPM</span>'}
+};
+const NEWS = [
+ {date:{en:"May 2026",ar:"مايو 2026",fr:"Mai 2026"},tag:{en:"Human story",ar:"قصة إنسانية",fr:"Histoire humaine"},
+  h:{en:"From Gaza to Ancona: two sisters start university",ar:"من غزة إلى أنكونا: شقيقتان تبدآن الجامعة",fr:"De Gaza à Ancône : deux sœurs entrent à l'université"},
+  p:{en:"Two Palestinian sisters left Gaza through a humanitarian university corridor organised by the City of Ancona, Univpm and the Italian ministries. Espresso Study followed their file from autumn 2025, accompanied them to Italy and covered their travel and entry costs. They are now enrolled at Univpm in Digital Economics and Business and in Green Industrial Engineering.",
+     ar:"غادرت شقيقتان فلسطينيتان غزة عبر ممر جامعي إنساني نظّمته بلدية أنكونا وجامعة Univpm والوزارات الإيطالية. تابعت Espresso Study ملفهما منذ خريف 2025، ورافقتهما إلى إيطاليا وتحمّلت تكاليف السفر والدخول. وهما الآن مسجلتان في Univpm في تخصصَي الاقتصاد الرقمي وإدارة الأعمال، والهندسة الصناعية الخضراء.",
+     fr:"Deux sœurs palestiniennes ont quitté Gaza grâce à un corridor universitaire humanitaire organisé par la ville d'Ancône, l'Univpm et les ministères italiens. Espresso Study a suivi leur dossier depuis l'automne 2025, les a accompagnées en Italie et a pris en charge les frais de voyage et d'entrée. Elles sont aujourd'hui inscrites à l'Univpm en Digital Economics and Business et en Green Industrial Engineering."},
+  quote:{en:"“We want to give something back to Italy.” The sisters, quoted by ANSA",ar:"«نريد أن نردّ شيئاً لإيطاليا.» الشقيقتان، كما نقلت وكالة ANSA",fr:"« Nous voulons rendre quelque chose à l'Italie. » Les deux sœurs, citées par l'ANSA"},
+  links:[["ansa","https://www.ansa.it/marche/notizie/2026/05/14/studentesse-palestinesi-ad-ancona-vogliamo-restituire-qualcosa-allitalia_90e5b870-3a6e-4685-905b-2b6f168fe9c0.html"],["carlino","https://www.ilrestodelcarlino.it/ancona/cronaca/le-studentesse-da-gaza-diplomazia-7fa6eed0"],["corriere","https://www.corriereadriatico.it/ancona/ancona_unvpm_studentesse_palestinesi_bloccate_gaza_video_arrivo_diplomazia_fiumicino_palestina_israele_ultime_notizie-9527880.html"],["today","https://www.anconatoday.it/attualita/gaza-studentesse-ancona-palestina.html"],["centro","https://www.centropagina.it/ancona/sorelle-palestinesi-univpm-gaza-guerra/"],["tvcm","https://www.tvcentromarche.it/2026/05/14/da-gaza-ad-ancona-i-sogni-di-due-sorelle-studentesse/"]]},
+ {date:{en:"April 2026",ar:"أبريل 2026",fr:"Avril 2026"},tag:{en:"Award",ar:"جائزة",fr:"Prix"},
+  h:{en:"eCapital 2025: Espresso Study among the 10 award-winning startups",ar:"eCapital 2025: ‏Espresso Study ضمن 10 شركات ناشئة فائزة",fr:"eCapital 2025 : Espresso Study parmi les 10 startups primées"},
+  p:{en:"Out of more than 200 young entrepreneurs, the eCapital competition, promoted by Univpm, Regione Marche, Fondazione Marche and their partners, awarded Espresso Study for making Italy a more accessible and welcoming university destination for students from the Middle East and North Africa.",
+     ar:"من بين أكثر من 200 رائد أعمال شاب، منحت مسابقة eCapital، التي تدعمها جامعة Univpm وإقليم ماركي ومؤسسة Fondazione Marche وشركاؤهم، جائزتها لـ Espresso Study لأنها تجعل إيطاليا وجهة جامعية أسهل وأكثر ترحيباً بطلاب الشرق الأوسط وشمال أفريقيا.",
+     fr:"Parmi plus de 200 jeunes entrepreneurs, le concours eCapital, porté par l'Univpm, la Région Marches, la Fondazione Marche et leurs partenaires, a primé Espresso Study pour rendre l'Italie plus accessible et accueillante aux étudiants du Moyen-Orient et d'Afrique du Nord."},
+  links:[["ansa","https://www.ansa.it/marche/notizie/2026/04/27/ecapital-2025-dieci-startup-premiate-ad-ancona-su-oltre-200-startupper_ae437be7-9387-4267-a7e7-fe9c43d3a246.html"],["carlino","https://www.ilrestodelcarlino.it/ancona/cronaca/la-nuova-edizione-di-ecapital-8e59c165"],["today","https://www.anconatoday.it/attualita/ecapital-2026-premiate-10-startup-marchigiane-ancona.html"],["centro","https://www.centropagina.it/ancona/ecapital-premiate-10-startup-200-startupper/"],["univpm","https://www.univpm.it/Entra/Universita_Politecnica_delle_Marche_Home/Events/Ecapital_2025"]]}
+];
+
+/* partners; local network shown per campaign country so no country is named next to another */
+const LOCAL = {dz:["Teshillet Tour"],il:["Celen Tour","Avanti Education","Royal Academy","Ma'ali Education"],kw:[],all:["Teshillet Tour","Yalaaitalia","Avanti Study","Celen Tour","Avanti Education","Royal Academy","Ma'ali Education"]};
+const PARTNERS = [
+ {logo:'<span class="wm wm-univpm">UNIVPM<small>UNIVERSITÀ POLITECNICA DELLE MARCHE</small></span>',tag:{en:"Official agreement",ar:"اتفاقية رسمية",fr:"Convention officielle"},h:{en:"Università Politecnica delle Marche",ar:"جامعة البوليتكنيك في ماركي (Univpm)",fr:"Università Politecnica delle Marche"},p:{en:"Formal agreement for the orientation and support of international students. Espresso Study was founded by former Univpm students.",ar:"اتفاقية رسمية لتوجيه الطلاب الدوليين ودعمهم. أسّس Espresso Study طلابٌ سابقون في Univpm.",fr:"Convention pour l'orientation et l'accompagnement des étudiants internationaux. Espresso Study a été fondée par d'anciens étudiants de l'Univpm."}},
+ {logo:'<span class="wm wm-inl">inlingua</span>',tag:{en:"Language partner",ar:"شريك اللغة",fr:"Partenaire langue"},h:{en:"Inlingua Ancona",ar:"Inlingua أنكونا",fr:"Inlingua Ancône"},p:{en:"Italian courses from A0 to B2, online or in Ancona, designed for international students.",ar:"دورات اللغة الإيطالية من A0 إلى B2، أونلاين أو في أنكونا، مصممة للطلاب الدوليين.",fr:"Cours d'italien de A0 à B2, en ligne ou à Ancône, pensés pour les étudiants internationaux."}},
+ {logo:'<span class="wm wm-ecap"><i>e</i>Capital</span>',tag:{en:"Award 2025",ar:"جائزة 2025",fr:"Prix 2025"},h:{en:"eCapital startup competition",ar:"مسابقة eCapital للشركات الناشئة",fr:"Concours de startups eCapital"},p:{en:"Among the 10 startups awarded out of 200+ participants, with Univpm, Regione Marche and Fondazione Marche.",ar:"ضمن 10 شركات ناشئة فائزة من بين أكثر من 200 مشارك، مع Univpm وإقليم ماركي ومؤسسة Fondazione Marche.",fr:"Parmi les 10 startups primées sur plus de 200 participants, avec l'Univpm, la Région Marches et la Fondazione Marche."}},
+ {local:true,logo:'<span class="wm" style="font:800 1.1rem/1 var(--f-display)">🤝 Local network</span>',tag:{en:"In your country",ar:"في بلدك",fr:"Dans ton pays"},h:{en:"Local partners who meet you",ar:"شركاء محليون يلتقون بك",fr:"Des partenaires qui te rencontrent"},p:{en:"Agencies and schools with an active agreement: they meet you, collect your documents and stay in touch with your family.",ar:"وكالات ومدارس لديها اتفاقية فعّالة معنا: تلتقي بك، تجمع أوراقك، وتبقى على تواصل مع عائلتك.",fr:"Agences et écoles avec un accord actif : elles te rencontrent, rassemblent tes documents et restent en contact avec ta famille."},
+  online:{en:"Here we follow you 100% online, on WhatsApp and video calls.",ar:"هنا نتابعك أونلاين بالكامل عبر واتساب ومكالمات الفيديو.",fr:"Ici, on te suit 100 % en ligne, sur WhatsApp et en visio."}}
+];
+
 const FEATS = [
  {en:"Free first consultation and profile check",ar:"أول استشارة مجانية وتقييم ملفك",fr:"Première consultation gratuite et analyse du profil"},
  {en:"Choice of city, university and degree",ar:"اختيار المدينة والجامعة والتخصص",fr:"Choix de la ville, de l'université et du cursus"},
  {en:"Personal step-by-step plan with all deadlines",ar:"خطة شخصية خطوة بخطوة مع كل المواعيد",fr:"Plan personnel étape par étape avec toutes les échéances"},
  {en:"University application and Universitaly pre-enrolment",ar:"التقديم للجامعة والتسجيل المسبق على Universitaly",fr:"Candidature et pré-inscription Universitaly"},
  {en:"Documents: translations, Dichiarazione di valore / CIMEA (guidance)",ar:"الأوراق: الترجمة، Dichiarazione di valore / CIMEA (إرشاد)",fr:"Documents : traductions, Dichiarazione di valore / CIMEA (accompagnement)"},
- {en:"Study visa file: preparation and final check",ar:"ملف فيزا الدراسة: تحضير وفحص نهائي",fr:"Dossier visa : préparation et vérification finale"},
- {en:"Welcome on arrival in Italy",ar:"استقبال عند وصولك لإيطاليا",fr:"Accueil à l'arrivée en Italie"},
+ {en:"Study visa file: preparation and final check",ar:"ملف فيزا الدراسة: تحضير ومراجعة نهائية",fr:"Dossier visa : préparation et vérification finale"},
+ {en:"Welcome on arrival in Italy",ar:"استقبال عند وصولك إلى إيطاليا",fr:"Accueil à l'arrivée en Italie"},
  {en:"Residence permit (permesso di soggiorno)",ar:"تصريح الإقامة (permesso di soggiorno)",fr:"Titre de séjour (permesso di soggiorno)"},
- {en:"Tax code, bank account, SIM, health cover",ar:"الرقم الضريبي، حساب بنكي، خط، تأمين صحي",fr:"Code fiscal, compte bancaire, SIM, couverture santé"},
- {en:"Regional scholarship (DSU) and ISEE parificato",ar:"المنحة الإقليمية (DSU) والـ ISEE parificato",fr:"Bourse régionale (DSU) et ISEE parificato"},
- {en:"Plan B if admission or visa goes wrong",ar:"خطة بديلة إذا ما زبط القبول أو الفيزا",fr:"Plan B si l'admission ou le visa échoue"},
- {en:"Personal buddy and socio-cultural support",ar:"صديق شخصي (buddy) ودعم اجتماعي وثقافي",fr:"Buddy personnel et soutien socioculturel"},
- {en:"Renewals for years 2 and 3: permit, scholarship, enrolment",ar:"التجديد للسنة 2 و3: الإقامة، المنحة، التسجيل",fr:"Renouvellements années 2 et 3 : titre de séjour, bourse, inscription"}
+ {en:"Tax code, bank account, SIM, health cover",ar:"الرقم الضريبي، حساب بنكي، خط هاتف، تأمين صحي",fr:"Code fiscal, compte bancaire, SIM, couverture santé"},
+ {en:"Regional scholarship (DSU) and ISEE parificato",ar:"المنحة الإقليمية (DSU) و ISEE parificato",fr:"Bourse régionale (DSU) et ISEE parificato"},
+ {en:"Plan B if admission or visa goes wrong",ar:"خطة بديلة إذا لم ينجح القبول أو الفيزا",fr:"Plan B si l'admission ou le visa échoue"},
+ {en:"Personal buddy and socio-cultural support",ar:"صديق مرافق (buddy) ودعم اجتماعي وثقافي",fr:"Buddy personnel et soutien socioculturel"},
+ {en:"Renewals for years 2 and 3: permit, scholarship, enrolment",ar:"التجديد للسنتين 2 و3: الإقامة، المنحة، التسجيل",fr:"Renouvellements années 2 et 3 : titre de séjour, bourse, inscription"}
 ];
 const PLANS = [
  {id:"basic",name:"BASIC",price:1600,span:{en:"Until enrolment",ar:"حتى التسجيل",fr:"Jusqu'à l'inscription"},
-  for:{en:"You want to get admitted and get your visa. From there, you manage on your own.",ar:"بدك تنقبل وتاخد الفيزا، وبعدها بتدبّر حالك.",fr:"Tu veux être admis et obtenir ton visa. Ensuite, tu te débrouilles."},
-  on:[0,1,2,3,4,5],
-  support:{en:"WhatsApp support until enrolment",ar:"دعم على واتساب حتى التسجيل",fr:"Support WhatsApp jusqu'à l'inscription"}},
- {id:"intermediate",name:"INTERMEDIATE",price:2000,rec:true,span:{en:"Whole 1st year",ar:"كل السنة الأولى",fr:"Toute la 1re année"},
-  for:{en:"Admission, arrival and your whole first year in Italy. The year when most problems happen.",ar:"القبول، الوصول، وكل سنتك الأولى بإيطاليا. السنة اللي بتصير فيها أغلب المشاكل.",fr:"Admission, arrivée et toute ta première année. L'année où arrivent la plupart des problèmes."},
-  on:[0,1,2,3,4,5,6,7,8,9,10,11],
-  support:{en:"WhatsApp support for 12 months",ar:"دعم على واتساب لمدة 12 شهر",fr:"Support WhatsApp pendant 12 mois"}},
- {id:"top",name:"TOP",price:5500,span:{en:"All 3 years",ar:"الثلاث سنين",fr:"Les 3 années"},
-  for:{en:"Peace of mind for you and your parents until your bachelor's degree.",ar:"راحة بال إلك ولأهلك حتى تتخرج من البكالوريوس.",fr:"La tranquillité pour toi et tes parents jusqu'à ta licence."},
-  on:[0,1,2,3,4,5,6,7,8,9,10,11,12],
-  support:{en:"WhatsApp support for 3 years",ar:"دعم على واتساب لمدة 3 سنين",fr:"Support WhatsApp pendant 3 ans"}}
+  for:{en:"You want to get admitted and get your visa. From there, you feel ready to manage on your own.",ar:"تريد القبول والفيزا، وبعدها تشعر أنك مستعد لتتدبر أمورك وحدك.",fr:"Tu veux être admis et obtenir ton visa. Ensuite, tu te sens prêt à te débrouiller."},
+  on:[0,1,2,3,4,5],support:{en:"WhatsApp support until enrolment",ar:"دعم على واتساب حتى التسجيل",fr:"Support WhatsApp jusqu'à l'inscription"}},
+ {id:"intermediate",name:"INTERMEDIATE",price:2000,rec:true,span:{en:"Whole 1st year",ar:"السنة الأولى كاملة",fr:"Toute la 1re année"},
+  for:{en:"Admission, arrival and your whole first year. The year when most problems happen, and when you'll be glad we're there.",ar:"القبول والوصول وسنتك الأولى كاملة. السنة التي تحدث فيها معظم المشاكل، وستكون سعيداً بوجودنا فيها.",fr:"Admission, arrivée et toute ta première année. L'année où arrivent la plupart des problèmes, et où tu seras content qu'on soit là."},
+  on:[0,1,2,3,4,5,6,7,8,9,10,11],support:{en:"WhatsApp support for 12 months",ar:"دعم على واتساب لمدة 12 شهراً",fr:"Support WhatsApp pendant 12 mois"}},
+ {id:"top",name:"TOP",price:5500,span:{en:"All 3 years",ar:"السنوات الثلاث",fr:"Les 3 années"},
+  for:{en:"Peace of mind for you and your parents, until your bachelor's degree.",ar:"راحة بال لك ولأهلك حتى تتخرج من البكالوريوس.",fr:"La tranquillité pour toi et tes parents, jusqu'à ta licence."},
+  on:[0,1,2,3,4,5,6,7,8,9,10,11,12],support:{en:"WhatsApp support for 3 years",ar:"دعم على واتساب لمدة 3 سنوات",fr:"Support WhatsApp pendant 3 ans"}}
 ];
-
 const ADDONS = [
  {icon:'<path d="M9 3h6M10 3v5L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
-  h:{en:"Medicine entrance test",ar:"امتحان القبول للطب",fr:"Test d'entrée en médecine"},
-  p:{en:"Preparation for the Medicine and Dentistry admission test (IMAT for English-taught programmes).",ar:"تحضير لامتحان القبول في الطب وطب الأسنان (IMAT للبرامج بالإنجليزي).",fr:"Préparation au test d'admission en médecine et dentaire (IMAT pour les cursus en anglais)."}},
+  h:{en:"Medicine entrance test",ar:"امتحان القبول في الطب",fr:"Test d'entrée en médecine"},p:{en:"Preparation for the Medicine and Dentistry admission test (IMAT for English-taught programmes).",ar:"التحضير لامتحان القبول في الطب وطب الأسنان (IMAT للبرامج بالإنجليزية).",fr:"Préparation au test d'admission en médecine et dentaire (IMAT pour les cursus en anglais)."}},
  {icon:'<path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
-  h:{en:"Safe housing search",ar:"بحث آمن عن سكن",fr:"Recherche de logement sécurisée"},
-  p:{en:"We find and check a room before you land, and review the contract with you. No scams, no hotel weeks.",ar:"منلاقيلك غرفة ومنتأكد منها قبل ما توصل، ومنراجع العقد معك. بدون نصب وبدون أسابيع بالفندق.",fr:"On trouve et vérifie une chambre avant ton arrivée, et on relit le contrat avec toi. Sans arnaque."}},
+  h:{en:"Safe housing search",ar:"بحث آمن عن السكن",fr:"Recherche de logement sécurisée"},p:{en:"We find and check a room before you land, and review the contract with you. No scams, no weeks in a hotel.",ar:"نجد لك غرفة ونتأكد منها قبل وصولك، ونراجع العقد معك. بدون احتيال وبدون أسابيع في الفندق.",fr:"On trouve et vérifie une chambre avant ton arrivée, et on relit le contrat avec toi. Sans arnaque."}},
  {icon:'<path d="M4 5h16v11H8l-4 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
-  h:{en:"Italian course + certificate",ar:"دورة إيطالي + شهادة",fr:"Cours d'italien + certification"},
-  p:{en:"From zero to B2 with our partner school Inlingua, online or in Ancona, plus the official language exam.",ar:"من الصفر لمستوى B2 مع مدرستنا الشريكة Inlingua، أونلاين أو بأنكونا، مع امتحان اللغة الرسمي.",fr:"De zéro à B2 avec notre école partenaire Inlingua, en ligne ou à Ancône, plus l'examen officiel."}}
+  h:{en:"Italian course + certificate",ar:"دورة إيطالية + شهادة",fr:"Cours d'italien + certification"},p:{en:"From zero to B2 with our partner school Inlingua, online or in Ancona, plus the official language exam.",ar:"من الصفر إلى مستوى B2 مع مدرستنا الشريكة Inlingua، أونلاين أو في أنكونا، مع امتحان اللغة الرسمي.",fr:"De zéro à B2 avec notre école partenaire Inlingua, en ligne ou à Ancône, plus l'examen officiel."}}
 ];
-
 const STORIES = [
- {i:"AH",n:{en:"Student name",ar:"اسم الطالب/ة",fr:"Prénom"},c:{en:"Algiers → Ancona · Engineering",ar:"الجزائر ← أنكونا · هندسة",fr:"Alger → Ancône · Ingénierie"},q:{en:"Short real quote about the visa or arrival, ideally linked to a 30-second Instagram reel.",ar:"اقتباس حقيقي قصير عن الفيزا أو الوصول، والأفضل مع ريل إنستغرام 30 ثانية.",fr:"Courte citation réelle sur le visa ou l'arrivée, idéalement avec un reel Instagram de 30 s."}},
- {i:"MR",n:{en:"Student name",ar:"اسم الطالب/ة",fr:"Prénom"},c:{en:"Kuwait → Milan · Economics",ar:"الكويت ← ميلانو · اقتصاد",fr:"Koweït → Milan · Économie"},q:{en:"Short real quote about choosing the university or the scholarship.",ar:"اقتباس حقيقي قصير عن اختيار الجامعة أو المنحة.",fr:"Courte citation réelle sur le choix de l'université ou la bourse."}},
- {i:"LM",n:{en:"Student name",ar:"اسم الطالب/ة",fr:"Prénom"},c:{en:"Nazareth → Ancona · Medicine",ar:"الناصرة ← أنكونا · طب",fr:"Nazareth → Ancône · Médecine"},q:{en:"Short real quote from a parent about trust and updates.",ar:"اقتباس حقيقي قصير من أحد الأهل عن الثقة والتحديثات.",fr:"Courte citation réelle d'un parent sur la confiance et le suivi."}}
+ {p:"amira",n:{en:"Student name",ar:"اسم الطالب/ة",fr:"Prénom"},c:{en:"Algiers → Ancona · Engineering",ar:"الجزائر ← أنكونا · هندسة",fr:"Alger → Ancône · Ingénierie"},q:{en:"Short real quote about the visa or arrival, ideally linked to a 30-second Instagram reel.",ar:"اقتباس حقيقي قصير عن الفيزا أو الوصول، ويفضل مع فيديو ريلز مدته 30 ثانية.",fr:"Courte citation réelle sur le visa ou l'arrivée, idéalement avec un reel Instagram de 30 s."}},
+ {p:"karim",n:{en:"Student name",ar:"اسم الطالب/ة",fr:"Prénom"},c:{en:"Kuwait → Milan · Economics",ar:"الكويت ← ميلانو · اقتصاد",fr:"Koweït → Milan · Économie"},q:{en:"Short real quote about choosing the university or the scholarship.",ar:"اقتباس حقيقي قصير عن اختيار الجامعة أو المنحة.",fr:"Courte citation réelle sur le choix de l'université ou la bourse."}},
+ {p:"mama",n:{en:"Parent name",ar:"اسم وليّ الأمر",fr:"Prénom du parent"},c:{en:"Parent of a Medicine student",ar:"والدة طالب طب",fr:"Parent d'un étudiant en médecine"},q:{en:"Short real quote from a parent about trust and updates.",ar:"اقتباس حقيقي قصير من أحد الأهل عن الثقة والمتابعة.",fr:"Courte citation réelle d'un parent sur la confiance et le suivi."}}
 ];
-
 const FAQ = [
- {q:{en:"Do I need to speak Italian?",ar:"لازم أحكي إيطالي؟",fr:"Dois-je parler italien ?"},a:{en:"Not always. Many degrees are taught entirely in English. For Italian-taught degrees you usually need B1 or B2: we can get you there with our partner school Inlingua.",ar:"مش دايماً. في كثير تخصصات بتندرس بالإنجليزي بالكامل. للتخصصات بالإيطالي غالباً بتحتاج مستوى B1 أو B2، ومنوصلك لهون مع مدرستنا الشريكة Inlingua.",fr:"Pas toujours. Beaucoup de cursus sont entièrement en anglais. Pour les cursus en italien, il faut souvent B1 ou B2 : on t'y amène avec notre école partenaire Inlingua."}},
- {q:{en:"When should I start?",ar:"إمتى لازم أبلّش؟",fr:"Quand dois-je commencer ?"},a:{en:"Ideally 9 to 12 months before the September intake. Pre-enrolment and visa deadlines fall between spring and summer, and starting early gives you more universities to choose from.",ar:"الأفضل قبل 9 لـ 12 شهر من بداية الدراسة بسبتمبر. مواعيد التسجيل المسبق والفيزا بين الربيع والصيف، وكل ما بلّشت أبكر بيصير عندك خيارات أكثر.",fr:"Idéalement 9 à 12 mois avant la rentrée de septembre. Les délais de pré-inscription et de visa tombent entre le printemps et l'été."}},
- {q:{en:"Can I get a scholarship?",ar:"بقدر آخد منحة؟",fr:"Puis-je obtenir une bourse ?"},a:{en:"Yes, regional DSU scholarships are open to international students, based on family income and, from the second year, on credits earned. We prepare the ISEE parificato and the application in the Intermediate and Top plans.",ar:"نعم، منح DSU الإقليمية مفتوحة للطلاب الدوليين، حسب دخل العائلة، ومن السنة الثانية حسب النقاط اللي جمعتها. منحضّر الـ ISEE parificato والطلب بباقة Intermediate وTop.",fr:"Oui, les bourses régionales DSU sont ouvertes aux étudiants internationaux, selon les revenus puis les crédits obtenus. On prépare l'ISEE parificato et la demande dans les formules Intermediate et Top."}},
- {q:{en:"Can I work while studying?",ar:"بقدر أشتغل وأنا بدرس؟",fr:"Puis-je travailler pendant mes études ?"},a:{en:"Yes. With a study permit you can work part-time up to 20 hours a week. After graduating you can request a permit to stay and look for work.",ar:"نعم. بتصريح الدراسة بتقدر تشتغل دوام جزئي لحد 20 ساعة بالأسبوع. وبعد التخرج بتقدر تطلب تصريح لتضل وتدوّر على شغل.",fr:"Oui, jusqu'à 20 heures par semaine avec un titre de séjour étudiant. Après le diplôme, tu peux demander un titre pour chercher un emploi."}},
- {q:{en:"What if I'm not admitted or my visa is refused?",ar:"شو بصير إذا ما انقبلت أو انرفضت الفيزا؟",fr:"Et si je ne suis pas admis ou si le visa est refusé ?"},a:{en:"We build a Plan B with you from the start: other universities, other intakes, other cities. It is included in the Intermediate and Top plans.",ar:"منبني معك خطة بديلة من البداية: جامعات ثانية، مواعيد ثانية، مدن ثانية. هي مشمولة بباقة Intermediate وTop.",fr:"On construit un plan B dès le départ : autres universités, autres rentrées, autres villes. Inclus dans Intermediate et Top."}},
- {q:{en:"Will I find halal food and a community?",ar:"رح لاقي أكل حلال وجالية؟",fr:"Vais-je trouver de la nourriture halal et une communauté ?"},a:{en:"Yes. Every big Italian city has halal butchers and restaurants, mosques or prayer rooms, and Arab student communities. Your buddy introduces you from the first week.",ar:"أكيد. كل مدينة إيطالية كبيرة فيها ملاحم ومطاعم حلال، مساجد أو مصليات، وجاليات طلاب عرب. والـ buddy تبعك بيعرّفك عليهم من أول أسبوع.",fr:"Oui. Chaque grande ville a des boucheries et restaurants halal, des mosquées ou salles de prière et des communautés d'étudiants arabes. Ton buddy te les présente dès la première semaine."}},
- {q:{en:"Are you a university? Do you guarantee admission?",ar:"إنتو جامعة؟ بتضمنولي القبول؟",fr:"Êtes-vous une université ? Garantissez-vous l'admission ?"},a:{en:"No. We are an independent Italian company based in Ancona, with a formal agreement with Università Politecnica delle Marche, and we work with universities across Italy. Universities decide admissions: we make sure your file is complete, correct and on time.",ar:"لا. نحن شركة إيطالية مستقلة مقرها أنكونا، عندنا اتفاقية رسمية مع جامعة البوليتكنيك في ماركي، ومنشتغل مع جامعات بكل إيطاليا. القبول قرار الجامعة، ونحن منتأكد إنو ملفك كامل وصحيح وبوقته.",fr:"Non. Nous sommes une entreprise italienne indépendante basée à Ancône, avec une convention avec l'Università Politecnica delle Marche. L'université décide : nous garantissons un dossier complet, correct et dans les délais."}},
- {q:{en:"How do I pay?",ar:"كيف بدفع؟",fr:"Comment payer ?"},a:{en:"Write to us on WhatsApp: we explain the payment options for your country before you sign anything.",ar:"راسلنا على واتساب ومنشرحلك طرق الدفع المتاحة لبلدك قبل ما توقّع على أي شي.",fr:"Écris-nous sur WhatsApp : on t'explique les modes de paiement pour ton pays avant toute signature."}}
+ {q:{en:"Do I need to speak Italian?",ar:"هل يجب أن أتكلم الإيطالية؟",fr:"Dois-je parler italien ?"},a:{en:"Not always. Many degrees are taught entirely in English. For Italian-taught degrees you usually need B1 or B2: we can get you there with our partner school Inlingua.",ar:"ليس دائماً. الكثير من التخصصات تُدرَّس بالإنجليزية بالكامل. أما التخصصات بالإيطالية فتحتاج عادةً مستوى B1 أو B2، ونوصلك إليه مع مدرستنا الشريكة Inlingua.",fr:"Pas toujours. Beaucoup de cursus sont entièrement en anglais. Pour les cursus en italien, il faut souvent B1 ou B2 : on t'y amène avec notre école partenaire Inlingua."}},
+ {q:{en:"When should I start?",ar:"متى يجب أن أبدأ؟",fr:"Quand dois-je commencer ?"},a:{en:"Ideally 9 to 12 months before the September intake. Pre-enrolment and visa deadlines fall between spring and summer, and starting early gives you more universities to choose from.",ar:"الأفضل قبل 9 إلى 12 شهراً من بداية الدراسة في سبتمبر. مواعيد التسجيل المسبق والفيزا بين الربيع والصيف، وكلما بدأت أبكر كانت خياراتك أكثر.",fr:"Idéalement 9 à 12 mois avant la rentrée de septembre. Les délais de pré-inscription et de visa tombent entre le printemps et l'été."}},
+ {q:{en:"Can I get a scholarship?",ar:"هل يمكنني الحصول على منحة؟",fr:"Puis-je obtenir une bourse ?"},a:{en:"Yes, regional DSU scholarships are open to international students, based on family income and, from the second year, on credits earned. We prepare the ISEE parificato and the application in the Intermediate and Top plans.",ar:"نعم، منح DSU الإقليمية مفتوحة للطلاب الدوليين، حسب دخل العائلة، ومن السنة الثانية حسب النقاط الدراسية. نجهّز ISEE parificato والطلب في باقتَي Intermediate وTop.",fr:"Oui, les bourses régionales DSU sont ouvertes aux étudiants internationaux, selon les revenus puis les crédits obtenus. On prépare l'ISEE parificato et la demande dans les formules Intermediate et Top."}},
+ {q:{en:"Can I work while studying?",ar:"هل يمكنني العمل أثناء الدراسة؟",fr:"Puis-je travailler pendant mes études ?"},a:{en:"Yes. With a study permit you can work part-time up to 20 hours a week. After graduating you can request a permit to stay and look for work.",ar:"نعم. بتصريح الدراسة يمكنك العمل بدوام جزئي حتى 20 ساعة أسبوعياً. وبعد التخرج يمكنك طلب تصريح للبقاء والبحث عن عمل.",fr:"Oui, jusqu'à 20 heures par semaine avec un titre de séjour étudiant. Après le diplôme, tu peux demander un titre pour chercher un emploi."}},
+ {q:{en:"What if I'm not admitted or my visa is refused?",ar:"ماذا يحدث إذا لم أُقبل أو رُفضت الفيزا؟",fr:"Et si je ne suis pas admis ou si le visa est refusé ?"},a:{en:"We build a Plan B with you from the start: other universities, other intakes, other cities. It is included in the Intermediate and Top plans.",ar:"نبني معك خطة بديلة من البداية: جامعات أخرى، مواعيد أخرى، مدن أخرى. وهي مشمولة في باقتَي Intermediate وTop.",fr:"On construit un plan B dès le départ : autres universités, autres rentrées, autres villes. Inclus dans Intermediate et Top."}},
+ {q:{en:"Will I find halal food and a community?",ar:"هل سأجد طعاماً حلالاً وجالية عربية؟",fr:"Vais-je trouver de la nourriture halal et une communauté ?"},a:{en:"Yes. Every big Italian city has halal butchers and restaurants, mosques or prayer rooms, and Arab student communities. Your buddy introduces you from the first week.",ar:"نعم. في كل مدينة إيطالية كبيرة ملاحم ومطاعم حلال، ومساجد أو مصليات، وجاليات من الطلاب العرب. صديقك المرافق يعرّفك عليها من الأسبوع الأول.",fr:"Oui. Chaque grande ville a des boucheries et restaurants halal, des mosquées ou salles de prière et des communautés d'étudiants arabes. Ton buddy te les présente dès la première semaine."}},
+ {q:{en:"Are you a university? Do you guarantee admission?",ar:"هل أنتم جامعة؟ هل تضمنون القبول؟",fr:"Êtes-vous une université ? Garantissez-vous l'admission ?"},a:{en:"No. We are an independent Italian company based in Ancona, with a formal agreement with Università Politecnica delle Marche, and we work with universities across Italy. Universities decide admissions: we make sure your file is complete, correct and on time.",ar:"لا. نحن شركة إيطالية مستقلة مقرها أنكونا، لدينا اتفاقية رسمية مع جامعة البوليتكنيك في ماركي، ونعمل مع جامعات في كل إيطاليا. القبول قرار الجامعة، ونحن نتأكد أن ملفك كامل وصحيح وفي وقته.",fr:"Non. Nous sommes une entreprise italienne indépendante basée à Ancône, avec une convention avec l'Università Politecnica delle Marche. L'université décide : nous garantissons un dossier complet, correct et dans les délais."}},
+ {q:{en:"How do I pay?",ar:"كيف أدفع؟",fr:"Comment payer ?"},a:{en:"Write to us on WhatsApp: we explain the payment options for your country before you sign anything.",ar:"راسلنا على واتساب، وسنشرح لك طرق الدفع المتاحة في بلدك قبل أن توقّع أي شيء.",fr:"Écris-nous sur WhatsApp : on t'explique les modes de paiement pour ton pays avant toute signature."}}
 ];
 
-/* per-country variants: ?c=dz|kw|il or #dz|#kw|#il */
-const COUNTRY = {
- dz:{code:"ALG",lang:"ar",dur:{en:"≈ 2h",ar:"≈ ساعتين",fr:"≈ 2 h"},name:{en:"Algeria",ar:"الجزائر",fr:"Algérie"}},
- kw:{code:"KWI",lang:"ar",dur:{en:"≈ 5h30",ar:"≈ 5:30 ساعات",fr:"≈ 5 h 30"},name:{en:"Kuwait",ar:"الكويت",fr:"Koweït"}},
- il:{code:"HOME",lang:"ar",dur:{en:"≈ 3h30",ar:"≈ 3:30 ساعات",fr:"≈ 3 h 30"},name:null}
-};
-
-/* ---------- render ---------- */
+/* ---------- state + render ---------- */
+const COUNTRY = {dz:{lang:"ar"},kw:{lang:"ar"},il:{lang:"ar"}};
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ICON = {y:"✓",n:"✕",p:"~"};
 let lang = "en", country = null, activePlan = "intermediate";
+const quiz = {step:0, a:{}};
 
 function money(v){
   if (lang==="ar") return new Intl.NumberFormat("en-US").format(v) + " يورو";
-  const loc = lang==="ar" ? "ar-u-nu-latn" : lang==="fr" ? "fr-FR" : "en-IE";
-  return new Intl.NumberFormat(loc,{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(v);
+  return new Intl.NumberFormat(lang==="fr"?"fr-FR":"en-IE",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(v);
+}
+function waHref(msg){ return `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`; }
+
+function renderQuiz(){
+  const t = T[lang], q = $("#quiz");
+  const dots = [0,1,2].map(i=>`<i class="${i<=quiz.step || quiz.step===3 ? "on":""}"></i>`).join("");
+  if (quiz.step < 3){
+    const s = QUIZ[quiz.step];
+    q.innerHTML = `<div class="quiz-top"><span class="eyebrow">${esc(t.q_eye)}</span><span class="dots" aria-hidden="true">${dots}</span></div>
+      <div class="qstep"><small style="color:var(--muted);font-weight:600">${esc(t.q_step.replace("{n}",quiz.step+1))}</small>
+      <h3>${esc(t["q"+(quiz.step+1)])}</h3>
+      <div class="opts">${s.opts.map(o=>`<button type="button" class="opt" data-k="${s.k}" data-v="${o.v}"><span class="em" aria-hidden="true">${o.em}</span><span>${esc(o.t[lang])}</span></button>`).join("")}</div>
+      ${quiz.step>0?`<button type="button" class="qback" data-back>${esc(t.q_back)}</button>`:""}</div>`;
+  } else {
+    const label = k => { const s = QUIZ.find(x=>x.k===k); return s.opts.find(o=>o.v===quiz.a[k]).t[lang]; };
+    const msg = t.wa_quiz.replace("{f}",label("field")).replace("{l}",label("level")).replace("{s}",label("start"));
+    q.innerHTML = `<div class="quiz-top"><span class="eyebrow">${esc(t.q_eye)}</span><span class="dots" aria-hidden="true">${dots}</span></div>
+      <div class="qres"><h3>${esc(t.res_h)}</h3>
+      <ul><li><span class="ic y">✓</span><span>${esc(RES_FIELD[quiz.a.field][lang])}</span></li>
+          <li><span class="ic y">✓</span><span>${esc(RES_TIME[quiz.a.start][lang])}</span></li>
+          <li><span class="ic y">✓</span><span>${esc(t.res_more)}</span></li></ul>
+      <div class="acts"><a class="btn btn-wa" href="${waHref(msg)}" target="_blank" rel="noopener">${esc(t.res_cta)}</a><a class="btn btn-line" href="#plans">${esc(t.res_alt)}</a></div>
+      <button type="button" class="qback" data-restart>${esc(t.restart)}</button></div>`;
+  }
 }
 
 function render(){
@@ -832,31 +1101,55 @@ function render(){
   document.querySelectorAll("[data-i18n-html]").forEach(el => { const v = t[el.dataset.i18nHtml]; if (v!=null) el.innerHTML = v; });
   document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang===lang)));
 
-  // boarding pass personalisation
-  const cc = country && COUNTRY[country];
-  $("#fromCode").firstChild.nodeValue = cc ? cc.code : "HOME";
-  $("#fromName").textContent = cc && cc.name ? cc.name[lang] : t.home;
-  $("#flightDur").textContent = cc ? cc.dur[lang] : t.dur_default;
+  const mq = Object.values(OUTLET).map(o=>o.wm).join("");
+  $("#marquee").innerHTML = mq + mq;
 
-  $("#stamps").innerHTML = STAMPS.map((s,i) =>
-    `<div class="doc"><span class="n">${i+1}</span><b lang="it">${esc(s.it)}</b><span>${esc(s[lang])}</span></div>`).join("");
+  renderQuiz();
 
-  const cols = t.cmp_cols;
+  $("#worryGrid").innerHTML = WORRIES.map(w =>
+    `<article class="worry" tabindex="0"><div class="w-face" aria-hidden="true"><img class="f-worry" src="assets/peeps/b-${w.p}-worry.svg" alt=""><img class="f-happy" src="assets/peeps/b-${w.p}-happy.svg" alt=""></div>
+     <span class="w-who">${esc(w.who==="p"?t.who_p:t.who_s)}</span><p class="w-q">“${esc(w.q[lang])}”</p>
+     <p class="w-a"><span class="ic y" aria-hidden="true">✓</span><span>${esc(w.a[lang])}</span></p></article>`).join("");
+  observeWorries();
+
+  $("#facts").innerHTML = FACTS.map(f=>`<div class="fact"><div class="k">${esc(f.k[lang])}</div><h3>${esc(f.h[lang])}</h3><p>${esc(f.p[lang])}</p></div>`).join("");
+  $("#bars").innerHTML = BARS.map(b =>
+    `<div class="bar${b.it?" it":""}"><div class="bar-top"><b>${esc(b.n[lang])}</b><span>${esc(b.lab)}</span></div><div class="track"><div class="fill" style="width:${Math.max(3,b.v/30000*100)}%"></div></div></div>`).join("");
+
+  const wide = window.matchMedia("(min-width:800px)").matches, cols = t.cmp_cols;
   $("#compareTable").innerHTML =
-    `<div class="c-head">${window.matchMedia("(min-width:800px)").matches ? "<div></div>" : ""}<div>${esc(cols[0])}</div><div>${esc(cols[1])}</div><div class="us">${esc(cols[2])}</div></div>` +
+    `<div class="c-head">${wide?"<div></div>":""}<div>${esc(cols[0])}</div><div>${esc(cols[1])}</div><div class="us">${esc(cols[2])}</div></div>` +
     CMP.map(r => `<div class="c-row${r.cost?" c-cost":""}"><div class="c-label">${esc(r.l[lang])}</div>` +
       r.c.map((c,i)=>`<div class="c-cell${i===2?" us":""}"><span class="ic ${c[0]}" aria-hidden="true">${ICON[c[0]]}</span><span>${esc(c[1][lang])}</span></div>`).join("") + `</div>`).join("");
 
   $("#road").innerHTML = ROAD.map((s,i) =>
     `<div class="step"><div class="step-top"><span class="pin"><span>${i+1}</span></span><div><h3>${esc(s.t[lang])}</h3><div class="when">${esc(s.w[lang])}</div></div></div><ul>${s.i[lang].map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
 
-  $("#whyGrid").innerHTML = WHY.map(w =>
-    `<div class="why-card"><div class="k">${esc(w.k[lang])}</div><h3>${esc(w.h[lang])}</h3><p>${esc(w.p[lang])}</p></div>`).join("");
+  $("#newsGrid").innerHTML = NEWS.map(n =>
+    `<article class="ns"><div class="ns-top"><span class="ns-date">${esc(n.date[lang])}</span><span class="ns-tag">${esc(n.tag[lang])}</span></div>
+     <h3>${esc(n.h[lang])}</h3><p>${esc(n.p[lang])}</p>${n.quote?`<p class="ns-quote">${esc(n.quote[lang])}</p>`:""}
+     <div class="ns-out"><small>${esc(t.read_on)}</small><div class="ns-logos">${n.links.map(([o,u])=>`<a href="${u}" target="_blank" rel="noopener">${OUTLET[o].wm}</a>`).join("")}</div></div></article>`).join("");
 
-  const max = 30000;
-  $("#bars").innerHTML = BARS.map(b =>
-    `<div class="bar${b.it?" it":""}"><div class="bar-top"><b>${esc(b.n[lang])}</b><span>${esc(b.lab)}</span></div><div class="track"><div class="fill" style="width:${Math.max(3,Math.min(100,b.v/max*100))}%"></div></div></div>`).join("");
+  const local = country ? LOCAL[country] : LOCAL.all;
+  $("#partnerGrid").innerHTML = PARTNERS.map(p =>
+    `<article class="pt"><div class="pt-logo">${p.logo}</div><span class="pt-tag">${esc(p.tag[lang])}</span><h3>${esc(p.h[lang])}</h3><p>${esc(p.p[lang])}</p>
+     ${p.local ? (local.length ? `<div class="chips">${local.map(n=>`<span class="chip">${esc(n)}</span>`).join("")}</div>` : `<p><b>${esc(p.online[lang])}</b></p>`) : ""}</article>`).join("");
 
+  renderPlans();
+
+  $("#addons").innerHTML = ADDONS.map(a =>
+    `<div class="addon"><span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true">${a.icon}</svg></span><h4>${esc(a.h[lang])}</h4><p>${esc(a.p[lang])}</p><span class="ap">${esc(t.onrequest)}</span></div>`).join("");
+
+  $("#storiesGrid").innerHTML = STORIES.map(s =>
+    `<figure class="story"><span class="ph">${esc(t.placeholder)}</span><div class="story-who"><span class="av"><img src="assets/peeps/b-${s.p}-happy.svg" alt=""></span><div><b>${esc(s.n[lang])}</b><span>${esc(s.c[lang])}</span></div></div><q>${esc(s.q[lang])}</q></figure>`).join("");
+
+  $("#faqList").innerHTML = FAQ.map((f,i) => `<details${i===0?" open":""}><summary>${esc(f.q[lang])}</summary><p>${esc(f.a[lang])}</p></details>`).join("");
+
+  document.querySelectorAll(".js-wa").forEach(a => { a.href = waHref(t.greet); });
+}
+
+function renderPlans(){
+  const t = T[lang];
   $("#planTabs").innerHTML = PLANS.map(p =>
     `<button type="button" role="tab" data-plan-tab="${p.id}" aria-selected="${p.id===activePlan}">${p.name}<small>${money(p.price)}</small></button>`).join("");
   $("#plansGrid").innerHTML = PLANS.map(p =>
@@ -866,25 +1159,20 @@ function render(){
       <div class="price"><b>${money(p.price)}</b><span>${esc(t.onetime)}</span></div>
       <ul class="feat">${FEATS.map((f,i)=>{const on=p.on.includes(i);return `<li class="${on?"":"off"}"><span class="ic ${on?"y":"n"}" aria-hidden="true">${on?"✓":"✕"}</span><span>${esc(f[lang])}</span></li>`}).join("")}
         <li><span class="ic y" aria-hidden="true">✓</span><span><b>${esc(p.support[lang])}</b></span></li></ul>
-      <a class="btn ${p.rec?"btn-wa":"btn-navy"} js-wa" data-plan="${p.name}" href="#" target="_blank" rel="noopener">${esc(t.choose)} ${p.name}</a>
+      <a class="btn ${p.rec?"btn-wa":"btn-navy"}" href="${waHref(`${t.greet} (${p.name})`)}" target="_blank" rel="noopener">${esc(t.choose)} ${p.name}</a>
     </article>`).join("");
+}
 
-  $("#addons").innerHTML = ADDONS.map(a =>
-    `<div class="addon"><span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true">${a.icon}</svg></span><h4>${esc(a.h[lang])}</h4><p>${esc(a.p[lang])}</p><span class="ap">${esc(t.onrequest)}</span></div>`).join("");
-
-  $("#storiesGrid").innerHTML = STORIES.map(s =>
-    `<figure class="story" style="margin:0"><span class="ph">${esc(t.placeholder)}</span><div class="story-who"><span class="av">${s.i}</span><div><b>${esc(s.n[lang])}</b><span>${esc(s.c[lang])}</span></div></div><q>${esc(s.q[lang])}</q></figure>`).join("");
-
-  $("#faqList").innerHTML = FAQ.map((f,i) =>
-    `<details${i===0?" open":""}><summary>${esc(f.q[lang])}</summary><p>${esc(f.a[lang])}</p></details>`).join("");
-
-  // WhatsApp deep links with a prefilled message in the visitor's language
-  const greet = {en:"Hi Espresso Study! I'd like a free consultation to study in Italy.",ar:"مرحبا Espresso Study! بدي استشارة مجانية للدراسة في إيطاليا.",fr:"Bonjour Espresso Study ! Je voudrais une consultation gratuite pour étudier en Italie."}[lang];
-  document.querySelectorAll(".js-wa").forEach(a => {
-    const plan = a.dataset.plan;
-    const msg = plan ? `${greet} (${plan})` : greet;
-    a.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
-  });
+/* worried face turns into a smile when the card scrolls into view (or on tap) */
+let io;
+function observeWorries(){
+  const cards = document.querySelectorAll(".worry");
+  if (!("IntersectionObserver" in window)) { cards.forEach(c=>c.classList.add("solved")); return; }
+  if (io) io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ setTimeout(()=>e.target.classList.add("solved"), 700); io.unobserve(e.target); }
+  }), {threshold:.6});
+  cards.forEach(c => io.observe(c));
 }
 
 function setLang(l, save){
@@ -893,7 +1181,6 @@ function setLang(l, save){
   render();
 }
 
-// initial language: ?lang → saved choice → country → browser
 const qs = new URLSearchParams(location.search);
 const hash = location.hash.replace("#","");
 country = COUNTRY[qs.get("c")] ? qs.get("c") : (COUNTRY[hash] ? hash : null);
@@ -901,25 +1188,34 @@ let saved = null; try { saved = localStorage.getItem("es_lang"); } catch(e){}
 const nav = (navigator.language||"en").slice(0,2);
 setLang(qs.get("lang") || saved || (country && COUNTRY[country].lang) || (["ar","fr"].includes(nav) ? nav : "en"));
 
-$("#planTabs").addEventListener("click", e => {
-  const b = e.target.closest("[data-plan-tab]"); if (!b) return;
-  activePlan = b.dataset.planTab; render();
-});
+/* events */
 document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang, true)));
 window.matchMedia("(min-width:800px)").addEventListener("change", render);
-
-// lead form → opens WhatsApp with a structured message
+$("#quiz").addEventListener("click", e => {
+  const o = e.target.closest(".opt");
+  if (o){ quiz.a[o.dataset.k] = o.dataset.v; quiz.step++; renderQuiz(); return; }
+  if (e.target.closest("[data-back]")){ quiz.step = Math.max(0, quiz.step-1); renderQuiz(); return; }
+  if (e.target.closest("[data-restart]")){ quiz.step = 0; quiz.a = {}; renderQuiz(); }
+});
+document.querySelectorAll("[data-quiz-start]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  $("#quiz").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+  setTimeout(()=>{ const f = $("#quiz .opt"); if (f) f.focus({preventScroll:true}); }, 500);
+}));
+$("#worryGrid").addEventListener("click", e => { const c = e.target.closest(".worry"); if (c) c.classList.toggle("solved"); });
+$("#planTabs").addEventListener("click", e => {
+  const b = e.target.closest("[data-plan-tab]"); if (!b) return;
+  activePlan = b.dataset.planTab; renderPlans();
+});
 $("#leadForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = e.target, t = T[lang], ok = $("#formOk");
   const name = f.name.value.trim(), from = f.from.value.trim(), wa = f.wa.value.trim();
   if (!name || !from || !wa){ ok.hidden = false; ok.textContent = t.f_err; return; }
-  const lvl = f.level.options[f.level.selectedIndex].text, when = f.when.options[f.when.selectedIndex].text;
-  const lines = [`${t.f_name}: ${name}`, `${t.f_from}: ${from}`, `${t.f_wa}: ${wa}`, `${t.f_level}: ${lvl}`, `${t.f_when}: ${when}`];
+  const lines = [`${t.f_name}: ${name}`, `${t.f_from}: ${from}`, `${t.f_wa}: ${wa}`, `${t.f_level}: ${f.level.options[f.level.selectedIndex].text}`, `${t.f_when}: ${f.when.options[f.when.selectedIndex].text}`];
   if (f.msg.value.trim()) lines.push(f.msg.value.trim());
   const a = document.createElement("a");
-  a.href = `https://wa.me/${WA}?text=${encodeURIComponent(lines.join("\n"))}`;
-  a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+  a.href = waHref(lines.join("\n")); a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
   ok.hidden = false; ok.textContent = t.f_ok;
 });
 })();
