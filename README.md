@@ -1,55 +1,43 @@
-# Espresso Study: landing page (bozza v2)
+# Espresso Study: landing page (v3, pre-pubblicazione)
 
-Landing page statica, mobile first, per gli studenti arabofoni che vogliono studiare in Italia.
-Mercati prioritari: Algeria, Kuwait, studenti arabi in Israele.
+Landing statica, mobile first, in arabo (da destra a sinistra), inglese e francese. WhatsApp è il canale di conversione principale.
 
-## Struttura
+## File
 
-- `index.html`: tutta la pagina in un unico file (HTML, CSS e JS inline, nessun build).
-- `assets/peeps/`: personaggi illustrati (Open Peeps, licenza CC0), a figura intera e a mezzo busto. I mezzi busti hanno due versioni, preoccupata (`-worry`) e sorridente (`-happy`).
-- `assets/italy/`: monumenti italiani disegnati in SVG e `skyline.svg`, il panorama animato dell'hero.
-- `tools/`: script per rigenerare personaggi e monumenti (istruzioni in testa a ogni file).
+- `index.html`: la pagina (HTML, CSS e JS inline, nessun build).
+- `privacy.html`, `cookie-policy.html`: bozze delle informative, con i campi da completare evidenziati in giallo `[TO COMPLETE: …]`.
+- `assets/fonts/`: font ospitati sul sito (licenza SIL OFL), nessuna richiesta a Google Fonts.
+- `assets/peeps/`, `assets/italy/`: illustrazioni. `tools/`: script per rigenerarle.
 
-Per vederla basta aprire `index.html` nel browser o pubblicarla su un hosting statico.
+## Aggiornare i contenuti (inizio dello `<script>` in `index.html`)
 
-## Sezioni, in ordine
+Tutto si modifica nel blocco **EDITABLE CONTENT**, senza toccare la logica:
 
-1. **Hero animato**: panorama italiano che scorre, studenti che camminano, notifiche ("Visto approvato ✅").
-2. **"Ne parlano"**: nastro che scorre con i nomi delle testate.
-3. **Quiz "Posso studiare in Italia?"**: 3 domande e un risultato personalizzato che apre WhatsApp con le risposte.
-4. **Le paure** di studenti e genitori, con la risposta di Espresso Study. Il personaggio passa da preoccupato a sorridente.
-5. **Cosa ti aspetta in Italia**: cartoline illustrate, dati chiave e confronto delle rette.
-6. **Confronto** tra fare da soli, solo con l'università e con Espresso Study.
-7. **Percorso** in 4 tappe.
-8. **Rassegna stampa**: Gaza → Ancona e premio eCapital 2025, con i link agli articoli.
-9. **Partner**: UNIVPM, Inlingua, eCapital, partner locali.
-10. **Prezzi e add-on**, testimonianze, domande frequenti, modulo di contatto.
+| Costante | Cosa contiene |
+|---|---|
+| `DRAFT` | `true`: mostra i segnaposto e la barra gialla. **Mettere `false` prima di pubblicare**: i segnaposto spariscono e le sezioni vuote si nascondono. |
+| `TESTIMONIALS` | Foto (`assets/testimonials/…`), nome, paese, corso, università, commento. Solo testimonianze reali e autorizzate. Le voci con `placeholder:true` non vengono mai pubblicate. |
+| `VIDEOS` | Fino a 3 video: incollare l'ID di 11 caratteri (`youtube.com/watch?v=ID`) e il titolo. |
+| `OUTLETS`, `NEWS` | Testate e articoli. `logo`: percorso di un logo ufficiale autorizzato, altrimenti si vede il nome della testata. |
+| `PARTNERS` | UNIVPM, inlingua, eCapital, con tipo di rapporto (`agreement`, `language`, `award`). Si aggiungono altre voci con lo stesso formato. |
+| `LOCAL_PARTNERS` | Agenzie locali con accordo attivo. Non sono mostrate in pagina; restano per future pagine dedicate ai singoli paesi. |
 
-## Lingue
+Numero WhatsApp: costante `WA` (`393275990381`).
 
-Arabo (layout da destra a sinistra), inglese, francese. I testi sono nell'oggetto `T` e negli array di dati dentro lo `<script>`.
-Lingua iniziale: `?lang=`, poi la scelta salvata dal visitatore, poi il paese, poi la lingua del browser.
+## Privacy
+
+- Nessun cookie di analisi o pubblicità. Nel browser vengono salvate solo la lingua (`es_lang`) e le scelte privacy (`es_consent`).
+- I video YouTube si caricano solo dopo un clic e il consenso, da `youtube-nocookie.com`. Le anteprime vengono da Google solo dopo il consenso.
+- "Privacy settings" nel footer apre la finestra per dare o revocare il consenso.
+- Se in futuro si aggiungono pixel o strumenti di analisi (Meta, TikTok, Google), servono un banner di consenso e l'aggiornamento della cookie policy **prima** di attivarli.
 
 ## Link per le campagne
 
-| Paese | Link | Effetto |
-|---|---|---|
-| Algeria | `?c=dz` | arabo, partner locale algerino |
-| Kuwait | `?c=kw` | arabo, assistenza 100% online |
-| Israele | `?c=il` | arabo, partner locali in Israele |
+`?c=dz`, `?c=kw`, `?c=il` aprono la pagina in arabo; `?lang=en|ar|fr` forza la lingua.
 
-Senza parametro compaiono tutti i partner locali, ma senza indicare il paese di ciascuno.
+## Prima di pubblicare
 
-## Loghi
-
-Testate e partner sono resi come scritte stilizzate in un solo colore (classi `.wm-*`), non con i loghi ufficiali.
-Per usare quelli ufficiali, mettete i file in `assets/logos/` e sostituite l'HTML negli oggetti `OUTLET` e `PARTNERS`.
-
-## Da completare prima di pubblicare
-
-- Loghi ufficiali di testate, UNIVPM, Inlingua, eCapital.
-- Testimonianze reali: ora ci sono dei segnaposto, marcati in rosso.
-- Prezzi degli add-on: ora c'è scritto "prezzo su richiesta".
-- Il banner giallo "BOZZA" in cima va tolto.
-- Verificare che ogni articolo linkato citi Espresso Study.
-- Link Instagram e TikTok, privacy policy e cookie policy.
+1. Mettere `DRAFT = false`.
+2. Inserire testimonianze, ID dei video ed eventuali loghi ufficiali.
+3. Completare i campi `[TO COMPLETE]` di privacy e cookie policy e farli verificare da un consulente; servono anche le versioni in arabo e francese.
+4. Verificare i KPI (500+, 12+, 20+) con i dati del report istituzionale 2026 (120+ studenti supportati nel 2026).
