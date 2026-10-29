@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Espresso Study · Instagram designs</title>
+<!-- Renders one Instagram design at a time: designs.html?id=p01&lang=ar
+     Posts are 1080×1350 (4:5), stories 1080×1920 (9:16). Export with social/src/render.js. -->
+<style>
+@font-face{font-family:'Alexandria';font-weight:700;src:url(../../assets/fonts/alexandria-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Alexandria';font-weight:800;src:url(../../assets/fonts/alexandria-latin-800.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Alexandria';font-weight:900;src:url(../../assets/fonts/alexandria-latin-900.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Alexandria';font-weight:700;src:url(../../assets/fonts/alexandria-arabic-700.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Alexandria';font-weight:800;src:url(../../assets/fonts/alexandria-arabic-800.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Alexandria';font-weight:900;src:url(../../assets/fonts/alexandria-arabic-900.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Readex Pro';font-weight:400;src:url(../../assets/fonts/readex-pro-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Readex Pro';font-weight:500;src:url(../../assets/fonts/readex-pro-latin-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Readex Pro';font-weight:600;src:url(../../assets/fonts/readex-pro-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Readex Pro';font-weight:400;src:url(../../assets/fonts/readex-pro-arabic-400.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Readex Pro';font-weight:500;src:url(../../assets/fonts/readex-pro-arabic-500.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Readex Pro';font-weight:600;src:url(../../assets/fonts/readex-pro-arabic-600.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Bungee';font-weight:400;src:url(../../assets/fonts/bungee-latin-400.woff2) format('woff2')}
+
+/* Same tokens as the landing page */
+:root{
+  --navy:#0F1F5C;--navy-deep:#0A1645;--green:#13934A;--red:#E1262D;--wa:#1FAF55;--ochre:#F2B33D;--terracotta:#D2693C;
+  --bg:#F7F5F0;--card:#FFFFFF;--ink:#101A3E;--muted:#59627F;--line:#E2DED3;--soft:#EFEBE1;--green-soft:#E3F4EA;--red-soft:#FCE6E7;
+  --sky-top:#BFE3F5;--sky-mid:#FCEFD9;--sky-low:#FFE2BD;--street:#E9D8B8;
+  --f-display:"Alexandria","Readex Pro",sans-serif;--f-body:"Readex Pro",sans-serif;--f-stamp:"Bungee","Alexandria",sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{background:#ddd}
+.frame{position:relative;width:1080px;overflow:hidden;color:var(--ink);font-family:var(--f-body);display:flex;flex-direction:column}
+.post{height:1350px;padding:72px 80px 64px}
+.story{height:1920px;padding:250px 90px 340px}   /* keeps clear of Instagram's top bar and reply field */
+[dir="rtl"] .frame{font-family:var(--f-body)}
+
+.bg-sky{background:linear-gradient(180deg,var(--sky-top),var(--sky-mid) 58%,var(--sky-low))}
+.bg-cream{background:var(--bg)}
+.bg-navy{background:radial-gradient(120% 80% at 85% 0%,#1B3296,var(--navy) 50%,var(--navy-deep));color:#fff}
+.bg-green{background:linear-gradient(160deg,#17A653,#0B6E36);color:#fff}
+
+/* brand row */
+.brand{display:flex;align-items:center;gap:18px;position:relative;z-index:3}
+.cup{width:76px;height:76px;border-radius:22px;background:#fff;display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(15,31,92,.4)}
+.cup img{width:56px;height:56px}
+.wordmark{font:400 34px/1 var(--f-stamp);color:var(--navy)}
+.wordmark small{display:block;font:500 19px/1.2 var(--f-body);color:var(--muted);margin-top:6px}
+.bg-navy .wordmark,.bg-green .wordmark{color:#fff}
+.bg-navy .wordmark small,.bg-green .wordmark small{color:rgba(255,255,255,.75)}
+
+.eyebrow{font:400 26px/1.2 var(--f-stamp);letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+[lang="ar"] .eyebrow{font:800 34px/1.3 var(--f-display);letter-spacing:0}
+.bg-navy .eyebrow,.bg-green .eyebrow{color:#7FE3A8}
+.pos{display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:rgba(255,255,255,.75);border:2px solid rgba(15,31,92,.1);border-radius:999px;padding:14px 26px;font:500 26px/1.2 var(--f-body);color:var(--navy)}
+.pos i{width:16px;height:16px;border-radius:50%;background:var(--green);box-shadow:0 0 0 7px rgba(19,147,74,.2)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;font-weight:900}
+[lang="ar"] h1,[lang="ar"] h2{line-height:1.3}
+.h-xl{font-size:104px}
+[lang="ar"] .h-xl{font-size:88px}
+.story .face{width:330px;height:380px}
+.post .face{width:290px;height:330px}
+.center{flex:1;justify-content:center}
+.h-l{font-size:84px}
+.h-m{font-size:64px}
+.h-s{font-size:46px}
+em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+em::after{content:"";position:absolute;inset-inline:0;bottom:.02em;height:.15em;border-radius:99px;background:linear-gradient(90deg,var(--green) 0 33%,#fff 33% 66%,var(--red) 66%);z-index:-1}
+.bg-navy em{color:#7FE3A8}
+.lead{font:400 34px/1.45 var(--f-body);color:var(--muted)}
+.bg-navy .lead,.bg-green .lead{color:rgba(255,255,255,.82)}
+.stack{display:flex;flex-direction:column;gap:30px;position:relative;z-index:2}
+.grow{flex:1}
+
+/* CTA + footer */
+.cta{display:inline-flex;align-items:center;gap:18px;align-self:flex-start;background:var(--wa);color:#fff;border-radius:999px;padding:24px 40px;font:800 34px/1.1 var(--f-display);box-shadow:0 18px 40px -18px rgba(31,175,85,.9)}
+.cta svg{width:42px;height:42px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;font:600 24px/1.2 var(--f-body);color:var(--muted);position:relative;z-index:3;direction:ltr}
+.bg-navy .foot,.bg-green .foot{color:rgba(255,255,255,.8)}
+.tricolor{height:10px;border-radius:99px;background:linear-gradient(90deg,var(--green) 0 33.3%,#fff 33.3% 66.6%,var(--red) 66.6%);box-shadow:0 0 0 1px rgba(15,31,92,.06)}
+
+/* scene (hero) */
+.scene{position:absolute;inset:auto 0 0;height:560px;direction:ltr;z-index:1}
+.scene .sky-strip{position:absolute;left:-40px;bottom:46px;height:360px}
+.scene .street{position:absolute;inset:auto 0 0;height:54px;background:var(--street)}
+.scene .street::before{content:"";position:absolute;inset:24px 0 auto;height:5px;background:repeating-linear-gradient(90deg,#fff 0 40px,transparent 40px 80px);opacity:.7}
+.scene .pp{position:absolute;bottom:14px;height:330px}
+.sun{position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#FFE08A 0 55%,rgba(255,214,120,0) 70%)}
+.toast{position:absolute;display:flex;align-items:center;gap:18px;background:#fff;border-radius:28px;padding:20px 28px;box-shadow:0 20px 40px -20px rgba(15,31,92,.6);z-index:4;color:var(--navy)}
+.toast img{width:60px;height:60px;border-radius:16px;border:2px solid var(--line);padding:5px}
+.toast small{display:block;font:500 20px/1.2 var(--f-body);color:var(--muted)}
+.toast b{display:block;font:800 30px/1.2 var(--f-display)}
+
+/* quiz chips */
+.qcard{background:#fff;border-radius:40px;padding:48px;display:flex;flex-direction:column;gap:22px;box-shadow:0 30px 60px -30px rgba(15,31,92,.45)}
+.qcard h3{font-size:46px;font-weight:800}
+.chip{display:flex;align-items:center;gap:22px;border:3px solid var(--line);background:var(--bg);border-radius:24px;padding:22px 28px;font:600 34px/1.2 var(--f-body)}
+.chip .e{font-size:44px}
+.chip.on{border-color:var(--green);background:var(--green-soft)}
+.qcard.compact{padding:38px 40px;gap:14px}.qcard.compact .chip{padding:16px 26px}.qcard.compact h3{font-size:42px}
+.dots{display:flex;gap:12px}.dots i{width:54px;height:12px;border-radius:99px;background:var(--soft)}.dots i.on{background:var(--green)}
+
+/* worry → answer */
+.wq{position:relative;background:var(--red-soft);border-radius:36px;padding:34px 40px;font:800 50px/1.25 var(--f-display);color:var(--ink)}
+.wa{display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;background:var(--green-soft);border-radius:36px;padding:34px 40px;font:500 36px/1.4 var(--f-body);color:var(--ink)}
+.tick{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font:800 36px/1 var(--f-display)}
+.faces{display:flex;align-items:flex-end;gap:30px}
+.face{width:250px;height:290px;border-radius:44px;overflow:hidden;position:relative;background:var(--soft)}
+.face img{position:absolute;inset:auto 0 -14px;width:100%}
+.face.happy{background:var(--green-soft)}
+.arrow{font:900 80px/1 var(--f-display);color:var(--green)}
+[dir="rtl"] .arrow{transform:scaleX(-1)}
+.who{align-self:flex-start;font:600 24px/1 var(--f-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--soft);padding:12px 20px;border-radius:99px}
+[lang="ar"] .who{letter-spacing:0;font-size:28px}
+
+/* fees bars */
+.big{font:900 150px/1 var(--f-display);color:var(--green);direction:ltr;unicode-bidi:isolate}
+[dir="rtl"] .big{text-align:right}
+.bars{display:flex;flex-direction:column;gap:30px;background:#fff;border-radius:36px;padding:44px}
+.bar{display:flex;flex-direction:column;gap:12px}
+.bar-top{display:flex;justify-content:space-between;font:600 32px/1 var(--f-body)}
+.bar-top span{color:var(--muted);direction:ltr;unicode-bidi:isolate}
+.track{height:24px;border-radius:99px;background:var(--soft);overflow:hidden}
+.fill{height:100%;border-radius:99px;background:#9AA1B9}
+.bar.it .fill{background:linear-gradient(90deg,var(--green),var(--red))}
+.bar.it b{color:var(--green)}
+.note{font:400 24px/1.4 var(--f-body);color:var(--muted)}
+.bg-navy .note,.bg-green .note{color:rgba(255,255,255,.7)}
+
+/* postcard */
+.pc{background:#fff;border-radius:36px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(15,31,92,.55);transform:rotate(-2deg)}
+.pc-art{position:relative;height:560px;background:linear-gradient(180deg,#BFE3F5,#FCEFD9 80%);direction:ltr;overflow:hidden}
+.pc-art .ground{position:absolute;inset:auto 0 0;height:40px;background:var(--street)}
+.pc-art img{position:absolute;bottom:22px}
+.stamp{position:absolute;top:28px;right:28px;width:130px;height:150px;background:#fff;border:5px dashed var(--terracotta);border-radius:8px;display:grid;place-items:center;font:400 22px/1.1 var(--f-stamp);color:var(--terracotta);text-align:center;transform:rotate(6deg);z-index:2}
+.stamp b{display:block;font-size:44px}
+.pc-body{padding:40px 48px 48px;display:flex;flex-direction:column;gap:14px}
+.pc-body h3{font-size:56px;font-weight:900}
+.pc-body p{font:400 32px/1.45 var(--f-body);color:var(--muted)}
+
+/* roadmap */
+.steps{display:flex;flex-direction:column;gap:22px}
+.step{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:center;background:#fff;border-radius:32px;padding:26px 32px}
+.pin{width:84px;height:84px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--navy);display:grid;place-items:center}
+.pin span{transform:rotate(45deg);color:#fff;font:400 34px/1 var(--f-stamp)}
+.step:nth-child(3) .pin{background:var(--green)}.step:nth-child(4) .pin{background:var(--red)}
+.step h3{font-size:44px;font-weight:800}
+.step p{font:600 26px/1.3 var(--f-body);color:var(--muted);margin-top:6px}
+
+/* KPIs */
+.kpis{display:flex;flex-direction:column;gap:26px}
+.kpi{display:flex;align-items:baseline;gap:34px;border-bottom:2px solid rgba(255,255,255,.18);padding-bottom:26px}
+.kpi:last-child{border-bottom:0}
+.kpi b{font:900 150px/1 var(--f-display);min-width:360px;direction:ltr;unicode-bidi:isolate}
+[dir="rtl"] .kpi b{text-align:right}
+.kpi:nth-child(1) b{color:#3DDC84}.kpi:nth-child(2) b{color:#fff}.kpi:nth-child(3) b{color:#FF6B70}
+.kpi span{font:600 38px/1.3 var(--f-body);color:rgba(255,255,255,.88)}
+
+/* plans */
+.plans{display:flex;flex-direction:column;gap:22px}
+.plan{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 24px;background:#fff;border:3px solid var(--line);border-radius:32px;padding:30px 38px;position:relative}
+.plan.rec{border-color:var(--green);box-shadow:0 30px 60px -30px rgba(19,147,74,.7)}
+.plan h3{font:400 40px/1 var(--f-stamp);color:var(--ink)}
+.plan .span{font:600 28px/1.3 var(--f-body);color:var(--muted);grid-column:1}
+.plan .price{grid-row:1/3;grid-column:2;font:900 72px/1 var(--f-display);color:var(--ink);direction:ltr;unicode-bidi:isolate}
+.badge{position:absolute;top:-24px;inset-inline-start:34px;background:var(--green);color:#fff;font:400 22px/1 var(--f-stamp);padding:12px 18px;border-radius:99px}
+[lang="ar"] .badge{font:800 26px/1 var(--f-display)}
+
+/* myth / fact */
+.myth{background:#fff;border-radius:36px;padding:44px;display:flex;flex-direction:column;gap:18px}
+.myth .tag{align-self:flex-start;font:400 26px/1 var(--f-stamp);padding:12px 20px;border-radius:99px}
+[lang="ar"] .myth .tag{font:800 30px/1 var(--f-display)}
+.myth.no .tag{background:var(--red-soft);color:var(--red)}
+.myth.yes .tag{background:var(--green-soft);color:var(--green)}
+.myth p{font:800 52px/1.25 var(--f-display);color:var(--ink)}
+.myth.no p{text-decoration:line-through;text-decoration-color:rgba(225,38,45,.6);text-decoration-thickness:6px}
+
+.sticker-space{height:300px}  /* left empty: the Instagram sticker goes here */
+.mascot{position:absolute;width:640px}
+[dir="rtl"] .mascot{transform:scaleX(-1)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const P = new URLSearchParams(location.search);
+const lang = P.get("lang") === "ar" ? "ar" : "en";
+const id = P.get("id") || "p01";
+document.documentElement.lang = lang;
+document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+const A = "../../assets/";
+const L = o => (o && typeof o === "object") ? (o[lang] ?? o.en) : o;
+const WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>';
+
+/* ---- copy taken from the landing page ---- */
+const C = {
+ tagline:{en:"Your way to study in Italy",ar:"طريقك للدراسة في إيطاليا"},
+ pos:{en:"Specialists for Arabic-speaking students in Italy",ar:"متخصصون في مرافقة الطلاب العرب للدراسة في إيطاليا"},
+ h1:{en:"Study in Italy. <em>Live the dream,</em> we handle the stress.",ar:"ادرس في إيطاليا. <em>عِش الحلم،</em> واترك التعب علينا."},
+ sub:{en:"Visa, papers, housing and scholarship applications: in Arabic, step by step.",ar:"الفيزا والأوراق والسكن وطلب المنحة: بالعربية، خطوة بخطوة."},
+ cta:{en:"Free consultation on WhatsApp",ar:"استشارة مجانية على واتساب"},
+ bio:{en:"Link in bio",ar:"الرابط في البايو"},
+ toast_from:{en:"Espresso Study · now",ar:"Espresso Study · الآن"},
+ toast1:{en:"Visa file checked ✅",ar:"تمت مراجعة ملف الفيزا ✅"},
+ toast2:{en:"Room found, contract checked 🏠",ar:"وجدنا السكن وراجعنا العقد 🏠"},
+ q_eye:{en:"60-second check",ar:"فحص في 60 ثانية"},
+ q_h:{en:"Can I study in Italy?",ar:"هل أستطيع الدراسة في إيطاليا؟"},
+ q_s:{en:"Find out in 60 seconds · free",ar:"اعرف الجواب خلال 60 ثانية · مجاناً"},
+ q1:{en:"What do you dream of studying?",ar:"ماذا تحلم أن تدرس؟"},
+ q_cta:{en:"Take the check · link in bio",ar:"ابدأ الفحص · الرابط في البايو"},
+ fields:[["🩺",{en:"Medicine & health",ar:"الطب والصحة"}],["⚙️",{en:"Engineering & IT",ar:"الهندسة وتكنولوجيا المعلومات"}],["📈",{en:"Business & economics",ar:"إدارة الأعمال والاقتصاد"}],["🏛️",{en:"Architecture & design",ar:"العمارة والتصميم"}],["✨",{en:"Something else",ar:"تخصص آخر"}]],
+ w_eye:{en:"We get it",ar:"نحن نفهمك"},
+ student:{en:"Student",ar:"طالب/ة"}, parent:{en:"Parent",ar:"وليّ أمر"},
+ fees_eye:{en:"Why Italy",ar:"لماذا إيطاليا"},
+ fees_h:{en:"A European degree, at a fraction of the price.",ar:"شهادة أوروبية، بجزء صغير من السعر."},
+ fees_big:{en:"from ~€156",ar:"~156 €"},
+ fees_unit:{en:"a year at a public university*",ar:"سنوياً كبداية في جامعة حكومية*"},
+ fees_note:{en:"*Typical yearly tuition for an international bachelor student. Depends on the university and family income. Indicative figures 2025/26.",ar:"*رسوم سنوية تقريبية لطالب بكالوريوس دولي، حسب الجامعة ودخل العائلة. أرقام تقريبية للعام 2025/26."},
+ bars:[[true,{en:"Italy",ar:"إيطاليا"},3000,"€156 – €3,000"],[false,{en:"France",ar:"فرنسا"},2895,"≈ €2,900"],[false,{en:"United Kingdom",ar:"بريطانيا"},22000,"≈ €15,000 – €30,000"],[false,{en:"United States",ar:"الولايات المتحدة"},28000,"≈ €25,000 – €40,000"]],
+ pc1_h:{en:"Friends from all over the world",ar:"أصدقاء من كل العالم"},
+ pc1_p:{en:"Italian classmates, Arab students, Erasmus friends: study groups, football, long dinners that end at midnight.",ar:"زملاء إيطاليون، طلاب عرب، وأصدقاء من برنامج إيراسموس: مجموعات دراسة، كرة قدم، وعشاء طويل حتى منتصف الليل."},
+ pc_eye:{en:"What's waiting for you",ar:"ما الذي ينتظرك"},
+ pc3_h:{en:"Your espresso, your new routine",ar:"قهوتك الإسبريسو، وروتينك الجديد"},
+ pc3_p:{en:"Mediterranean food and sun, halal shops and mosques in the main cities.",ar:"طعام البحر المتوسط وشمسه، ومحلات حلال ومساجد في المدن الرئيسية."},
+ how_eye:{en:"Your roadmap to Italy",ar:"خريطة طريقك إلى إيطاليا"},
+ how_h:{en:"Four stages, one person by your side.",ar:"أربع مراحل، وشخص واحد بجانبك."},
+ road:[[{en:"Orientation",ar:"التوجيه"},{en:"9–12 months before",ar:"قبل 9–12 شهراً"}],[{en:"Preparation",ar:"التحضير"},{en:"Spring – summer",ar:"الربيع – الصيف"}],[{en:"Arrival in Italy",ar:"الوصول إلى إيطاليا"},{en:"September – October",ar:"سبتمبر – أكتوبر"}],[{en:"Fully settled",ar:"استقرار كامل"},{en:"Your first year and beyond",ar:"سنتك الأولى وما بعدها"}]],
+ kpi_eye:{en:"Espresso Study in numbers",ar:"Espresso Study بالأرقام"},
+ kpis:[["500+",{en:"Students in Our Community",ar:"طالب في مجتمعنا"}],["12+",{en:"Years of Experience in International Student Guidance",ar:"سنة من الخبرة في توجيه الطلاب الدوليين"}],["20+",{en:"Countries Served",ar:"دولة نخدم طلابها"}]],
+ pl_eye:{en:"Plans",ar:"الباقات"},
+ pl_h:{en:"Clear prices. You choose how far we walk with you.",ar:"أسعار واضحة. أنت تختار إلى أين نرافقك."},
+ plans:[["BASIC",{en:"Until enrolment",ar:"حتى التسجيل"},"€1,600","1,600 €",false],["INTERMEDIATE",{en:"Whole 1st year",ar:"السنة الأولى كاملة"},"€2,000","2,000 €",true],["TOP",{en:"All 3 years",ar:"السنوات الثلاث"},"€5,500","5,500 €",false]],
+ rec:{en:"MOST CHOSEN",ar:"الأكثر طلباً"},
+ pl_note:{en:"Price of our support service. University fees, visa, translations, flights, rent and insurance are separate.",ar:"سعر خدمة المرافقة. رسوم الجامعة والفيزا والترجمة والطيران والإيجار والتأمين منفصلة."},
+ myth_h:{en:"Myth or fact?",ar:"خرافة أم حقيقة؟"},
+ myth:{en:"Studying in Europe is only for the rich.",ar:"الدراسة في أوروبا للأغنياء فقط."},
+ fact:{en:"In Italy, public university fees can start from about €156 a year*",ar:"في إيطاليا، قد تبدأ رسوم الجامعات الحكومية من نحو 156 يورو سنوياً*"},
+ myth_tag:{en:"MYTH",ar:"خرافة"}, fact_tag:{en:"FACT",ar:"حقيقة"},
+ poll_note:{en:"Vote below 👇",ar:"صوّت في الأسفل 👇"},
+ tap_link:{en:"Tap the link below 👇",ar:"اضغط على الرابط في الأسفل 👇"},
+ sticker:{en:"Add the Instagram poll / quiz sticker here",ar:"ضع هنا ملصق الاستطلاع أو الاختبار من إنستغرام"},
+ link_sticker:{en:"Add the link sticker here",ar:"ضع هنا ملصق الرابط"},
+ fin_eye:{en:"Free first consultation",ar:"أول استشارة مجانية"},
+ fin_h:{en:"Your story in Italy can start this week.",ar:"قصتك في إيطاليا يمكن أن تبدأ هذا الأسبوع."},
+ fin_p:{en:"Tell us your dream in a free 20-minute call, in Arabic, English or French.",ar:"أخبرنا بحلمك في مكالمة مجانية مدتها 20 دقيقة، بالعربية أو الإنجليزية أو الفرنسية."},
+ swipe:{en:"Swipe up ⬆ or write to us",ar:"اكتب لنا الآن"}
+};
+const WORRIES = {
+ visa:{p:"amira",who:"student",q:{en:"What if my visa gets refused?",ar:"ماذا لو رُفضت الفيزا؟"},a:{en:"We check your visa file line by line before the embassy, to give it the best chance, and prepare a Plan B from day one.",ar:"نراجع ملف الفيزا سطراً بسطر قبل السفارة لنمنحه أفضل فرصة، ونجهّز خطة بديلة من اليوم الأول."}},
+ italian:{p:"karim",who:"student",q:{en:"I don't speak a word of Italian.",ar:"لا أعرف كلمة واحدة بالإيطالية."},a:{en:"Many degrees are taught in English. And if you want Italian, we take you from zero to B2 with Inlingua.",ar:"الكثير من التخصصات تُدرَّس بالإنجليزية. وإذا أردت الإيطالية، نأخذك من الصفر إلى مستوى B2 مع Inlingua."}},
+ parent:{p:"baba",who:"parent",q:{en:"Will my child be safe and looked after?",ar:"هل سيكون ابني أو ابنتي بأمان وتحت المتابعة؟"},a:{en:"Parents get one contact person in Italy and an update at every step, from the visa to the first exam.",ar:"للأهل شخص واحد للتواصل في إيطاليا، وتحديث في كل خطوة، من الفيزا حتى أول امتحان."}},
+ housing:{p:"lina",who:"student",q:{en:"How do I find a room from abroad without getting scammed?",ar:"كيف أجد سكناً وأنا في الخارج بدون أن أتعرض للاحتيال؟"},a:{en:"We find and check your room before you land, and read the contract with you.",ar:"نجد لك السكن ونتأكد منه قبل وصولك، ونقرأ العقد معك."}},
+ alone:{p:"omar",who:"student",q:{en:"Will I be alone over there?",ar:"هل سأكون وحيداً هناك؟"},a:{en:"From day one you have a buddy, a team that speaks Arabic, and students who made the same journey.",ar:"من أول يوم معك صديق مرافق (buddy)، وفريق يتكلم العربية، وطلاب مرّوا بنفس الرحلة."}}
+};
+
+/* ---- building blocks ---- */
+const brand = () => `<div class="brand"><span class="cup"><img src="${A}cup.webp" alt=""></span><span class="wordmark">ESPRESSO STUDY<small>${L(C.tagline)}</small></span></div>`;
+const foot = () => `<div class="foot"><span>@espresso.study</span><span>WhatsApp +39 327 599 0381</span></div>`;
+const cta = (t) => `<span class="cta">${WA_SVG}<span>${t || L(C.cta)}</span></span>`;
+const toast = (t, style) => `<div class="toast" style="${style}"><img src="${A}cup.webp" alt=""><div><small>${L(C.toast_from)}</small><b>${t}</b></div></div>`;
+const scene = (h, people) => `<div class="scene" style="height:${h}px"><div class="sun" style="right:90px;top:30px"></div>
+  <img class="sky-strip" src="${A}italy/skyline.svg" alt="">
+  <div class="street"></div>${people}</div>`;
+const worry = (k, big) => { const w = WORRIES[k];
+  return `<span class="who">${L(C[w.who])}</span>
+   <div class="faces"><div class="face"><img src="${A}peeps/b-${w.p}-worry.svg" alt=""></div><span class="arrow">→</span><div class="face happy"><img src="${A}peeps/b-${w.p}-happy.svg" alt=""></div></div>
+   <p class="wq"${big?' style="font-size:58px"':''}>“${L(w.q)}”</p>
+   <div class="wa"><span class="tick">✓</span><span>${L(w.a)}</span></div>`; };
+const bars = () => `<div class="bars">${C.bars.map(([it,n,v,lab])=>`<div class="bar${it?" it":""}"><div class="bar-top"><b>${L(n)}</b><span>${lab}</span></div><div class="track"><div class="fill" style="width:${Math.max(3,v/30000*100)}%"></div></div></div>`).join("")}</div>`;
+const steps = () => `<div class="steps">${C.road.map(([t,w],i)=>`<div class="step"><span class="pin"><span>${i+1}</span></span><div><h3>${L(t)}</h3><p>${L(w)}</p></div></div>`).join("")}</div>`;
+const kpis = () => `<div class="kpis">${C.kpis.map(([n,l])=>`<div class="kpi"><b>${n}</b><span>${L(l)}</span></div>`).join("")}</div>`;
+const plans = () => `<div class="plans">${C.plans.map(([n,s,pe,pa,rec])=>`<div class="plan${rec?" rec":""}">${rec?`<span class="badge">${L(C.rec)}</span>`:""}<h3>${n}</h3><span class="span">${L(s)}</span><span class="price">${lang==="ar"?pa:pe}</span></div>`).join("")}</div>`;
+const chips = (sel) => C.fields.map(([e,t],i)=>`<div class="chip${i===sel?" on":""}"><span class="e">${e}</span><span>${L(t)}</span></div>`).join("");
+const postcard = (art, h, p, rot) => `<div class="pc" style="transform:rotate(${rot}deg)"><div class="pc-art">${art}</div><div class="pc-body"><h3>${h}</h3><p>${p}</p></div></div>`;
+
+/* ---- designs ---- */
+const D = {
+ /* POSTS 1080×1350 */
+ p01:{k:"post",bg:"bg-sky",html:()=>`${brand()}<div class="stack" style="margin-top:56px"><span class="pos"><i></i>${L(C.pos)}</span><h1 class="h-xl">${L(C.h1)}</h1></div>
+   ${scene(560,`<img class="pp" src="${A}peeps/amira.svg" style="left:70px"><img class="pp" src="${A}peeps/giulia.svg" style="left:300px"><img class="pp" src="${A}peeps/lina.svg" style="left:560px;height:310px"><img class="pp" src="${A}peeps/karim.svg" style="left:790px;height:315px">`)}
+   ${toast(L(C.toast1),"right:80px;bottom:420px")}`},
+ p02:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:50px"><span class="eyebrow">${L(C.q_eye)}</span><h1 class="h-m">${L(C.q_h)}</h1></div>
+   <div class="qcard compact" style="margin-top:32px"><div class="dots"><i class="on"></i><i></i><i></i></div><h3>${L(C.q1)}</h3>${chips(0)}</div>
+   <div class="grow"></div><div style="display:flex;justify-content:space-between;align-items:center">${cta(L(C.q_cta))}</div>`},
+ p03:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack center"><span class="eyebrow">${L(C.w_eye)}</span>${worry("visa")}</div>${foot()}`},
+ p04:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack center"><span class="eyebrow">${L(C.w_eye)}</span>${worry("italian")}</div>${foot()}`},
+ p05:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack center"><span class="eyebrow">${L(C.w_eye)}</span>${worry("parent")}</div>${foot()}`},
+ p06:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:44px;gap:22px"><span class="eyebrow">${L(C.fees_eye)}</span><h2 class="h-m">${L(C.fees_h)}</h2>
+   <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap"><span class="big">${L(C.fees_big)}</span><span class="lead" style="color:var(--ink);font-weight:600">${L(C.fees_unit)}</span></div></div>
+   <div style="margin-top:34px">${bars()}</div><div class="grow"></div><p class="note">${L(C.fees_note)}</p>`},
+ p07:{k:"post",bg:"bg-sky",html:()=>`${brand()}<div class="stack" style="margin-top:40px"><span class="eyebrow">${L(C.pc_eye)}</span></div>
+   <div style="margin-top:34px">${postcard(`<span class="stamp">ITALIA<b>☕</b></span><img src="${A}italy/houses.svg" style="left:50%;transform:translateX(-50%);width:640px;bottom:26px"><div class="ground"></div>
+     <img src="${A}peeps/giulia.svg" style="left:90px;height:330px"><img src="${A}peeps/amira.svg" style="left:390px;height:320px"><img src="${A}peeps/omar.svg" style="left:650px;height:335px">`, L(C.pc1_h), L(C.pc1_p), -1.5)}</div><div class="grow"></div>${foot()}`},
+ p08:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:44px;gap:20px"><span class="eyebrow">${L(C.how_eye)}</span><h2 class="h-m">${L(C.how_h)}</h2></div><div style="margin-top:40px">${steps()}</div><div class="grow"></div>${foot()}`},
+ p09:{k:"post",bg:"bg-navy",html:()=>`${brand()}<div class="stack" style="margin-top:60px"><span class="eyebrow">${L(C.kpi_eye)}</span></div><div style="margin-top:50px">${kpis()}</div><div class="grow"></div><div class="tricolor"></div><div style="height:28px"></div>${foot()}`},
+ p10:{k:"post",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:44px;gap:20px"><span class="eyebrow">${L(C.pl_eye)}</span><h2 class="h-m">${L(C.pl_h)}</h2></div><div style="margin-top:56px">${plans()}</div><div class="grow"></div><p class="note" style="margin-bottom:24px">${L(C.pl_note)}</p>${cta()}`},
+
+ /* STORIES 1080×1920 (safe area: 250px top, 340px bottom) */
+ s01:{k:"story",bg:"bg-sky",html:()=>`${brand()}<div class="stack" style="margin-top:60px"><span class="pos"><i></i>${L(C.pos)}</span><h1 class="h-xl">${L(C.h1)}</h1><p class="lead">${L(C.sub)}</p></div>
+   ${scene(760,`<img class="pp" src="${A}peeps/amira.svg" style="left:60px;height:400px"><img class="pp" src="${A}peeps/giulia.svg" style="left:330px;height:410px"><img class="pp" src="${A}peeps/karim.svg" style="left:660px;height:390px">`).replace('class="scene"','class="scene" ').replace('bottom:46px','bottom:46px')}
+   ${toast(L(C.toast2),"left:90px;bottom:700px")}`},
+ s02:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:60px"><span class="eyebrow">${L(C.q_eye)}</span><h1 class="h-l">${L(C.q1)}</h1></div>
+   <div class="qcard" style="margin-top:50px">${chips(-1)}</div><div class="grow"></div><p class="lead" style="text-align:center;margin-bottom:24px">${L(C.poll_note)}</p><div class="sticker-space"></div>`},
+ s03:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:60px"><span class="eyebrow">${L(C.fees_eye)}</span><h1 class="h-l">${L(C.myth_h)}</h1></div>
+   <div class="stack" style="margin-top:56px;gap:36px"><div class="myth no"><span class="tag">${L(C.myth_tag)}</span><p>${L(C.myth)}</p></div><div class="myth yes"><span class="tag">${L(C.fact_tag)}</span><p>${L(C.fact)}</p></div></div>
+   <div style="margin-top:40px">${bars()}</div><div class="grow"></div><p class="note">${L(C.fees_note)}</p>`},
+ s04:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:70px;gap:36px"><span class="eyebrow">${L(C.w_eye)}</span>${worry("housing",true)}</div><div class="grow"></div>${cta()}`},
+ s05:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:70px;gap:36px"><span class="eyebrow">${L(C.w_eye)}</span>${worry("alone",true)}</div><div class="grow"></div>${cta()}`},
+ s06:{k:"story",bg:"bg-sky",html:()=>`${brand()}<div class="stack" style="margin-top:60px"><span class="eyebrow">${L(C.pc_eye)}</span></div>
+   <div style="margin-top:50px">${postcard(`<span class="stamp">FIRENZE<b>⛪</b></span><img src="${A}italy/duomo.svg" style="left:40px;width:520px;bottom:28px"><div class="ground"></div><img src="${A}peeps/b-yasmin-coffee.svg" style="right:20px;width:420px;bottom:-10px">`, L(C.pc3_h), L(C.pc3_p), 1.5)}</div><div class="grow"></div>${cta()}`},
+ s07:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:60px;gap:24px"><span class="eyebrow">${L(C.how_eye)}</span><h1 class="h-l">${L(C.how_h)}</h1></div><div style="margin-top:60px">${steps()}</div><div class="grow"></div>${cta()}`},
+ s08:{k:"story",bg:"bg-cream",html:()=>`${brand()}<div class="stack" style="margin-top:60px;gap:24px"><span class="eyebrow">${L(C.pl_eye)}</span><h1 class="h-l">${L(C.pl_h)}</h1></div><div style="margin-top:80px">${plans()}</div><p class="note" style="margin-top:40px">${L(C.pl_note)}</p><div class="grow"></div>${cta()}`},
+ s09:{k:"story",bg:"bg-navy",html:()=>`${brand()}<div class="stack" style="margin-top:80px"><span class="eyebrow">${L(C.kpi_eye)}</span></div><div style="margin-top:70px">${kpis()}</div><div class="grow"></div><div class="tricolor"></div><div style="height:30px"></div>${foot()}`},
+ s10:{k:"story",bg:"bg-green",html:()=>`${brand()}<img class="mascot" src="${A}mascot.webp" style="right:-40px;top:420px" alt="">
+   <div class="stack" style="margin-top:420px;gap:30px"><span class="eyebrow">${L(C.fin_eye)}</span><h1 class="h-l" style="color:#fff">${L(C.fin_h)}</h1><p class="lead">${L(C.fin_p)}</p>
+   <p style="font:800 52px/1.2 var(--f-display);direction:ltr;unicode-bidi:isolate">+39 327 599 0381</p></div><div class="grow"></div><p class="lead" style="text-align:center;color:#fff;font-weight:600">${L(C.tap_link)}</p><div class="sticker-space" style="height:200px"></div>`}
+};
+
+const d = D[id];
+document.getElementById("root").innerHTML = `<div class="frame ${d.k} ${d.bg}" id="frame">${d.html()}</div>`;
+document.fonts.ready.then(() => { document.body.dataset.ready = "1"; });
+</script>
+</body>
+</html>
