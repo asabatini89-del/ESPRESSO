@@ -1,4 +1,4 @@
-# Espresso Study: landing page (v3, pre-pubblicazione)
+# Espresso Study: landing page (v4, pre-pubblicazione)
 
 Landing statica, mobile first, in arabo (da destra a sinistra), inglese e francese. WhatsApp è il canale di conversione principale.
 
@@ -8,6 +8,22 @@ Landing statica, mobile first, in arabo (da destra a sinistra), inglese e france
 - `privacy.html`, `cookie-policy.html`: bozze delle informative, con i campi da completare evidenziati in giallo `[TO COMPLETE: …]`.
 - `assets/fonts/`: font ospitati sul sito (licenza SIL OFL), nessuna richiesta a Google Fonts.
 - `assets/peeps/`, `assets/italy/`: illustrazioni. `tools/`: script per rigenerarle.
+
+## Struttura della pagina (v4)
+
+1. Hero con specializzazione arabofona, headline, quiz di 60 secondi, WhatsApp e KPI
+2. Servizi (7 schede, ognuna con il proprio messaggio WhatsApp)
+3. Perché Espresso Study (4 vantaggi)
+4. Studenti reali: testimonianze e video (nascosta se non c'è contenuto reale)
+5. Il percorso in 4 tappe
+6. Formule di accompagnamento, senza prezzi, con richiesta di proposta personalizzata
+7. Perché l'Italia (versione breve)
+8. Partner e riconoscimenti
+9. Rassegna stampa
+10. FAQ e CTA finale WhatsApp
+11. Footer
+
+Il resto della pagina (servizi, vantaggi, percorso, formule, Italia, FAQ) si modifica negli array `SERVICES`, `WHY`, `ROAD`, `OPTIONS`, `ITALY`, `FAQ` dello script.
 
 ## Aggiornare i contenuti (inizio dello `<script>` in `index.html`)
 
