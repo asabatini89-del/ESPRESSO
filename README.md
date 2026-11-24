@@ -7,6 +7,7 @@ Landing statica, mobile first, in arabo (da destra a sinistra), inglese e france
 - `index.html`: la pagina (HTML, CSS e JS inline, nessun build).
 - `privacy.html`, `cookie-policy.html`: bozze delle informative, con i campi da completare evidenziati in giallo `[TO COMPLETE: …]`.
 - `assets/fonts/`: font ospitati sul sito (licenza SIL OFL), nessuna richiesta a Google Fonts.
+- `assets/logos/`: loghi ufficiali dei partner forniti da Espresso Study (UNIVPM, inlingua Ancona, eCapital).
 - `assets/peeps/`, `assets/italy/`: illustrazioni. `tools/`: script per rigenerarle.
 
 ## Struttura della pagina (v4)
@@ -16,7 +17,7 @@ Landing statica, mobile first, in arabo (da destra a sinistra), inglese e france
 3. Perché Espresso Study (4 vantaggi)
 4. Studenti reali: testimonianze e video (nascosta se non c'è contenuto reale)
 5. Il percorso in 4 tappe
-6. Formule di accompagnamento, senza prezzi, con richiesta di proposta personalizzata
+6. Formule di accompagnamento, senza prezzi, con richiesta di proposta personalizzata; "Study in Italy Support" è evidenziata come consigliata
 7. Perché l'Italia (versione breve)
 8. Partner e riconoscimenti
 9. Rassegna stampa
